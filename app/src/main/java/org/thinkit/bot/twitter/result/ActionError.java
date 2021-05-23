@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.bot.instagram.result;
+package org.thinkit.bot.twitter.result;
 
 import java.io.Serializable;
 
