@@ -34,6 +34,11 @@ public enum BatchStep implements BiCatalog<BatchStep, String> {
     START_SESSION(-1, "StartSessionStep"),
 
     /**
+     * The auto tweet good morning step
+     */
+    AUTO_TWEET_GOOD_MORNING(0, "AutoTweetGoodMorning"),
+
+    /**
      * The notify result report
      */
     NOTIFY_RESULT_REPORT(900, "NotifyResultReport"),

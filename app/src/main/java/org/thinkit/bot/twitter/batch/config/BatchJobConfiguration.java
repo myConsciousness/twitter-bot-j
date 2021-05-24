@@ -14,7 +14,11 @@
 
 package org.thinkit.bot.twitter.batch.config;
 
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
+import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.SimpleJobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,8 +27,8 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.thinkit.bot.twitter.TwitterBot;
 import org.thinkit.bot.twitter.TwitterBotJ;
+import org.thinkit.bot.twitter.batch.catalog.BatchJob;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
-import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 
 /**
  * The class that manages the batch job configuration of Twitter bot.
@@ -71,11 +75,10 @@ public class BatchJobConfiguration {
     private BatchStepCollections batchStepCollections;
 
     /**
-     * The mongo collections
+     * Registers the instance of {@link TwitterBot} as bean.
+     *
+     * @return The instance of {@link TwitterBot}
      */
-    @Autowired
-    private MongoCollections mongoCollections;
-
     @Bean
     public TwitterBot twitterBot() {
         return TwitterBotJ.from(twitterConfiguration);
@@ -83,5 +86,22 @@ public class BatchJobConfiguration {
 
     @Scheduled(cron = SCHEDULE_CRON, zone = TIME_ZONE)
     public void performScheduledInitializeSession() throws Exception {
+        this.runJobLauncher();
+    }
+
+    private void runJobLauncher() throws Exception {
+        final JobParameters param = new JobParametersBuilder()
+                .addString(BatchJob.TWITTER_BOT.getTag(), String.valueOf(System.currentTimeMillis())).toJobParameters();
+
+        this.simpleJobLauncher.run(this.createInstaBotJob(), param);
+    }
+
+    private Job createInstaBotJob() {
+        return this.getTwitterBotJobBuilder().flow(this.batchStepCollections.getExecuteAutoTweetGoodMorningStep()).end()
+                .build();
+    }
+
+    private JobBuilder getTwitterBotJobBuilder() {
+        return this.jobBuilderFactory.get(BatchJob.TWITTER_BOT.getTag());
     }
 }

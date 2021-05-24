@@ -39,6 +39,9 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class BatchStepCollections implements Serializable {
 
+    /**
+     * The execute auto tweet good morning step
+     */
     @Getter
-    private Step dummy;
+    private Step executeAutoTweetGoodMorningStep;
 }
