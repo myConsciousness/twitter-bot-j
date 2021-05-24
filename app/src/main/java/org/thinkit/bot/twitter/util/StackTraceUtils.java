@@ -12,45 +12,41 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter;
+package org.thinkit.bot.twitter.util;
 
-import java.io.Serializable;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
+import com.mongodb.lang.NonNull;
 
 import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.ToString;
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.Configuration;
 
 /**
- * The class that abstracts the process of Twitter bot.
+ * The class that provides the useful operations for stack trace.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-@ToString
-@EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public abstract class AbstractTwitterBot implements TwitterBot, Serializable {
+public final class StackTraceUtils {
 
     /**
-     * The twitter
-     */
-    @Getter(AccessLevel.PROTECTED)
-    private Twitter twitter;
-
-    /**
-     * The constructor.
+     * Extracts the stack trace from the exception object and returns it as a string
+     * type.
      *
-     * @param twitterConfiguration The twitter configuration
+     * @param exception The exception
+     * @return The string stack trace
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
-    protected AbstractTwitterBot(@NonNull final Configuration twitterConfiguration) {
-        this.twitter = new TwitterFactory(twitterConfiguration).getInstance();
+    public static String toString(@NonNull final Exception exception) {
+        try (StringWriter sw = new StringWriter(); PrintWriter pw = new PrintWriter(sw);) {
+            exception.printStackTrace(pw);
+            return sw.toString();
+        } catch (IOException e) {
+            throw new IllegalStateException();
+        }
     }
 }

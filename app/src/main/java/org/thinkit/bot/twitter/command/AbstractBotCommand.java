@@ -12,30 +12,26 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter;
+package org.thinkit.bot.twitter.command;
 
 import java.io.Serializable;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.ToString;
 import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.Configuration;
 
 /**
- * The class that abstracts the process of Twitter bot.
+ * The class that abstracts the process of bot command.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @ToString
 @EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-public abstract class AbstractTwitterBot implements TwitterBot, Serializable {
+public abstract class AbstractBotCommand<R> implements BotCommand<R>, Serializable {
 
     /**
      * The twitter
@@ -44,13 +40,14 @@ public abstract class AbstractTwitterBot implements TwitterBot, Serializable {
     private Twitter twitter;
 
     /**
-     * The constructor.
+     * Executes the bot process and returns the command result.
      *
-     * @param twitterConfiguration The twitter configuration
-     *
-     * @exception NullPointerException If {@code null} is passed as an argument
+     * @return The command result
      */
-    protected AbstractTwitterBot(@NonNull final Configuration twitterConfiguration) {
-        this.twitter = new TwitterFactory(twitterConfiguration).getInstance();
+    protected abstract R executeBotProcess();
+
+    @Override
+    public R execute(@NonNull final Twitter twitter) {
+        return this.executeBotProcess();
     }
 }

@@ -12,28 +12,32 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter;
+package org.thinkit.bot.twitter.param;
 
-import com.mongodb.lang.NonNull;
+import java.io.Serializable;
 
-import org.thinkit.bot.twitter.param.Tweet;
-import org.thinkit.bot.twitter.result.AutoTweetResult;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
- * The interface that represents the process of Twitter bot.
+ * The class that manages the tweet.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-public interface TwitterBot {
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(staticName = "from")
+public final class Tweet implements Serializable {
 
     /**
-     * Executes the auto tweet command and returns the command result.
-     *
-     * @param tweet The tweet
-     * @return The command result
-     *
-     * @exception NullPointerException If {@code null} is passed as an argument
+     * The message
      */
-    public AutoTweetResult executeAutoTweet(@NonNull final Tweet tweet);
+    @Getter
+    private String message;
 }
