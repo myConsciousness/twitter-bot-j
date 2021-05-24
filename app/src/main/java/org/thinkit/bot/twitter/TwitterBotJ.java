@@ -14,9 +14,11 @@
 
 package org.thinkit.bot.twitter;
 
+import com.mongodb.lang.NonNull;
+
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
+import twitter4j.conf.Configuration;
 
 /**
  * The class that manages the command of Twitter bot.
@@ -26,7 +28,34 @@ import lombok.ToString;
  */
 @ToString
 @EqualsAndHashCode(callSuper = false)
-@NoArgsConstructor(staticName = "newInstance")
 public final class TwitterBotJ extends AbstractTwitterBot {
 
+    /**
+     * The constructor.
+     *
+     * @param configuration The twitter configuration
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    private TwitterBotJ(@NonNull final Configuration twitterConfiguration) {
+        super(twitterConfiguration);
+    }
+
+    /**
+     * Returns the new instance of {@link TwitterBotJ} based on the twitter
+     * confguration passed as an argument.
+     *
+     * @param twitterConfiguration The twitter argument
+     * @return The new instance of {@link TwitterBotJ}
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public static TwitterBot from(@NonNull final Configuration twitterConfiguration) {
+        return new TwitterBotJ(twitterConfiguration);
+    }
+
+    @Override
+    public void executeAutoTweetGoodMorning() {
+
+    }
 }

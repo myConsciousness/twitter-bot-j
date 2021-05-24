@@ -47,6 +47,12 @@ public class BatchJobConfiguration {
     private static final String TIME_ZONE = "${spring.batch.schedule.timezone}";
 
     /**
+     * The twitter configuration
+     */
+    @Autowired
+    private twitter4j.conf.Configuration twitterConfiguration;
+
+    /**
      * The job builder factory
      */
     @Autowired
@@ -72,7 +78,7 @@ public class BatchJobConfiguration {
 
     @Bean
     public TwitterBot twitterBot() {
-        return TwitterBotJ.newInstance();
+        return TwitterBotJ.from(twitterConfiguration);
     }
 
     @Scheduled(cron = SCHEDULE_CRON, zone = TIME_ZONE)

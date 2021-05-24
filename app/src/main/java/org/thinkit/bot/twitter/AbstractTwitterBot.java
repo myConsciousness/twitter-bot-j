@@ -15,16 +15,17 @@
 package org.thinkit.bot.twitter;
 
 import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.mongodb.lang.NonNull;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.conf.Configuration;
 
 /**
  * The class that abstracts the process of Twitter bot.
@@ -34,32 +35,16 @@ import lombok.ToString;
  */
 @ToString
 @EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public abstract class AbstractTwitterBot implements TwitterBot, Serializable {
 
     /**
-     * The web driver
+     * The twitter
      */
     @Getter(AccessLevel.PROTECTED)
-    private WebDriver webDriver;
+    private Twitter twitter;
 
-    /**
-     * The constructor.
-     */
-    protected AbstractTwitterBot() {
-        this.setupWebDriver();
-    }
-
-    /**
-     * Setup the initial web driver.
-     */
-    private void setupWebDriver() {
-        WebDriverManager.chromedriver().setup();
-        this.webDriver = new ChromeDriver();
-        this.webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
-
-    @Override
-    public void closeWebBrowser() {
-        this.webDriver.close();
+    protected AbstractTwitterBot(@NonNull final Configuration twitterConfiguration) {
+        this.twitter = new TwitterFactory(twitterConfiguration).getInstance();
     }
 }

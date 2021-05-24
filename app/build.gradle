@@ -63,10 +63,8 @@ dependencies {
 	testImplementation 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 
-    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    implementation "io.github.bonigarcia:webdrivermanager:4.4.1"
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
-    implementation group: 'org.twitter4j', name: 'twitter4j', version: '4.0.7', ext: 'pom'
+    implementation group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.7'
 
     implementation 'org.thinkit.common:precondition-validator:v1.1.0'
     implementation 'org.thinkit.api.catalog:catalog-api:v1.0.2'

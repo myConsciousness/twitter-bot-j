@@ -12,15 +12,36 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter;
+package org.thinkit.bot.twitter.batch.catalog;
+
+import org.thinkit.api.catalog.BiCatalog;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 /**
- * The interface that represents the process of Twitter bot.
+ * The catalog that manages batch job.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-public interface TwitterBot {
+@RequiredArgsConstructor
+public enum BatchJob implements BiCatalog<BatchJob, String> {
 
-    public void executeAutoTweetGoodMorning();
+    /**
+     * The twitter bot job
+     */
+    TWITTER_BOT(0, "TwitterBotJob");
+
+    /**
+     * The code
+     */
+    @Getter
+    private final int code;
+
+    /**
+     * The tag
+     */
+    @Getter
+    private final String tag;
 }
