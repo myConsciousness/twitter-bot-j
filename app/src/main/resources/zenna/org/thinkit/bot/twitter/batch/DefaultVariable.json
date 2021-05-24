@@ -1,0 +1,31 @@
+{
+    "meta": {
+        "author": "Kato Shinya",
+        "encoding": "UTF-8",
+        "description": "The content that manages the default variable.",
+        "resultType": "org.thinkit.bot.twitter.batch.data.content.entity.DefaultVariable"
+    },
+    "selectionNodes": [
+        {
+            "node": {
+                "conditionId": "900",
+                "value": ""
+            }
+        }
+    ],
+    "conditionNodes": [
+        {
+            "node": {
+                "conditionId": "900",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "variableName",
+                        "operator": "=",
+                        "operand": "LINE_NOTIFY_TOKEN"
+                    }
+                ]
+            }
+        }
+    ]
+}

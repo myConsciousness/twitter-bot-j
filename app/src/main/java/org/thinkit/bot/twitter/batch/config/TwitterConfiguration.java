@@ -35,9 +35,9 @@ public class TwitterConfiguration {
      */
     @Bean
     public twitter4j.conf.Configuration twitterConfiguration() {
-        return new ConfigurationBuilder().setDebugEnabled(true).setOAuthConsumerKey("*********************")
-                .setOAuthConsumerSecret("******************************************")
-                .setOAuthAccessToken("**************************************************")
-                .setOAuthAccessTokenSecret("******************************************").build();
+        return new ConfigurationBuilder().setDebugEnabled(true).setOAuthConsumerKey("9aPckMy8qPphXICvYCsb7QEaN")
+                .setOAuthConsumerSecret("S0CGYNybnpdDSAAvzoNvHJbSb1ZCwMMdAB573y27xOsTQnQw5e")
+                .setOAuthAccessToken("1392337296997851139-0EuGSV0LV4W37Hi400thLr3C7WnZyr")
+                .setOAuthAccessTokenSecret("h0bJ4VPgnR41mJyo7QAebaC0SLYTy4K84D8A5HTOwBfq2").build();
     }
 }
