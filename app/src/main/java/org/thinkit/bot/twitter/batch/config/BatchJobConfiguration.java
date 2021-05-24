@@ -54,7 +54,7 @@ public class BatchJobConfiguration {
      * The twitter configuration
      */
     @Autowired
-    private twitter4j.conf.Configuration twitterConfiguration;
+    private twitter4j.conf.Configuration configuration;
 
     /**
      * The job builder factory
@@ -81,7 +81,7 @@ public class BatchJobConfiguration {
      */
     @Bean
     public TwitterBot twitterBot() {
-        return TwitterBotJ.from(twitterConfiguration);
+        return TwitterBotJ.from(configuration);
     }
 
     @Scheduled(cron = SCHEDULE_CRON, zone = TIME_ZONE)

@@ -14,34 +14,43 @@
 
 package org.thinkit.bot.twitter.batch.catalog;
 
-import org.thinkit.api.catalog.BiCatalog;
+import org.thinkit.api.catalog.Catalog;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * The catalog that manages variable name.
+ * The catalog that manages token type.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @RequiredArgsConstructor
-public enum VariableName implements BiCatalog<VariableName, String> {
+public enum TokenType implements Catalog<TokenType> {
 
     /**
-     * {@code "TWITTER_DEBUG_ENABLED"}
+     * The OAuth consumer key
      */
-    TWITTER_DEBUG_ENABLED(900, "TWITTER_DEBUG_ENABLED");
+    O_AUTH_CONSUMER_KEY(0),
+
+    /**
+     * The OAuth consumer secret
+     */
+    O_AUTH_CONSUMER_SECRET(1),
+
+    /**
+     * The OAuth access token
+     */
+    O_AUTH_ACCESS_TOKEN(2),
+
+    /**
+     * The OAuth access token secret
+     */
+    O_AUTH_ACCESS_TOKEN_SECRET(3);
 
     /**
      * The code
      */
     @Getter
     private final int code;
-
-    /**
-     * The tag
-     */
-    @Getter
-    private final String tag;
 }

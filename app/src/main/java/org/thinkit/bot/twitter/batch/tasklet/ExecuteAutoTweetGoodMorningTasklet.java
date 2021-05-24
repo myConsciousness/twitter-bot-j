@@ -58,7 +58,7 @@ public final class ExecuteAutoTweetGoodMorningTasklet extends AbstractTasklet {
     protected BatchTaskResult executeTask(StepContribution contribution, ChunkContext chunkContext) {
         log.debug("START");
 
-        super.getTwitterBot().executeAutoTweet(Tweet.from("テスト送信（すぐ消す）"));
+        super.getTwitterBot().executeAutoTweet(Tweet.from(""));
 
         log.debug("END");
         return BatchTaskResult.builder().build();

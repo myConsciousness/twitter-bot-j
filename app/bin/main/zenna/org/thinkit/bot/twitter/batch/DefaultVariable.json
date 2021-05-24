@@ -9,7 +9,7 @@
         {
             "node": {
                 "conditionId": "900",
-                "value": ""
+                "value": "true"
             }
         }
     ],
@@ -22,7 +22,7 @@
                     {
                         "keyName": "variableName",
                         "operator": "=",
-                        "operand": "LINE_NOTIFY_TOKEN"
+                        "operand": "TWITTER_DEBUG_ENABLED"
                     }
                 ]
             }
