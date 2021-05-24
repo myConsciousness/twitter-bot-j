@@ -31,6 +31,7 @@ import twitter4j.Twitter;
  */
 @ToString
 @EqualsAndHashCode
+
 public abstract class AbstractBotCommand<R> implements BotCommand<R>, Serializable {
 
     /**
@@ -48,6 +49,7 @@ public abstract class AbstractBotCommand<R> implements BotCommand<R>, Serializab
 
     @Override
     public R execute(@NonNull final Twitter twitter) {
+        this.twitter = twitter;
         return this.executeBotProcess();
     }
 }

@@ -20,6 +20,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.thinkit.bot.twitter.batch.catalog.MongoDatabase;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.ActionRecordRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.AuthorizationTokenRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.ErrorRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.LastActionRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlRepository;
@@ -34,6 +35,12 @@ import org.thinkit.bot.twitter.batch.dto.MongoCollections;
  */
 @Configuration
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
+
+    /**
+     * The authorization token repository
+     */
+    @Autowired
+    private AuthorizationTokenRepository authorizationTokenRepository;
 
     /**
      * The action record repository
@@ -78,6 +85,7 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
     @Bean
     public MongoCollections mongoCollections() {
         final MongoCollections.MongoCollectionsBuilder mongoCollectionsBuilder = MongoCollections.builder();
+        mongoCollectionsBuilder.authorizationTokenRepository(this.authorizationTokenRepository);
         mongoCollectionsBuilder.actionRecordRepository(this.actionRecordRepository);
         mongoCollectionsBuilder.errorRepository(this.errorRepository);
         mongoCollectionsBuilder.lastActionRepository(this.lastActionRepository);

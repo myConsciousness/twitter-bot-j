@@ -34,6 +34,11 @@ public enum TaskType implements Catalog<TaskType> {
     START_SESSION(-1),
 
     /**
+     * The auto tweet good morning
+     */
+    AUTO_TWEET_GOOD_MORNING(0),
+
+    /**
      * The notify result
      */
     NOTIFY_RESULT_REPORT(900),

@@ -1,0 +1,107 @@
+{
+    "meta": {
+        "author": "Kato Shinya",
+        "encoding": "UTF-8",
+        "description": "The content that manages the default task execution rule.",
+        "resultType": "org.thinkit.bot.twitter.batch.data.content.entity.DefaultTaskExecutionRule"
+    },
+    "selectionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "900",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "997",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "998",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "999",
+                "active": true
+            }
+        }
+    ],
+    "conditionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "0"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "900",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "900"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "997",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "997"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "998",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "998"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "999",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "999"
+                    }
+                ]
+            }
+        }
+    ]
+}

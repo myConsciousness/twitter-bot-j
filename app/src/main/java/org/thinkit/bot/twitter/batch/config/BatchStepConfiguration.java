@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thinkit.bot.twitter.batch.catalog.BatchStep;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGoodMorningTasklet;
 
 /**
  * The class that manages the batch step configuration of Twitter bot command.
@@ -38,19 +39,33 @@ public class BatchStepConfiguration {
     @Autowired
     private StepBuilderFactory stepBuilderFactory;
 
+    /**
+     * The execute auto tweet good morning taklet
+     */
     @Autowired
-    private Tasklet dummy;
+    private Tasklet executeAutoTweetGoodMorningTasklet;
 
+    /**
+     * Registers the instance of {@link BatchStepCollections} as bean.
+     *
+     * @return The instance of {@link BatchStepCollections}
+     */
     @Bean
     public BatchStepCollections batchStepCollections() {
         final BatchStepCollections.BatchStepCollectionsBuilder batchStepCollectionsBuilder = BatchStepCollections
                 .builder();
-        batchStepCollectionsBuilder.dummy(this.startSessionStep());
+        batchStepCollectionsBuilder.executeAutoTweetGoodMorningStep(this.executeAutoTweetGoodMorningStep());
 
         return batchStepCollectionsBuilder.build();
     }
 
-    private Step startSessionStep() {
-        return this.stepBuilderFactory.get(BatchStep.START_SESSION.getTag()).tasklet(this.dummy).build();
+    /**
+     * Returns the step of {@link ExecuteAutoTweetGoodMorningTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoTweetGoodMorningTasklet}
+     */
+    private Step executeAutoTweetGoodMorningStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_GOOD_MORNING.getTag())
+                .tasklet(this.executeAutoTweetGoodMorningTasklet).build();
     }
 }
