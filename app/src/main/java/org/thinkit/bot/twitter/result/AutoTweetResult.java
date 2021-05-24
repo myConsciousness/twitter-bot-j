@@ -15,6 +15,9 @@
 package org.thinkit.bot.twitter.result;
 
 import java.io.Serializable;
+import java.util.List;
+
+import com.mongodb.lang.NonNull;
 
 import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
@@ -26,6 +29,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import twitter4j.Status;
 
 /**
  * The class that manages the result of auto tweet command.
@@ -44,11 +48,25 @@ public final class AutoTweetResult implements Serializable {
      * The action status
      */
     @Getter
+    @NonNull
     private ActionStatus actionStatus;
 
     /**
      * The tweet
      */
     @Getter
+    @NonNull
     private Tweet tweet;
+
+    /**
+     * The status
+     */
+    @Getter
+    private Status status;
+
+    /**
+     * The action errors
+     */
+    @Getter
+    private List<ActionError> actionErrors;
 }

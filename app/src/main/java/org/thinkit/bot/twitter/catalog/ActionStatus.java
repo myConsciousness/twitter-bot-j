@@ -51,12 +51,7 @@ public enum ActionStatus implements Catalog<ActionStatus> {
     /**
      * The skip
      */
-    SKIP(4),
-
-    /**
-     * The skip mood
-     */
-    SKIP_MOOD(5);
+    SKIP(4);
 
     /**
      * The code
