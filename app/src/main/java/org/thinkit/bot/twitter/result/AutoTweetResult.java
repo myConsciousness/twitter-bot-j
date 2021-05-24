@@ -12,45 +12,43 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter;
+package org.thinkit.bot.twitter.result;
 
 import java.io.Serializable;
 
+import org.thinkit.bot.twitter.catalog.ActionStatus;
+import org.thinkit.bot.twitter.param.Tweet;
+
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import lombok.ToString;
-import twitter4j.Twitter;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.Configuration;
 
 /**
- * The class that abstracts the process of Twitter bot.
+ * The class that manages the result of auto tweet command.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @ToString
 @EqualsAndHashCode
+@Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public abstract class AbstractTwitterBot implements TwitterBot, Serializable {
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
+public final class AutoTweetResult implements Serializable {
 
     /**
-     * The twitter
+     * The action status
      */
-    @Getter(AccessLevel.PROTECTED)
-    private Twitter twitter;
+    @Getter
+    private ActionStatus actionStatus;
 
     /**
-     * The constructor.
-     *
-     * @param twitterConfiguration The twitter configuration
-     *
-     * @exception NullPointerException If {@code null} is passed as an argument
+     * The tweet
      */
-    protected AbstractTwitterBot(@NonNull final Configuration twitterConfiguration) {
-        this.twitter = new TwitterFactory(twitterConfiguration).getInstance();
-    }
+    @Getter
+    private Tweet tweet;
 }

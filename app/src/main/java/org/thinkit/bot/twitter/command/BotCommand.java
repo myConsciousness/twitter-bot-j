@@ -12,28 +12,26 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter;
+package org.thinkit.bot.twitter.command;
 
-import com.mongodb.lang.NonNull;
-
-import org.thinkit.bot.twitter.param.Tweet;
-import org.thinkit.bot.twitter.result.AutoTweetResult;
+import lombok.NonNull;
+import twitter4j.Twitter;
 
 /**
- * The interface that represents the process of Twitter bot.
+ * The interface that represents the process of bot command.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-public interface TwitterBot {
+public interface BotCommand<R> {
 
     /**
-     * Executes the auto tweet command and returns the command result.
+     * Executes the bot command and returns the result object.
      *
-     * @param tweet The tweet
+     * @param twitter The twitter
      * @return The command result
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
-    public AutoTweetResult executeAutoTweet(@NonNull final Tweet tweet);
+    public R execute(@NonNull final Twitter twitter);
 }

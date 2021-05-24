@@ -16,6 +16,9 @@ package org.thinkit.bot.twitter;
 
 import com.mongodb.lang.NonNull;
 
+import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.AutoTweetResult;
+
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import twitter4j.conf.Configuration;
@@ -55,7 +58,7 @@ public final class TwitterBotJ extends AbstractTwitterBot {
     }
 
     @Override
-    public void executeAutoTweetGoodMorning() {
-
+    public AutoTweetResult executeAutoTweet(@NonNull final Tweet tweet) {
+        return null;
     }
 }
