@@ -14,10 +14,16 @@
 
 package org.thinkit.bot.twitter.batch.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 import org.thinkit.bot.twitter.batch.catalog.MongoDatabase;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.ActionRecordRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.ErrorRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.LastActionRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 
 /**
@@ -28,6 +34,36 @@ import org.thinkit.bot.twitter.batch.dto.MongoCollections;
  */
 @Configuration
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
+
+    /**
+     * The action record repository
+     */
+    @Autowired
+    private ActionRecordRepository actionRecordRepository;
+
+    /**
+     * The error repository
+     */
+    @Autowired
+    private ErrorRepository errorRepository;
+
+    /**
+     * The last action repository
+     */
+    @Autowired
+    private LastActionRepository lastActionRepository;
+
+    /**
+     * The task execution control repository
+     */
+    @Autowired
+    private TaskExecutionControlRepository taskExecutionControlRepository;
+
+    /**
+     * The variable repository
+     */
+    @Autowired
+    private VariableRepository variableRepository;
 
     @Override
     protected String getDatabaseName() {
@@ -42,6 +78,11 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
     @Bean
     public MongoCollections mongoCollections() {
         final MongoCollections.MongoCollectionsBuilder mongoCollectionsBuilder = MongoCollections.builder();
+        mongoCollectionsBuilder.actionRecordRepository(this.actionRecordRepository);
+        mongoCollectionsBuilder.errorRepository(this.errorRepository);
+        mongoCollectionsBuilder.lastActionRepository(this.lastActionRepository);
+        mongoCollectionsBuilder.taskExecutionControlRepository(this.taskExecutionControlRepository);
+        mongoCollectionsBuilder.variableRepository(this.variableRepository);
 
         return mongoCollectionsBuilder.build();
     }

@@ -16,6 +16,12 @@ package org.thinkit.bot.twitter.batch.dto;
 
 import java.io.Serializable;
 
+import org.thinkit.bot.twitter.batch.data.mongo.repository.ActionRecordRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.ErrorRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.LastActionRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -37,6 +43,33 @@ import lombok.ToString;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class MongoCollections implements Serializable {
 
+    /**
+     * The action record repository
+     */
     @Getter
-    private Object dummy;
+    private ActionRecordRepository actionRecordRepository;
+
+    /**
+     * The error repository
+     */
+    @Getter
+    private ErrorRepository errorRepository;
+
+    /**
+     * The last action repository
+     */
+    @Getter
+    private LastActionRepository lastActionRepository;
+
+    /**
+     * The task execution control repository
+     */
+    @Getter
+    private TaskExecutionControlRepository taskExecutionControlRepository;
+
+    /**
+     * The variable repository
+     */
+    @Getter
+    private VariableRepository variableRepository;
 }
