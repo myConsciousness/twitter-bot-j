@@ -19,19 +19,17 @@ import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
 
 /**
- * The entity that manages authorization token.
+ * The entity that manages tweet text.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @Data
-@Document("authorization_token")
-public class AuthorizationToken implements Serializable {
+public final class TweetText implements Serializable {
 
     /**
      * The id
@@ -41,16 +39,27 @@ public class AuthorizationToken implements Serializable {
     private String id;
 
     /**
-     * The token type code
-     */
-    @Indexed(unique = true)
-    private int tokenTypeCode;
-
-    /**
-     * The token
+     * The text code
      */
     @Indexed
-    private String token;
+    private int textCode;
+
+    /**
+     * The language code
+     */
+    @Indexed
+    private int languageCode;
+
+    /**
+     * The type code
+     */
+    @Indexed
+    private int typeCode;
+
+    /**
+     * The text
+     */
+    private String text;
 
     /**
      * The created datetime
