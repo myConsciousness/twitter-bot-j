@@ -1,7 +1,7 @@
 {
     "properties": [
         {
-            "name": "spring.batch.schedule.cron",
+            "name": "spring.batch.schedule.cron.tweet.greeting",
             "type": "java.lang.String",
             "description": ""
         },

@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thinkit.bot.twitter.batch.catalog.BatchStep;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
-import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGoodMorningTasklet;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGreetingTasklet;
 
 /**
  * The class that manages the batch step configuration of Twitter bot command.
@@ -40,10 +40,10 @@ public class BatchStepConfiguration {
     private StepBuilderFactory stepBuilderFactory;
 
     /**
-     * The execute auto tweet good morning taklet
+     * The execute auto tweet greeting taklet
      */
     @Autowired
-    private Tasklet executeAutoTweetGoodMorningTasklet;
+    private Tasklet executeAutoTweetGreetingTasklet;
 
     /**
      * Registers the instance of {@link BatchStepCollections} as bean.
@@ -54,18 +54,18 @@ public class BatchStepConfiguration {
     public BatchStepCollections batchStepCollections() {
         final BatchStepCollections.BatchStepCollectionsBuilder batchStepCollectionsBuilder = BatchStepCollections
                 .builder();
-        batchStepCollectionsBuilder.executeAutoTweetGoodMorningStep(this.executeAutoTweetGoodMorningStep());
+        batchStepCollectionsBuilder.executeAutoTweetGreetingStep(this.executeAutoTweetGreetingStep());
 
         return batchStepCollectionsBuilder.build();
     }
 
     /**
-     * Returns the step of {@link ExecuteAutoTweetGoodMorningTasklet} .
+     * Returns the step of {@link ExecuteAutoTweetGreetingTasklet} .
      *
-     * @return The step of {@link ExecuteAutoTweetGoodMorningTasklet}
+     * @return The step of {@link ExecuteAutoTweetGreetingTasklet}
      */
-    private Step executeAutoTweetGoodMorningStep() {
-        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_GOOD_MORNING.getTag())
-                .tasklet(this.executeAutoTweetGoodMorningTasklet).build();
+    private Step executeAutoTweetGreetingStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_GREETING.getTag())
+                .tasklet(this.executeAutoTweetGreetingTasklet).build();
     }
 }

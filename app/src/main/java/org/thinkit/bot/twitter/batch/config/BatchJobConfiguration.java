@@ -43,7 +43,7 @@ public class BatchJobConfiguration {
     /**
      * The schedule cron
      */
-    private static final String SCHEDULE_CRON = "${spring.batch.schedule.cron}";
+    private static final String SCHEDULE_CRON_TWEET_GREETING = "${spring.batch.schedule.cron.tweet.greeting}";
 
     /**
      * The timezone
@@ -84,8 +84,8 @@ public class BatchJobConfiguration {
         return TwitterBotJ.from(configuration);
     }
 
-    @Scheduled(cron = SCHEDULE_CRON, zone = TIME_ZONE)
-    public void performScheduledInitializeSession() throws Exception {
+    @Scheduled(cron = SCHEDULE_CRON_TWEET_GREETING, zone = TIME_ZONE)
+    public void performScheduledTweetGreeting() throws Exception {
         this.runJobLauncher();
     }
 
@@ -97,7 +97,7 @@ public class BatchJobConfiguration {
     }
 
     private Job createInstaBotJob() {
-        return this.getTwitterBotJobBuilder().flow(this.batchStepCollections.getExecuteAutoTweetGoodMorningStep()).end()
+        return this.getTwitterBotJobBuilder().flow(this.batchStepCollections.getExecuteAutoTweetGreetingStep()).end()
                 .build();
     }
 
