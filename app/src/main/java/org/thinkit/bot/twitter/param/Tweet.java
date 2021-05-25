@@ -16,10 +16,11 @@ package org.thinkit.bot.twitter.param;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.StringUtils;
+
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -38,6 +39,14 @@ public final class Tweet implements Serializable {
     /**
      * The text
      */
-    @Getter
     private String text;
+
+    /**
+     * Returns the text.
+     *
+     * @return The text
+     */
+    public String getText() {
+        return StringUtils.replace(this.text, "¥n", "\n");
+    }
 }
