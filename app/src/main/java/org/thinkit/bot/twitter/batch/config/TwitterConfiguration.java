@@ -135,7 +135,7 @@ public class TwitterConfiguration {
         return variable.getValue();
     }
 
-    private boolean isValidToken(@NonNull final AuthorizationToken authorizationToken) {
+    private boolean isValidToken(final AuthorizationToken authorizationToken) {
         return authorizationToken != null && !StringUtils.isEmpty(authorizationToken.getToken());
     }
 

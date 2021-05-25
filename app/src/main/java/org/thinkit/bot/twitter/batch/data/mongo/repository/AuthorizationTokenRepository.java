@@ -35,5 +35,4 @@ public interface AuthorizationTokenRepository extends MongoRepository<Authorizat
      * @return The authorization token
      */
     public AuthorizationToken findByTokenTypeCode(int tokenTypeCode);
-
 }
