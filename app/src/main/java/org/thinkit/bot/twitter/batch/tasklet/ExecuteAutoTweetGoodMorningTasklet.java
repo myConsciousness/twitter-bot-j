@@ -14,13 +14,24 @@
 
 package org.thinkit.bot.twitter.batch.tasklet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
+import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
+import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
 import org.thinkit.bot.twitter.catalog.TaskType;
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.ActionError;
+import org.thinkit.bot.twitter.result.AutoTweetResult;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -58,9 +69,40 @@ public final class ExecuteAutoTweetGoodMorningTasklet extends AbstractTasklet {
     protected BatchTaskResult executeTask(StepContribution contribution, ChunkContext chunkContext) {
         log.debug("START");
 
-        super.getTwitterBot().executeAutoTweet(Tweet.from(""));
+        final MongoCollections mongoCollections = super.getMongoCollections();
+        final TweetTextRepository tweetTextRepository = mongoCollections.getTweetTextRepository();
+        final TweetResultRepository tweetResultRepository = mongoCollections.getTweetResultRepository();
+
+        final int tweetTextCode = TweetTextPattern.GOOD_MORNING.getCode();
+        final List<TweetText> tweetTexts = tweetTextRepository.findByTextCode(tweetTextCode);
+        final List<ActionError> actionErrors = new ArrayList<>();
+
+        for (final TweetText tweetText : tweetTexts) {
+            final AutoTweetResult autoTweetResult = super.getTwitterBot()
+                    .executeAutoTweet(Tweet.from(tweetText.getText()));
+
+            TweetResult tweetResult = new TweetResult();
+            tweetResult.setTextCode(tweetText.getTextCode());
+            tweetResult.setLanguageCode(tweetText.getLanguageCode());
+            tweetResult.setTweet(autoTweetResult.getTweet().getText());
+            tweetResult.setStatus(autoTweetResult.getStatus());
+
+            tweetResult = tweetResultRepository.insert(tweetResult);
+            log.debug("Inserted tweet result: {}", tweetResult);
+
+            if (autoTweetResult.getActionErrors() != null) {
+                for (final ActionError actionError : autoTweetResult.getActionErrors()) {
+                    actionErrors.add(actionError);
+                }
+            }
+        }
+
+        final BatchTaskResult.BatchTaskResultBuilder batchTaskResultBuilder = BatchTaskResult.builder();
+        batchTaskResultBuilder.actionCount(tweetTexts.size());
+        batchTaskResultBuilder.resultCount(tweetTexts.size() - actionErrors.size());
+        batchTaskResultBuilder.actionErrors(actionErrors);
 
         log.debug("END");
-        return BatchTaskResult.builder().build();
+        return batchTaskResultBuilder.build();
     }
 }

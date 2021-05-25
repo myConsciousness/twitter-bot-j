@@ -22,16 +22,17 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
+import twitter4j.Status;
 
 /**
- * The entity that manages authorization token.
+ * The entity that manages tweet result.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @Data
-@Document("authorization_token")
-public class AuthorizationToken implements Serializable {
+@Document("tweet_result")
+public final class TweetResult implements Serializable {
 
     /**
      * The id
@@ -41,16 +42,26 @@ public class AuthorizationToken implements Serializable {
     private String id;
 
     /**
-     * The token type code
-     */
-    @Indexed(unique = true)
-    private int tokenTypeCode;
-
-    /**
-     * The token
+     * The text code
      */
     @Indexed
-    private String token;
+    private int textCode;
+
+    /**
+     * The language code
+     */
+    @Indexed
+    private int languageCode;
+
+    /**
+     * The tweet
+     */
+    private String tweet;
+
+    /**
+     * The status
+     */
+    private Status status;
 
     /**
      * The created datetime

@@ -53,7 +53,7 @@ public final class AutoTweetCommand extends AbstractBotCommand<AutoTweetResult> 
         autoTweetResultBuilder.tweet(this.tweet);
 
         try {
-            autoTweetResultBuilder.status(super.getTwitter().updateStatus(tweet.getMessage()));
+            autoTweetResultBuilder.status(super.getTwitter().updateStatus(tweet.getText()));
             autoTweetResultBuilder.actionStatus(ActionStatus.COMPLETED);
         } catch (TwitterException e) {
             final ActionError.ActionErrorBuilder actionErrorBuilder = ActionError.builder();

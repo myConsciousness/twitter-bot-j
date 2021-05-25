@@ -12,32 +12,18 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.param;
+package org.thinkit.bot.twitter.batch.data.mongo.repository;
 
-import java.io.Serializable;
-
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 
 /**
- * The class that manages the tweet.
+ * The interface that manages tweet result repository.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(staticName = "from")
-public final class Tweet implements Serializable {
-
-    /**
-     * The text
-     */
-    @Getter
-    private String text;
+@Repository
+public interface TweetResultRepository extends MongoRepository<TweetResult, String> {
 }

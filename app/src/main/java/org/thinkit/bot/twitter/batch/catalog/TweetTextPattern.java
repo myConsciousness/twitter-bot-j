@@ -12,32 +12,30 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.param;
+package org.thinkit.bot.twitter.batch.catalog;
 
-import java.io.Serializable;
+import org.thinkit.api.catalog.Catalog;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.RequiredArgsConstructor;
 
 /**
- * The class that manages the tweet.
+ * The catalog that manages tweet text pattern.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(staticName = "from")
-public final class Tweet implements Serializable {
+@RequiredArgsConstructor
+public enum TweetTextPattern implements Catalog<TweetTextPattern> {
 
     /**
-     * The text
+     * Good morning
+     */
+    GOOD_MORNING(0);
+
+    /**
+     * The code
      */
     @Getter
-    private String text;
+    private final int code;
 }
