@@ -32,13 +32,14 @@ import org.thinkit.bot.twitter.catalog.TaskType;
 import org.thinkit.bot.twitter.param.Tweet;
 import org.thinkit.bot.twitter.result.ActionError;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
+import org.thinkit.bot.twitter.util.DateUtils;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The class that manages the auto tweet about good morning.
+ * The class that manages the auto tweet greeting.
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -47,22 +48,22 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @Component
-public final class ExecuteAutoTweetGoodMorningTasklet extends AbstractTasklet {
+public final class ExecuteAutoTweetGreetingTasklet extends AbstractTasklet {
 
     /**
      * The default constructor.
      */
-    private ExecuteAutoTweetGoodMorningTasklet() {
-        super(TaskType.AUTO_TWEET_GOOD_MORNING);
+    private ExecuteAutoTweetGreetingTasklet() {
+        super(TaskType.AUTO_TWEET_GREETING);
     }
 
     /**
-     * Returns the new instance of {@link ExecuteAutoTweetGoodMorningTasklet} .
+     * Returns the new instance of {@link ExecuteAutoTweetGreetingTasklet} .
      *
-     * @return The new instance of {@link ExecuteAutoTweetGoodMorningTasklet}
+     * @return The new instance of {@link ExecuteAutoTweetGreetingTasklet}
      */
     public static Tasklet newInstance() {
-        return new ExecuteAutoTweetGoodMorningTasklet();
+        return new ExecuteAutoTweetGreetingTasklet();
     }
 
     @Override
@@ -73,8 +74,7 @@ public final class ExecuteAutoTweetGoodMorningTasklet extends AbstractTasklet {
         final TweetTextRepository tweetTextRepository = mongoCollections.getTweetTextRepository();
         final TweetResultRepository tweetResultRepository = mongoCollections.getTweetResultRepository();
 
-        final int tweetTextCode = TweetTextPattern.GOOD_MORNING.getCode();
-        final List<TweetText> tweetTexts = tweetTextRepository.findByTextCode(tweetTextCode);
+        final List<TweetText> tweetTexts = tweetTextRepository.findByTextCode(this.deduceTextCodeByCurrentTime());
         final List<ActionError> actionErrors = new ArrayList<>();
 
         for (final TweetText tweetText : tweetTexts) {
@@ -104,5 +104,18 @@ public final class ExecuteAutoTweetGoodMorningTasklet extends AbstractTasklet {
 
         log.debug("END");
         return batchTaskResultBuilder.build();
+    }
+
+    private int deduceTextCodeByCurrentTime() {
+
+        if (DateUtils.isMorning()) {
+            return TweetTextPattern.GOOD_MORNING.getCode();
+        } else if (DateUtils.isAfternoon()) {
+            return TweetTextPattern.GOOD_AFTERNOON.getCode();
+        } else if (DateUtils.isEvening()) {
+            return TweetTextPattern.GOOD_EVENING.getCode();
+        }
+
+        return TweetTextPattern.GOOD_NIGHT.getCode();
     }
 }

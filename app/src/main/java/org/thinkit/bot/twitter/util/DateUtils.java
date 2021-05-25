@@ -12,36 +12,38 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.dto;
+package org.thinkit.bot.twitter.util;
 
-import java.io.Serializable;
-
-import org.springframework.batch.core.Step;
+import java.util.Calendar;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 /**
- * The class that manages collections of batch step.
+ * It provides common functions for date operation.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-@ToString
-@EqualsAndHashCode
-@Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class BatchStepCollections implements Serializable {
+public final class DateUtils {
 
-    /**
-     * The execute auto tweet greeting step
-     */
-    @Getter
-    private Step executeAutoTweetGreetingStep;
+    public static boolean isMorning() {
+        final int hour = getCurrentHour();
+        return 12 >= hour || hour >= 6;
+    }
+
+    public static boolean isAfternoon() {
+        final int hour = getCurrentHour();
+        return 17 >= hour || hour >= 13;
+    }
+
+    public static boolean isEvening() {
+        final int hour = getCurrentHour();
+        return 23 >= hour || hour >= 18;
+    }
+
+    private static int getCurrentHour() {
+        return Calendar.getInstance().get(Calendar.HOUR);
+    }
 }

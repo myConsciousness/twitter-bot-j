@@ -31,7 +31,22 @@ public enum TweetTextPattern implements Catalog<TweetTextPattern> {
     /**
      * Good morning
      */
-    GOOD_MORNING(0);
+    GOOD_MORNING(0),
+
+    /**
+     * Good afternoon
+     */
+    GOOD_AFTERNOON(1),
+
+    /**
+     * Good evening
+     */
+    GOOD_EVENING(2),
+
+    /**
+     * Good night
+     */
+    GOOD_NIGHT(3);
 
     /**
      * The code
