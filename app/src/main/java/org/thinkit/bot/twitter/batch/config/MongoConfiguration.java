@@ -24,6 +24,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.repository.AuthorizationTokenRep
 import org.thinkit.bot.twitter.batch.data.mongo.repository.ErrorRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.LastActionRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
@@ -79,6 +80,12 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
     @Autowired
     private TweetTextRepository tweetTextRepository;
 
+    /**
+     * The tweet result repository
+     */
+    @Autowired
+    private TweetResultRepository tweetResultRepository;
+
     @Override
     protected String getDatabaseName() {
         return MongoDatabase.TWITTER.getTag();
@@ -99,6 +106,7 @@ public class MongoConfiguration extends AbstractMongoClientConfiguration {
         mongoCollectionsBuilder.taskExecutionControlRepository(this.taskExecutionControlRepository);
         mongoCollectionsBuilder.variableRepository(this.variableRepository);
         mongoCollectionsBuilder.tweetTextRepository(this.tweetTextRepository);
+        mongoCollectionsBuilder.tweetResultRepository(this.tweetResultRepository);
 
         return mongoCollectionsBuilder.build();
     }

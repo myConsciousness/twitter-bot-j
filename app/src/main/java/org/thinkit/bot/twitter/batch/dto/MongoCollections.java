@@ -21,6 +21,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.repository.AuthorizationTokenRep
 import org.thinkit.bot.twitter.batch.data.mongo.repository.ErrorRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.LastActionRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
 
@@ -86,4 +87,11 @@ public final class MongoCollections implements Serializable {
      */
     @Getter
     private TweetTextRepository tweetTextRepository;
+
+    /**
+     * The tweet result repository
+     */
+    @Getter
+    private TweetResultRepository tweetResultRepository;
+
 }

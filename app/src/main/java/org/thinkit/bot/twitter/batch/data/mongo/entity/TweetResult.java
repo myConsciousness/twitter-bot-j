@@ -22,16 +22,17 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.Data;
+import twitter4j.Status;
 
 /**
- * The entity that manages tweet text.
+ * The entity that manages tweet result.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @Data
-@Document("tweet_text")
-public final class TweetText implements Serializable {
+@Document("tweet_result")
+public final class TweetResult implements Serializable {
 
     /**
      * The id
@@ -53,15 +54,14 @@ public final class TweetText implements Serializable {
     private int languageCode;
 
     /**
-     * The type code
+     * The tweet
      */
-    @Indexed
-    private int typeCode;
+    private String tweet;
 
     /**
-     * The text
+     * The status
      */
-    private String text;
+    private Status status;
 
     /**
      * The created datetime
