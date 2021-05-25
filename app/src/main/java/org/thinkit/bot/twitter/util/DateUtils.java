@@ -44,6 +44,10 @@ public final class DateUtils {
     }
 
     private static int getCurrentHour() {
-        return Calendar.getInstance().get(Calendar.HOUR);
+        final Calendar calendar = Calendar.getInstance();
+        return switch (calendar.get(Calendar.AM_PM)) {
+            case Calendar.PM -> calendar.get(Calendar.HOUR) + 13;
+            default -> calendar.get(Calendar.HOUR) + 1;
+        };
     }
 }
