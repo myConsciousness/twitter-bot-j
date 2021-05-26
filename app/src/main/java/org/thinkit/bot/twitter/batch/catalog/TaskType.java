@@ -39,6 +39,11 @@ public enum TaskType implements Catalog<TaskType> {
     AUTO_TWEET_GREETING(0),
 
     /**
+     * The auto tweet daily report
+     */
+    AUTO_TWEET_DAILY_REPORT(1),
+
+    /**
      * The auto show user
      */
     AUTO_SHOW_USER(100);
