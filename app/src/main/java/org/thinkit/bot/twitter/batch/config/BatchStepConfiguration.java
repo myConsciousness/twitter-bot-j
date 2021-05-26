@@ -47,6 +47,12 @@ public class BatchStepConfiguration {
     private Tasklet executeAutoTweetGreetingTasklet;
 
     /**
+     * The execute auto tweet daily report tasklet
+     */
+    @Autowired
+    private Tasklet executeAutoTweetDailyReport;
+
+    /**
      * The execute auto show user tasklet
      */
     @Autowired
@@ -63,6 +69,7 @@ public class BatchStepConfiguration {
                 .builder();
         batchStepCollectionsBuilder.executeAutoTweetGreetingStep(this.executeAutoTweetGreetingStep());
         batchStepCollectionsBuilder.executeAutoShowUserStep(this.executeAutoShowUserStep());
+        batchStepCollectionsBuilder.executeAutoTweetDailyReport(this.executeAutoTweetDailyReportStep());
 
         return batchStepCollectionsBuilder.build();
     }
@@ -75,6 +82,16 @@ public class BatchStepConfiguration {
     private Step executeAutoTweetGreetingStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_GREETING.getTag())
                 .tasklet(this.executeAutoTweetGreetingTasklet).build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoTweetDailyReportTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoTweetDailyReportTasklet}
+     */
+    private Step executeAutoTweetDailyReportStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_DAILY_REPORT.getTag())
+                .tasklet(this.executeAutoTweetDailyReport).build();
     }
 
     /**
