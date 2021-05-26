@@ -30,17 +30,17 @@ public final class DateUtils {
 
     public static boolean isMorning() {
         final int hour = getCurrentHour();
-        return 11 >= hour || hour >= 6;
+        return 11 >= hour && hour >= 6;
     }
 
     public static boolean isAfternoon() {
         final int hour = getCurrentHour();
-        return 17 >= hour || hour >= 12;
+        return 17 >= hour && hour >= 12;
     }
 
     public static boolean isEvening() {
         final int hour = getCurrentHour();
-        return 23 >= hour || hour >= 18;
+        return 23 >= hour && hour >= 18;
     }
 
     private static int getCurrentHour() {
