@@ -63,6 +63,11 @@ public final class UserProfileTransition implements Serializable {
     private int followingsCount;
 
     /**
+     * The recorded datetime
+     */
+    private Date recordedAt = new Date();
+
+    /**
      * The created datetime
      */
     private Date createdAt = new Date();

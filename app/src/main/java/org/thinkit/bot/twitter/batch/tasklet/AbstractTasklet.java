@@ -24,7 +24,6 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.TwitterBot;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
@@ -42,6 +41,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlR
 import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.policy.BatchTask;
+import org.thinkit.bot.twitter.batch.policy.RunningUser;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
 import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.result.ActionError;
@@ -71,10 +71,11 @@ public abstract class AbstractTasklet implements Tasklet {
     private final BatchTask batchTask;
 
     /**
-     * The configurable application context
+     * The running user
      */
     @Autowired
-    private ConfigurableApplicationContext context;
+    @Getter(AccessLevel.PROTECTED)
+    private RunningUser runningUser;
 
     /**
      * The twitter bot
