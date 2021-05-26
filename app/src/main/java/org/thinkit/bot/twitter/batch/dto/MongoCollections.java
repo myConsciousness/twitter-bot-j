@@ -23,6 +23,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.repository.LastActionRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TaskExecutionControlRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.UserAccountRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
@@ -107,4 +108,10 @@ public final class MongoCollections implements Serializable {
      */
     @Getter
     private UserProfileTransitionRepository userProfileTransitionRepository;
+
+    /**
+     * The user account repository
+     */
+    @Getter
+    private UserAccountRepository userAccountRepository;
 }
