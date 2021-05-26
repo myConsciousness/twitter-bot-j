@@ -17,6 +17,7 @@ package org.thinkit.bot.twitter.batch.dto;
 import java.io.Serializable;
 
 import org.springframework.batch.core.Step;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -44,4 +45,10 @@ public final class BatchStepCollections implements Serializable {
      */
     @Getter
     private Step executeAutoTweetGreetingStep;
+
+    /**
+     * The execute auto show user step
+     */
+    @Autowired
+    private Step executeAutoShowUserStep;
 }

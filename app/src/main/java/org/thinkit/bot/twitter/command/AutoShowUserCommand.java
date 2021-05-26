@@ -14,6 +14,9 @@
 
 package org.thinkit.bot.twitter.command;
 
+import java.util.List;
+
+import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.result.AutoShowUserResult;
 
 import lombok.AccessLevel;
@@ -21,6 +24,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import twitter4j.User;
 
 /**
  * The class that manages auto show user command
@@ -45,9 +49,14 @@ public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserRe
         final AutoShowUserResult.AutoShowUserResultBuilder autoShowUserResultBuilder = AutoShowUserResult.builder();
 
         try {
-
+            final User user = super.getTwitter().showUser(this.userName);
+            autoShowUserResultBuilder.userId(user.getId());
+            autoShowUserResultBuilder.userName(user.getName());
+            autoShowUserResultBuilder.followersCount(user.getFollowersCount());
+            autoShowUserResultBuilder.followingsCount(user.getFriendsCount());
         } catch (Exception e) {
-
+            autoShowUserResultBuilder.actionErrors(List.of(super.getActionError(e)));
+            autoShowUserResultBuilder.actionStatus(ActionStatus.INTERRUPTED);
         }
 
         return autoShowUserResultBuilder.build();
