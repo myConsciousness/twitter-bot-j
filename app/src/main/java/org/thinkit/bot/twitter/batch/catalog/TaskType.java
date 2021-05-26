@@ -12,7 +12,7 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.catalog;
+package org.thinkit.bot.twitter.batch.catalog;
 
 import org.thinkit.api.catalog.Catalog;
 

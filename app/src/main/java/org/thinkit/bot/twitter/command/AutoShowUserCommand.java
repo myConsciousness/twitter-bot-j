@@ -12,46 +12,44 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.result;
+package org.thinkit.bot.twitter.command;
 
-import java.io.Serializable;
+import org.thinkit.bot.twitter.result.AutoShowUserResult;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * The class that manages action error.
+ * The class that manages auto show user command
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @ToString
-@EqualsAndHashCode
-@Builder(toBuilder = true)
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class ActionError implements Serializable {
+@AllArgsConstructor(staticName = "from")
+public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserResult> {
 
     /**
-     * The message
+     * The user name
      */
-    @Getter
-    private String message;
+    private String userName;
 
-    /**
-     * The localized message
-     */
-    @Getter
-    private String localizedMessage;
+    @Override
+    protected AutoShowUserResult executeBotProcess() {
 
-    /**
-     * The stack trace
-     */
-    @Getter
-    private String stackTrace;
+        final AutoShowUserResult.AutoShowUserResultBuilder autoShowUserResultBuilder = AutoShowUserResult.builder();
+
+        try {
+
+        } catch (Exception e) {
+
+        }
+
+        return autoShowUserResultBuilder.build();
+    }
 }

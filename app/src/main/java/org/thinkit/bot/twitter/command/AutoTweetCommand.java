@@ -18,9 +18,7 @@ import java.util.List;
 
 import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
-import org.thinkit.bot.twitter.result.ActionError;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
-import org.thinkit.bot.twitter.util.StackTraceUtils;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -56,12 +54,7 @@ public final class AutoTweetCommand extends AbstractBotCommand<AutoTweetResult> 
             autoTweetResultBuilder.status(super.getTwitter().updateStatus(tweet.getText()));
             autoTweetResultBuilder.actionStatus(ActionStatus.COMPLETED);
         } catch (TwitterException e) {
-            final ActionError.ActionErrorBuilder actionErrorBuilder = ActionError.builder();
-            actionErrorBuilder.message(e.getMessage());
-            actionErrorBuilder.localizedMessage(e.getLocalizedMessage());
-            actionErrorBuilder.stackTrace(StackTraceUtils.toString(e));
-
-            autoTweetResultBuilder.actionErrors(List.of(actionErrorBuilder.build()));
+            autoTweetResultBuilder.actionErrors(List.of(super.getActionError(e)));
             autoTweetResultBuilder.actionStatus(ActionStatus.INTERRUPTED);
         }
 
