@@ -14,12 +14,21 @@
 
 package org.thinkit.bot.twitter.batch.tasklet;
 
+import java.util.List;
+
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
+import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
+import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
+import org.thinkit.bot.twitter.param.Tweet;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -56,6 +65,18 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
     @Override
     protected BatchTaskResult executeTask(StepContribution contribution, ChunkContext chunkContext) {
         log.debug("STRAT");
+
+        final MongoCollections mongoCollections = super.getMongoCollections();
+        final TweetTextRepository tweetTextRepository = mongoCollections.getTweetTextRepository();
+        final UserProfileRepository userProfileRepository = mongoCollections.getUserProfileRepository();
+        final UserProfileTransitionRepository userProfileTransitionRepository = mongoCollections
+                .getUserProfileTransitionRepository();
+
+        final List<TweetText> tweetTexts = tweetTextRepository.findByTextCode(TweetTextPattern.DAILY_REPORT.getCode());
+
+        for (final TweetText tweetText : tweetTexts) {
+            super.getTwitterBot().executeAutoTweet(Tweet.from(tweetText.getText()));
+        }
 
         log.debug("END");
         return BatchTaskResult.builder().build();
