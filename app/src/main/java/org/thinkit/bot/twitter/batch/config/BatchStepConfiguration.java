@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thinkit.bot.twitter.batch.catalog.BatchStep;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoShowUserTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGreetingTasklet;
 
 /**
@@ -46,6 +47,18 @@ public class BatchStepConfiguration {
     private Tasklet executeAutoTweetGreetingTasklet;
 
     /**
+     * The execute auto tweet daily report tasklet
+     */
+    @Autowired
+    private Tasklet executeAutoTweetDailyReport;
+
+    /**
+     * The execute auto show user tasklet
+     */
+    @Autowired
+    private Tasklet executeAutoShowUserTasklet;
+
+    /**
      * Registers the instance of {@link BatchStepCollections} as bean.
      *
      * @return The instance of {@link BatchStepCollections}
@@ -55,6 +68,8 @@ public class BatchStepConfiguration {
         final BatchStepCollections.BatchStepCollectionsBuilder batchStepCollectionsBuilder = BatchStepCollections
                 .builder();
         batchStepCollectionsBuilder.executeAutoTweetGreetingStep(this.executeAutoTweetGreetingStep());
+        batchStepCollectionsBuilder.executeAutoShowUserStep(this.executeAutoShowUserStep());
+        batchStepCollectionsBuilder.executeAutoTweetDailyReport(this.executeAutoTweetDailyReportStep());
 
         return batchStepCollectionsBuilder.build();
     }
@@ -67,5 +82,25 @@ public class BatchStepConfiguration {
     private Step executeAutoTweetGreetingStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_GREETING.getTag())
                 .tasklet(this.executeAutoTweetGreetingTasklet).build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoTweetDailyReportTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoTweetDailyReportTasklet}
+     */
+    private Step executeAutoTweetDailyReportStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_DAILY_REPORT.getTag())
+                .tasklet(this.executeAutoTweetDailyReport).build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoShowUserTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoShowUserTasklet}
+     */
+    private Step executeAutoShowUserStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_SHOW_USER.getTag()).tasklet(this.executeAutoShowUserTasklet)
+                .build();
     }
 }

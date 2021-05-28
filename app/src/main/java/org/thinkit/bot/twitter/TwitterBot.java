@@ -17,6 +17,7 @@ package org.thinkit.bot.twitter;
 import com.mongodb.lang.NonNull;
 
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.AutoShowUserResult;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
 
 /**
@@ -36,4 +37,6 @@ public interface TwitterBot {
      * @exception NullPointerException If {@code null} is passed as an argument
      */
     public AutoTweetResult executeAutoTweet(@NonNull final Tweet tweet);
+
+    public AutoShowUserResult executeAutoShowUser(@NonNull final String userName);
 }

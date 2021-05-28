@@ -16,8 +16,6 @@ package org.thinkit.bot.twitter.result;
 
 import java.io.Serializable;
 
-import org.thinkit.bot.twitter.catalog.TaskType;
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,12 +36,6 @@ import lombok.ToString;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ActionError implements Serializable {
-
-    /**
-     * The task type
-     */
-    @Getter
-    private TaskType taskType;
 
     /**
      * The message

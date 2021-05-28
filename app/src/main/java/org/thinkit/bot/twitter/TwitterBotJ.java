@@ -18,6 +18,7 @@ import com.mongodb.lang.NonNull;
 
 import org.thinkit.bot.twitter.command.AutoTweetCommand;
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.AutoShowUserResult;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
 
 import lombok.EqualsAndHashCode;
@@ -61,5 +62,10 @@ public final class TwitterBotJ extends AbstractTwitterBot {
     @Override
     public AutoTweetResult executeAutoTweet(@NonNull final Tweet tweet) {
         return AutoTweetCommand.from(tweet).execute(super.getTwitter());
+    }
+
+    @Override
+    public AutoShowUserResult executeAutoShowUser(String userName) {
+        return null;
     }
 }

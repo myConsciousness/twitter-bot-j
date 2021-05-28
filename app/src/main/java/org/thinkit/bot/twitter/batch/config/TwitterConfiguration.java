@@ -14,6 +14,8 @@
 
 package org.thinkit.bot.twitter.batch.config;
 
+import java.util.List;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -22,11 +24,15 @@ import org.thinkit.bot.twitter.batch.catalog.TokenType;
 import org.thinkit.bot.twitter.batch.catalog.VariableName;
 import org.thinkit.bot.twitter.batch.data.content.mapper.DefaultVariableMapper;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.AuthorizationToken;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.UserAccount;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.Variable;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.AuthorizationTokenRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.UserAccountRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.VariableRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.exception.AuthorizationConfigNotFoundException;
+import org.thinkit.bot.twitter.batch.exception.AvailableUserAccountNotFoundException;
+import org.thinkit.bot.twitter.batch.policy.RunningUser;
 
 import lombok.NonNull;
 import twitter4j.conf.ConfigurationBuilder;
@@ -45,6 +51,25 @@ public class TwitterConfiguration {
      */
     @Autowired
     private MongoCollections mongoCollections;
+
+    /**
+     * Registers the instance of {@link RunningUser} as bean.
+     *
+     * @return The instance of {@link RunningUser}
+     */
+    @Bean
+    private RunningUser runningUser() {
+
+        final UserAccountRepository userAccountRepository = this.mongoCollections.getUserAccountRepository();
+        final List<UserAccount> userAccounts = userAccountRepository.findAll();
+
+        if (userAccounts.isEmpty()) {
+            throw new AvailableUserAccountNotFoundException(
+                    "No available user accounts were found. Please check the definition of the user account.");
+        }
+
+        return RunningUser.from(userAccounts.get(0).getName());
+    }
 
     /**
      * Registers the instance of twitter configuration as bean.
