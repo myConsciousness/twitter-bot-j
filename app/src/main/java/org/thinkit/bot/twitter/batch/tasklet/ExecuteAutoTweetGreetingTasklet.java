@@ -21,6 +21,7 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
+import org.thinkit.bot.twitter.batch.catalog.TaskType;
 import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
@@ -28,7 +29,6 @@ import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
-import org.thinkit.bot.twitter.catalog.TaskType;
 import org.thinkit.bot.twitter.param.Tweet;
 import org.thinkit.bot.twitter.result.ActionError;
 import org.thinkit.bot.twitter.result.AutoTweetResult;

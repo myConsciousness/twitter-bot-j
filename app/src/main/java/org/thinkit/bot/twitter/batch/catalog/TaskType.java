@@ -20,38 +20,33 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 /**
- * The catalog that manages tweet text pattern.
+ * The catalog that manages task type.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
 @RequiredArgsConstructor
-public enum TweetTextPattern implements Catalog<TweetTextPattern> {
+public enum TaskType implements Catalog<TaskType> {
 
     /**
-     * Good morning
+     * The start session
      */
-    GOOD_MORNING(0),
+    START_SESSION(-1),
 
     /**
-     * Good afternoon
+     * The auto tweet greeting
      */
-    GOOD_AFTERNOON(1),
+    AUTO_TWEET_GREETING(0),
 
     /**
-     * Good evening
+     * The auto tweet daily report
      */
-    GOOD_EVENING(2),
+    AUTO_TWEET_DAILY_REPORT(1),
 
     /**
-     * Good night
+     * The auto show user
      */
-    GOOD_NIGHT(3),
-
-    /**
-     * The daily report
-     */
-    DAILY_REPORT(900);
+    AUTO_SHOW_USER(100);
 
     /**
      * The code

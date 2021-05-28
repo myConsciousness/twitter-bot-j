@@ -16,6 +16,9 @@ package org.thinkit.bot.twitter.command;
 
 import java.io.Serializable;
 
+import org.thinkit.bot.twitter.result.ActionError;
+import org.thinkit.bot.twitter.util.StackTraceUtils;
+
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -51,5 +54,15 @@ public abstract class AbstractBotCommand<R> implements BotCommand<R>, Serializab
     public R execute(@NonNull final Twitter twitter) {
         this.twitter = twitter;
         return this.executeBotProcess();
+    }
+
+    protected ActionError getActionError(@NonNull final Exception exception) {
+
+        final ActionError.ActionErrorBuilder actionErrorBuilder = ActionError.builder();
+        actionErrorBuilder.message(exception.getMessage());
+        actionErrorBuilder.localizedMessage(exception.getLocalizedMessage());
+        actionErrorBuilder.stackTrace(StackTraceUtils.toString(exception));
+
+        return actionErrorBuilder.build();
     }
 }

@@ -16,7 +16,7 @@ package org.thinkit.bot.twitter.batch.policy;
 
 import java.io.Serializable;
 
-import org.thinkit.bot.twitter.catalog.TaskType;
+import org.thinkit.bot.twitter.batch.catalog.TaskType;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

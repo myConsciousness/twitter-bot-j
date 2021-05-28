@@ -12,50 +12,47 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.catalog;
+package org.thinkit.bot.twitter.batch.data.mongo.entity;
 
-import org.thinkit.api.catalog.Catalog;
+import java.io.Serializable;
+import java.util.Date;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import lombok.Data;
 
 /**
- * The catalog that manages tweet text pattern.
+ * The entity that manages user account.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-@RequiredArgsConstructor
-public enum TweetTextPattern implements Catalog<TweetTextPattern> {
+@Data
+@Document("user_account")
+public final class UserAccount implements Serializable {
 
     /**
-     * Good morning
+     * The id
      */
-    GOOD_MORNING(0),
+    @Id
+    @Indexed(unique = true)
+    private String id;
 
     /**
-     * Good afternoon
+     * The name
      */
-    GOOD_AFTERNOON(1),
+    @Indexed(unique = true)
+    private String name;
 
     /**
-     * Good evening
+     * The created datetime
      */
-    GOOD_EVENING(2),
+    private Date createdAt = new Date();
 
     /**
-     * Good night
+     * The updated datetime
      */
-    GOOD_NIGHT(3),
-
-    /**
-     * The daily report
-     */
-    DAILY_REPORT(900);
-
-    /**
-     * The code
-     */
-    @Getter
-    private final int code;
+    private Date updatedAt = new Date();
 }

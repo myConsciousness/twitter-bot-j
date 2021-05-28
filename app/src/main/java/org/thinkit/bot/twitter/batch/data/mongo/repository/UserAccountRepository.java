@@ -12,35 +12,18 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.catalog;
+package org.thinkit.bot.twitter.batch.data.mongo.repository;
 
-import org.thinkit.api.catalog.Catalog;
-
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.UserAccount;
 
 /**
- * The catalog that manages task type.
+ * The interface that manages user account repository.
  *
  * @author Kato Shinya
  * @since 1.0.0
  */
-@RequiredArgsConstructor
-public enum TaskType implements Catalog<TaskType> {
-
-    /**
-     * The start session
-     */
-    START_SESSION(-1),
-
-    /**
-     * The auto tweet greeting
-     */
-    AUTO_TWEET_GREETING(0);
-
-    /**
-     * The code
-     */
-    @Getter
-    private final int code;
+@Repository
+public interface UserAccountRepository extends MongoRepository<UserAccount, String> {
 }

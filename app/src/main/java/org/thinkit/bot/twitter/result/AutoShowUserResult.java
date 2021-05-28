@@ -12,12 +12,12 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.dto;
+package org.thinkit.bot.twitter.result;
 
 import java.io.Serializable;
+import java.util.List;
 
-import org.springframework.batch.core.Step;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.thinkit.bot.twitter.catalog.ActionStatus;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -25,10 +25,11 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 /**
- * The class that manages collections of batch step.
+ * The class that manages the result of auto show user command.
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -38,23 +39,43 @@ import lombok.ToString;
 @Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class BatchStepCollections implements Serializable {
+public final class AutoShowUserResult implements Serializable {
 
     /**
-     * The execute auto tweet greeting step
+     * The action status
      */
     @Getter
-    private Step executeAutoTweetGreetingStep;
+    @NonNull
+    private ActionStatus actionStatus;
 
     /**
-     * The execute auto tweet daily report step
+     * The user id
      */
     @Getter
-    private Step executeAutoTweetDailyReport;
+    private long userId;
 
     /**
-     * The execute auto show user step
+     * The user name
      */
-    @Autowired
-    private Step executeAutoShowUserStep;
+    @Getter
+    @NonNull
+    private String userName;
+
+    /**
+     * The followers count
+     */
+    @Getter
+    private int followersCount;
+
+    /**
+     * The followings count
+     */
+    @Getter
+    private int followingsCount;
+
+    /**
+     * The action errors
+     */
+    @Getter
+    private List<ActionError> actionErrors;
 }
