@@ -16,6 +16,8 @@ package org.thinkit.bot.twitter.batch.tasklet;
 
 import java.util.List;
 
+import com.mongodb.lang.NonNull;
+
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -23,12 +25,12 @@ import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
 import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
-import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
-import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileRepository;
-import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
-import org.thinkit.bot.twitter.batch.dto.MongoCollections;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
+import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.util.UserProfileDifference;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -66,19 +68,49 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
     protected BatchTaskResult executeTask(StepContribution contribution, ChunkContext chunkContext) {
         log.debug("STRAT");
 
-        final MongoCollections mongoCollections = super.getMongoCollections();
-        final TweetTextRepository tweetTextRepository = mongoCollections.getTweetTextRepository();
-        final UserProfileRepository userProfileRepository = mongoCollections.getUserProfileRepository();
-        final UserProfileTransitionRepository userProfileTransitionRepository = mongoCollections
-                .getUserProfileTransitionRepository();
+        final UserProfileTransition userProfileTransition = this.getLatestUserProfileTransition();
 
-        final List<TweetText> tweetTexts = tweetTextRepository.findByTextCode(TweetTextPattern.DAILY_REPORT.getCode());
+        if (userProfileTransition == null) {
+            // When there is no comparison.
+            return BatchTaskResult.builder().actionStatus(ActionStatus.SKIP).build();
+        }
 
-        for (final TweetText tweetText : tweetTexts) {
+        final UserProfile userProfile = super.getMongoCollections().getUserProfileRepository()
+                .findByName(super.getRunningUser().getName());
+        final UserProfileDifference userProfileDifference = this.getUserProfileDifference(userProfile,
+                userProfileTransition);
+
+        for (final TweetText tweetText : this.getTweetTexts()) {
             super.getTwitterBot().executeAutoTweet(Tweet.from(tweetText.getText()));
         }
 
         log.debug("END");
         return BatchTaskResult.builder().build();
+    }
+
+    private UserProfileTransition getLatestUserProfileTransition() {
+        log.debug("START");
+
+        final List<UserProfileTransition> userProfileTransitions = super.getMongoCollections()
+                .getUserProfileTransitionRepository().findAll();
+
+        if (userProfileTransitions.isEmpty()) {
+            return null;
+        }
+
+        log.debug("END");
+        return userProfileTransitions.get(0);
+    }
+
+    private UserProfileDifference getUserProfileDifference(@NonNull final UserProfile userProfile,
+            @NonNull final UserProfileTransition userProfileTransition) {
+        return UserProfileDifference.newBuilder().userProfile(userProfile).userProfileTransition(userProfileTransition)
+                .build();
+    }
+
+    private List<TweetText> getTweetTexts() {
+        return super.getMongoCollections().getTweetTextRepository()
+                .findByTextCode(TweetTextPattern.DAILY_REPORT.getCode());
+
     }
 }

@@ -24,6 +24,7 @@ import org.thinkit.common.base.precondition.Preconditions;
 
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
@@ -33,11 +34,23 @@ import lombok.ToString;
 public final class UserProfileDifference implements Serializable {
 
     /**
+     * The followers difference
+     */
+    @Getter
+    private Difference followersDifference;
+
+    /**
+     * The followings difference
+     */
+    @Getter
+    private Difference followingsDifference;
+
+    /**
      * Returns the builder.
      *
-     * @return The instance of builder.
+     * @return The new instance of builder.
      */
-    public static UserProfileDifferenceBuilder builder() {
+    public static UserProfileDifferenceBuilder newBuilder() {
         return new UserProfileDifferenceBuilder();
     }
 
@@ -72,8 +85,16 @@ public final class UserProfileDifference implements Serializable {
             Preconditions.requireNonNull(this.userProfileTransition);
 
             final UserProfileDifference userProfileDifference = new UserProfileDifference();
+            userProfileDifference.followersDifference = this.buildDifference(this.userProfile.getFollowersCount(),
+                    this.userProfileTransition.getFollowersCount());
+            userProfileDifference.followingsDifference = this.buildDifference(this.userProfile.getFollowingsCount(),
+                    this.userProfileTransition.getFollowingsCount());
 
             return userProfileDifference;
+        }
+
+        private Difference buildDifference(final int base, final int comparison) {
+            return Difference.newBuilder().base(base).comparison(comparison).build();
         }
     }
 }
