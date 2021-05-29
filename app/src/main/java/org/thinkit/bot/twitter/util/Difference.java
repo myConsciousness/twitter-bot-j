@@ -35,8 +35,17 @@ public final class Difference implements Serializable {
     @Getter
     private DifferenceType differenceType;
 
+    /**
+     * The value
+     */
     @Getter
     private int value;
+
+    /**
+     * The growth rate
+     */
+    @Getter
+    private float growthRate;
 
     public static DifferenceBuilder newBuilder() {
         return new DifferenceBuilder();
@@ -71,6 +80,7 @@ public final class Difference implements Serializable {
             final Difference difference = new Difference();
             difference.differenceType = this.getDifferenceType(differenceValue);
             difference.value = differenceValue;
+            difference.growthRate = differenceValue / this.base;
 
             return difference;
         }
