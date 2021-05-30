@@ -6,6 +6,11 @@
             "description": ""
         },
         {
+            "name": "spring.batch.schedule.cron.tweet.report.daily",
+            "type": "java.lang.String",
+            "description": ""
+        },
+        {
             "name": "spring.batch.schedule.timezone",
             "type": "java.lang.String",
             "description": ""
