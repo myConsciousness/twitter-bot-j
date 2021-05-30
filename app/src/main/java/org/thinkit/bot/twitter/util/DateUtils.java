@@ -14,7 +14,13 @@
 
 package org.thinkit.bot.twitter.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+
+import com.mongodb.lang.NonNull;
+
+import org.thinkit.bot.twitter.batch.catalog.DateFormat;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -27,6 +33,18 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DateUtils {
+
+    public static Date now() {
+        return new Date();
+    }
+
+    public static String toString(@NonNull final DateFormat dateFormat) {
+        return new SimpleDateFormat(dateFormat.getTag()).format(now());
+    }
+
+    public static String toString(@NonNull final Date date, @NonNull final DateFormat dateFormat) {
+        return new SimpleDateFormat(dateFormat.getTag()).format(date);
+    }
 
     public static boolean isMorning() {
         final int hour = getCurrentHour();

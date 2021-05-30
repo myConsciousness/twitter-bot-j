@@ -18,27 +18,47 @@ import org.thinkit.bot.twitter.batch.report.Report;
 import org.thinkit.bot.twitter.batch.strategy.Strategy;
 import org.thinkit.bot.twitter.util.UserProfileDifference;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(staticName = "from")
-public final class DailyReportEnglishStrategy implements Strategy<Report> {
+@EqualsAndHashCode(callSuper = false)
+public final class DailyReportEnglishStrategy extends AbstractDailyReportStrategy {
 
     /**
-     * The user profile difference
+     * The constructor.
+     *
+     * @param userProfileDifference The user profile difference
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
-    private UserProfileDifference userProfileDifference;
+    private DailyReportEnglishStrategy(@NonNull final UserProfileDifference userProfileDifference) {
+        super(userProfileDifference);
+    }
+
+    /**
+     * Returns the new instance of {@link DailyReportEnglishStrategy} based on the
+     * object passed as an argument.
+     *
+     * @param userProfileDifference The user profile difference
+     * @return The new instance of {@link DailyReportEnglishStrategy}
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public static Strategy<Report> from(@NonNull final UserProfileDifference userProfileDifference) {
+        return new DailyReportEnglishStrategy(userProfileDifference);
+    }
 
     @Override
     public Report execute() {
-        return Report.from("""
-                aaaa
+        return super.toDailyReport("""
+                Daily Report（%s）
+
+                ・Followings: %s (%s%)
+                ・Followers: %s (%s%)
+
+                #dailytweet #programmer #engineer #developer
                 """);
     }
 }

@@ -18,27 +18,47 @@ import org.thinkit.bot.twitter.batch.report.Report;
 import org.thinkit.bot.twitter.batch.strategy.Strategy;
 import org.thinkit.bot.twitter.util.UserProfileDifference;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @ToString
-@EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(staticName = "from")
-public final class DailyReportJapaneseStrategy implements Strategy<Report> {
+@EqualsAndHashCode(callSuper = false)
+public final class DailyReportJapaneseStrategy extends AbstractDailyReportStrategy {
 
     /**
-     * The user profile difference
+     * The constructor.
+     *
+     * @param userProfileDifference The user profile difference
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
      */
-    private UserProfileDifference userProfileDifference;
+    private DailyReportJapaneseStrategy(@NonNull final UserProfileDifference userProfileDifference) {
+        super(userProfileDifference);
+    }
+
+    /**
+     * Returns the new instance of {@link DailyReportJapaneseStrategy} based on the
+     * object passed as an argument.
+     *
+     * @param userProfileDifference The user profile difference
+     * @return The new instance of {@link DailyReportJapaneseStrategy}
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public static Strategy<Report> from(@NonNull final UserProfileDifference userProfileDifference) {
+        return new DailyReportJapaneseStrategy(userProfileDifference);
+    }
 
     @Override
     public Report execute() {
-        return Report.from("""
-                aaaa
+        return super.toDailyReport("""
+                【日報（%s）】
+
+                フォロー推移（前日比）: %s (%s%)
+                フォロワー推移（前日比）: %s (%s%)
+
+                #定期ツイート #日報 #プログラマ
                 """);
     }
 }
