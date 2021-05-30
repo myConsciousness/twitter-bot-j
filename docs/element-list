@@ -3,6 +3,7 @@ org.thinkit.bot.twitter.batch
 org.thinkit.bot.twitter.batch.catalog
 org.thinkit.bot.twitter.batch.config
 org.thinkit.bot.twitter.batch.context
+org.thinkit.bot.twitter.batch.context.flow
 org.thinkit.bot.twitter.batch.context.report
 org.thinkit.bot.twitter.batch.data.content.entity
 org.thinkit.bot.twitter.batch.data.content.mapper
@@ -14,6 +15,7 @@ org.thinkit.bot.twitter.batch.policy
 org.thinkit.bot.twitter.batch.report
 org.thinkit.bot.twitter.batch.result
 org.thinkit.bot.twitter.batch.strategy
+org.thinkit.bot.twitter.batch.strategy.flow
 org.thinkit.bot.twitter.batch.strategy.report
 org.thinkit.bot.twitter.batch.tasklet
 org.thinkit.bot.twitter.catalog

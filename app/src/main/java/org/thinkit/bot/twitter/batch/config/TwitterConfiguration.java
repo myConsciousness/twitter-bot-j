@@ -58,7 +58,7 @@ public class TwitterConfiguration {
      * @return The instance of {@link RunningUser}
      */
     @Bean
-    private RunningUser runningUser() {
+    public RunningUser runningUser() {
 
         final UserAccountRepository userAccountRepository = this.mongoCollections.getUserAccountRepository();
         final List<UserAccount> userAccounts = userAccountRepository.findAll();

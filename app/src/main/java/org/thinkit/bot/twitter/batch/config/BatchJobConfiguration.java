@@ -28,7 +28,11 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.thinkit.bot.twitter.TwitterBot;
 import org.thinkit.bot.twitter.TwitterBotJ;
 import org.thinkit.bot.twitter.batch.catalog.BatchJob;
+import org.thinkit.bot.twitter.batch.catalog.ScheduleType;
+import org.thinkit.bot.twitter.batch.context.flow.JobFlowContext;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
+
+import lombok.NonNull;
 
 /**
  * The class that manages the batch job configuration of Twitter bot.
@@ -41,9 +45,14 @@ import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
 public class BatchJobConfiguration {
 
     /**
-     * The schedule cron
+     * The schedule cron for tweet greeting
      */
     private static final String SCHEDULE_CRON_TWEET_GREETING = "${spring.batch.schedule.cron.tweet.greeting}";
+
+    /**
+     * The schedule cron for tweet daily report
+     */
+    private static final String SCHEDULE_CRON_TWEET_DAILY_REPORT = "${spring.batch.schedule.cron.tweet.report.daily}";
 
     /**
      * The timezone
@@ -86,19 +95,23 @@ public class BatchJobConfiguration {
 
     @Scheduled(cron = SCHEDULE_CRON_TWEET_GREETING, zone = TIME_ZONE)
     public void performScheduledTweetGreeting() throws Exception {
-        this.runJobLauncher();
+        this.runJobLauncher(ScheduleType.TWEET_GREETING);
     }
 
-    private void runJobLauncher() throws Exception {
+    @Scheduled(cron = SCHEDULE_CRON_TWEET_DAILY_REPORT, zone = TIME_ZONE)
+    public void performScheduledTweetDailyReport() throws Exception {
+        this.runJobLauncher(ScheduleType.TWEET_DAILY_REPORT);
+    }
+
+    private void runJobLauncher(@NonNull final ScheduleType scheduleType) throws Exception {
         final JobParameters param = new JobParametersBuilder()
                 .addString(BatchJob.TWITTER_BOT.getTag(), String.valueOf(System.currentTimeMillis())).toJobParameters();
 
-        this.simpleJobLauncher.run(this.createInstaBotJob(), param);
+        this.simpleJobLauncher.run(this.createJob(scheduleType), param);
     }
 
-    private Job createInstaBotJob() {
-        return this.getTwitterBotJobBuilder().flow(this.batchStepCollections.getExecuteAutoTweetGreetingStep()).end()
-                .build();
+    private Job createJob(@NonNull final ScheduleType scheduleType) {
+        return JobFlowContext.from(scheduleType, this.getTwitterBotJobBuilder(), this.batchStepCollections).evaluate();
     }
 
     private JobBuilder getTwitterBotJobBuilder() {
