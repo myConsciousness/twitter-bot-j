@@ -15,8 +15,8 @@
 <script type="text/javascript" src="../../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":10,"i1":10,"i2":9,"i3":9};
-var tabs = {65535:["t0","\u3059\u3079\u3066\u306E\u30E1\u30BD\u30C3\u30C9"],1:["t1","static\u30E1\u30BD\u30C3\u30C9"],2:["t2","\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u30FB\u30E1\u30BD\u30C3\u30C9"],8:["t4","concrete\u30E1\u30BD\u30C3\u30C9"]};
+<script type="text/javascript">var data = {"i0":9,"i1":9};
+var tabs = {65535:["t0","\u3059\u3079\u3066\u306E\u30E1\u30BD\u30C3\u30C9"],1:["t1","static\u30E1\u30BD\u30C3\u30C9"],8:["t4","concrete\u30E1\u30BD\u30C3\u30C9"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
 var tableTab = "table-tab";
@@ -121,33 +121,21 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="
 </thead>
 <tbody>
 <tr class="alt-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#AUTO_TWEET_GOOD_MORNING">AUTO_TWEET_GOOD_MORNING</a></span></code></th>
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#AUTO_SHOW_USER">AUTO_SHOW_USER</a></span></code></th>
 <td class="col-last">
-<div class="block">The auto tweet good morning step</div>
+<div class="block">The auto show user step</div>
 </td>
 </tr>
 <tr class="row-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#CLEAR_SESSION">CLEAR_SESSION</a></span></code></th>
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#AUTO_TWEET_DAILY_REPORT">AUTO_TWEET_DAILY_REPORT</a></span></code></th>
 <td class="col-last">
-<div class="block">The clear session</div>
+<div class="block">The auto tweet daily report step</div>
 </td>
 </tr>
 <tr class="alt-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#CLOSE_SESSION">CLOSE_SESSION</a></span></code></th>
+<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#AUTO_TWEET_GREETING">AUTO_TWEET_GREETING</a></span></code></th>
 <td class="col-last">
-<div class="block">The close session</div>
-</td>
-</tr>
-<tr class="row-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#CONTINUE_SESSION">CONTINUE_SESSION</a></span></code></th>
-<td class="col-last">
-<div class="block">The continue session</div>
-</td>
-</tr>
-<tr class="alt-color">
-<th class="col-first" scope="row"><code><span class="member-name-link"><a href="#NOTIFY_RESULT_REPORT">NOTIFY_RESULT_REPORT</a></span></code></th>
-<td class="col-last">
-<div class="block">The notify result report</div>
+<div class="block">The auto tweet greeting step</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -166,7 +154,7 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="
 <section class="method-summary" id="method.summary">
 <h2>メソッドの概要</h2>
 <div class="member-summary" id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">すべてのメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t1" class="table-tab" onclick="show(1);">staticメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t2" class="table-tab" onclick="show(2);">インスタンス・メソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">concreteメソッド</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" id="t0" class="active-table-tab">すべてのメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t1" class="table-tab" onclick="show(1);">staticメソッド</button><button role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" id="t4" class="table-tab" onclick="show(8);">concreteメソッド</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <table class="summary-table" aria-labelledby="t0">
 <thead>
@@ -178,27 +166,13 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="
 </thead>
 <tbody>
 <tr class="alt-color" id="i0">
-<td class="col-first"><code>int</code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getCode()">getCode</a></span>()</code></th>
-<td class="col-last">
-<div class="block">The code</div>
-</td>
-</tr>
-<tr class="row-color" id="i1">
-<td class="col-first"><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a></code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#getTag()">getTag</a></span>()</code></th>
-<td class="col-last">
-<div class="block">The tag</div>
-</td>
-</tr>
-<tr class="alt-color" id="i2">
 <td class="col-first"><code>static <a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#valueOf(java.lang.String)">valueOf</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&nbsp;name)</code></th>
 <td class="col-last">
 <div class="block">指定した名前を持つこの型の列挙型定数を返します。</div>
 </td>
 </tr>
-<tr class="row-color" id="i3">
+<tr class="row-color" id="i1">
 <td class="col-first"><code>static <a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a>[]</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#values()">values</a></span>()</code></th>
 <td class="col-last">
@@ -218,7 +192,7 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="
 <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#getClass()" title="java.lang内のクラスまたはインタフェース" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#notify()" title="java.lang内のクラスまたはインタフェース" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#notifyAll()" title="java.lang内のクラスまたはインタフェース" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#wait()" title="java.lang内のクラスまたはインタフェース" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#wait(long)" title="java.lang内のクラスまたはインタフェース" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="java.lang内のクラスまたはインタフェース" class="external-link">wait</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.org.thinkit.api.catalog.BiCatalog">インタフェースから継承されたメソッド&nbsp;org.thinkit.api.catalog.BiCatalog</h3>
-<code>equalsByCode, equalsByTag, toEnum</code></div>
+<code>equalsByCode, equalsByTag, getCode, getTag, toEnum</code></div>
 </section>
 </li>
 </ul>
@@ -238,38 +212,24 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="
 </section>
 </li>
 <li>
-<section class="detail" id="AUTO_TWEET_GOOD_MORNING">
-<h3>AUTO_TWEET_GOOD_MORNING</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">AUTO_TWEET_GOOD_MORNING</span></div>
-<div class="block">The auto tweet good morning step</div>
+<section class="detail" id="AUTO_TWEET_GREETING">
+<h3>AUTO_TWEET_GREETING</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">AUTO_TWEET_GREETING</span></div>
+<div class="block">The auto tweet greeting step</div>
 </section>
 </li>
 <li>
-<section class="detail" id="NOTIFY_RESULT_REPORT">
-<h3>NOTIFY_RESULT_REPORT</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">NOTIFY_RESULT_REPORT</span></div>
-<div class="block">The notify result report</div>
+<section class="detail" id="AUTO_TWEET_DAILY_REPORT">
+<h3>AUTO_TWEET_DAILY_REPORT</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">AUTO_TWEET_DAILY_REPORT</span></div>
+<div class="block">The auto tweet daily report step</div>
 </section>
 </li>
 <li>
-<section class="detail" id="CONTINUE_SESSION">
-<h3>CONTINUE_SESSION</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">CONTINUE_SESSION</span></div>
-<div class="block">The continue session</div>
-</section>
-</li>
-<li>
-<section class="detail" id="CLEAR_SESSION">
-<h3>CLEAR_SESSION</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">CLEAR_SESSION</span></div>
-<div class="block">The clear session</div>
-</section>
-</li>
-<li>
-<section class="detail" id="CLOSE_SESSION">
-<h3>CLOSE_SESSION</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">CLOSE_SESSION</span></div>
-<div class="block">The close session</div>
+<section class="detail" id="AUTO_SHOW_USER">
+<h3>AUTO_SHOW_USER</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></span>&nbsp;<span class="member-name">AUTO_SHOW_USER</span></div>
+<div class="block">The auto show user step</div>
 </section>
 </li>
 </ul>
@@ -308,28 +268,6 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="
 <dt>例外:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/IllegalArgumentException.html" title="java.lang内のクラスまたはインタフェース" class="external-link">IllegalArgumentException</a></code> - この列挙型に、指定した名前の定数がない場合</dd>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/NullPointerException.html" title="java.lang内のクラスまたはインタフェース" class="external-link">NullPointerException</a></code> - 引数がnullの場合</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getCode()">
-<h3>getCode</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="member-name">getCode</span>()</div>
-<div class="block">The code</div>
-<dl class="notes">
-<dt>定義:</dt>
-<dd><code>getCode</code>&nbsp;インタフェース内&nbsp;<code>org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;</code></dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="getTag()">
-<h3>getTag</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a></span>&nbsp;<span class="member-name">getTag</span>()</div>
-<div class="block">The tag</div>
-<dl class="notes">
-<dt>定義:</dt>
-<dd><code>getTag</code>&nbsp;インタフェース内&nbsp;<code>org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;</code></dd>
 </dl>
 </section>
 </li>
