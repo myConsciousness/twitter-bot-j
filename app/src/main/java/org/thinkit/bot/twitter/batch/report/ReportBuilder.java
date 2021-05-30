@@ -16,5 +16,5 @@ package org.thinkit.bot.twitter.batch.report;
 
 public interface ReportBuilder {
 
-    public String build();
+    public Report build();
 }

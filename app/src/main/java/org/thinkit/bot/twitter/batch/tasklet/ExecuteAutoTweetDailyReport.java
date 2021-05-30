@@ -14,6 +14,7 @@
 
 package org.thinkit.bot.twitter.batch.tasklet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.mongodb.lang.NonNull;
@@ -22,14 +23,20 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
+import org.thinkit.bot.twitter.batch.catalog.Language;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
-import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
-import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
+import org.thinkit.bot.twitter.batch.catalog.TweetType;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
+import org.thinkit.bot.twitter.batch.dto.MongoCollections;
+import org.thinkit.bot.twitter.batch.report.DailyReportBuilder;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
 import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.ActionError;
+import org.thinkit.bot.twitter.result.AutoTweetResult;
 import org.thinkit.bot.twitter.util.UserProfileDifference;
 
 import lombok.EqualsAndHashCode;
@@ -75,17 +82,42 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
             return BatchTaskResult.builder().actionStatus(ActionStatus.SKIP).build();
         }
 
-        final UserProfile userProfile = super.getMongoCollections().getUserProfileRepository()
+        final MongoCollections mongoCollections = super.getMongoCollections();
+        final UserProfile userProfile = mongoCollections.getUserProfileRepository()
                 .findByName(super.getRunningUser().getName());
         final UserProfileDifference userProfileDifference = this.getUserProfileDifference(userProfile,
                 userProfileTransition);
 
-        for (final TweetText tweetText : this.getTweetTexts()) {
-            super.getTwitterBot().executeAutoTweet(Tweet.from(tweetText.getText()));
+        final TweetResultRepository tweetResultRepository = mongoCollections.getTweetResultRepository();
+        final List<ActionError> actionErrors = new ArrayList<>();
+
+        for (final Language language : Language.values()) {
+            final AutoTweetResult autoTweetResult = super.getTwitterBot()
+                    .executeAutoTweet(Tweet.from(this.getDailyReport(language, userProfileDifference)));
+
+            TweetResult tweetResult = new TweetResult();
+            tweetResult.setTextCode(TweetType.REPORT.getCode());
+            tweetResult.setLanguageCode(language.getCode());
+            tweetResult.setTweet(autoTweetResult.getTweet().getText());
+            tweetResult.setStatus(autoTweetResult.getStatus());
+
+            tweetResult = tweetResultRepository.insert(tweetResult);
+            log.debug("Inserted tweet result: {}", tweetResult);
+
+            if (autoTweetResult.getActionErrors() != null) {
+                for (final ActionError actionError : autoTweetResult.getActionErrors()) {
+                    actionErrors.add(actionError);
+                }
+            }
         }
 
+        final BatchTaskResult.BatchTaskResultBuilder batchTaskResultBuilder = BatchTaskResult.builder();
+        batchTaskResultBuilder.actionCount(1);
+        batchTaskResultBuilder.resultCount(1);
+        batchTaskResultBuilder.actionErrors(actionErrors);
+
         log.debug("END");
-        return BatchTaskResult.builder().build();
+        return batchTaskResultBuilder.build();
     }
 
     private UserProfileTransition getLatestUserProfileTransition() {
@@ -108,9 +140,8 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
                 .build();
     }
 
-    private List<TweetText> getTweetTexts() {
-        return super.getMongoCollections().getTweetTextRepository()
-                .findByTextCode(TweetTextPattern.DAILY_REPORT.getCode());
-
+    private String getDailyReport(@NonNull final Language language,
+            @NonNull final UserProfileDifference userProfileDifference) {
+        return DailyReportBuilder.from(language, userProfileDifference).build().getText();
     }
 }
