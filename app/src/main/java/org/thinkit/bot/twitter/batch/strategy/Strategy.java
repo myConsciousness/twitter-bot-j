@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.report;
+package org.thinkit.bot.twitter.batch.strategy;
 
-public interface ReportBuilder {
+public interface Strategy<R> {
 
-    public Report build();
+    public R execute();
 }

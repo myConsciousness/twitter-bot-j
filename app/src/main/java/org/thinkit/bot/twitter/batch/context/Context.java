@@ -12,9 +12,9 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.report;
+package org.thinkit.bot.twitter.batch.context;
 
-public interface ReportBuilder {
+public interface Context<R> {
 
-    public Report build();
+    public R evaluate();
 }

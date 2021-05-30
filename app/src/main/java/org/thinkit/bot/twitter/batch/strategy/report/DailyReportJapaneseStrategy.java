@@ -12,12 +12,10 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.report;
+package org.thinkit.bot.twitter.batch.strategy.report;
 
-import java.io.Serializable;
-
-import org.thinkit.bot.twitter.batch.catalog.Language;
-import org.thinkit.bot.twitter.batch.context.report.DailyReportContext;
+import org.thinkit.bot.twitter.batch.report.Report;
+import org.thinkit.bot.twitter.batch.strategy.Strategy;
 import org.thinkit.bot.twitter.util.UserProfileDifference;
 
 import lombok.AccessLevel;
@@ -30,12 +28,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class DailyReportBuilder implements ReportBuilder, Serializable {
-
-    /**
-     * The language
-     */
-    private Language language;
+public final class DailyReportJapaneseStrategy implements Strategy<Report> {
 
     /**
      * The user profile difference
@@ -43,7 +36,9 @@ public final class DailyReportBuilder implements ReportBuilder, Serializable {
     private UserProfileDifference userProfileDifference;
 
     @Override
-    public Report build() {
-        return DailyReportContext.from(language, userProfileDifference).evaluate();
+    public Report execute() {
+        return Report.from("""
+                aaaa
+                """);
     }
 }

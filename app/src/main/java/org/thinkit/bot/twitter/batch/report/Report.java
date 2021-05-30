@@ -16,34 +16,28 @@ package org.thinkit.bot.twitter.batch.report;
 
 import java.io.Serializable;
 
-import org.thinkit.bot.twitter.batch.catalog.Language;
-import org.thinkit.bot.twitter.batch.context.report.DailyReportContext;
-import org.thinkit.bot.twitter.util.UserProfileDifference;
-
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * The class that manages report.
+ *
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class DailyReportBuilder implements ReportBuilder, Serializable {
+public final class Report implements Serializable {
 
     /**
-     * The language
+     * The text
      */
-    private Language language;
-
-    /**
-     * The user profile difference
-     */
-    private UserProfileDifference userProfileDifference;
-
-    @Override
-    public Report build() {
-        return DailyReportContext.from(language, userProfileDifference).evaluate();
-    }
+    @Getter
+    private String text;
 }
