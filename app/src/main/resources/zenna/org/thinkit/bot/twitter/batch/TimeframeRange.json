@@ -1,0 +1,92 @@
+{
+    "meta": {
+        "author": "Kato Shinya",
+        "encoding": "UTF-8",
+        "description": "The content that manages the range of timeframe.",
+        "resultType": "org.thinkit.bot.twitter.batch.data.content.entity.TimeframeRange"
+    },
+    "selectionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "start": 6,
+                "end": 11
+            }
+        },
+        {
+            "node": {
+                "conditionId": "1",
+                "start": 17,
+                "end": 12
+            }
+        },
+        {
+            "node": {
+                "conditionId": "2",
+                "start": 18,
+                "end": 23
+            }
+        },
+        {
+            "node": {
+                "conditionId": "3",
+                "start": 24,
+                "end": 5
+            }
+        }
+    ],
+    "conditionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "timeframeCode",
+                        "operator": "=",
+                        "operand": "0"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "1",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "timeframeCode",
+                        "operator": "=",
+                        "operand": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "2",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "timeframeCode",
+                        "operator": "=",
+                        "operand": "2"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "3",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "timeframeCode",
+                        "operator": "=",
+                        "operand": "3"
+                    }
+                ]
+            }
+        }
+    ]
+}

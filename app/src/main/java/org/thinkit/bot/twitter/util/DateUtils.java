@@ -21,6 +21,9 @@ import java.util.Date;
 import com.mongodb.lang.NonNull;
 
 import org.thinkit.bot.twitter.batch.catalog.DateFormat;
+import org.thinkit.bot.twitter.batch.data.content.entity.TimeframeRange;
+import org.thinkit.bot.twitter.batch.data.content.mapper.TimeframeRangeMapper;
+import org.thinkit.bot.twitter.catalog.Timeframe;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
@@ -48,17 +51,20 @@ public final class DateUtils {
 
     public static boolean isMorning() {
         final int hour = getCurrentHour();
-        return 11 >= hour && hour >= 6;
+        final TimeframeRange morningTimeframe = getTimeframeRange(Timeframe.MORNING);
+        return morningTimeframe.getEnd() >= hour && hour >= morningTimeframe.getStart();
     }
 
     public static boolean isAfternoon() {
         final int hour = getCurrentHour();
-        return 17 >= hour && hour >= 12;
+        final TimeframeRange afternoonTimeframe = getTimeframeRange(Timeframe.AFTERNOON);
+        return afternoonTimeframe.getEnd() >= hour && hour >= afternoonTimeframe.getStart();
     }
 
     public static boolean isEvening() {
         final int hour = getCurrentHour();
-        return 23 >= hour && hour >= 18;
+        final TimeframeRange eveningTimeframe = getTimeframeRange(Timeframe.EVENING);
+        return eveningTimeframe.getEnd() >= hour && hour >= eveningTimeframe.getStart();
     }
 
     private static int getCurrentHour() {
@@ -67,5 +73,9 @@ public final class DateUtils {
             case Calendar.PM -> calendar.get(Calendar.HOUR) + 13;
             default -> calendar.get(Calendar.HOUR) + 1;
         };
+    }
+
+    private static TimeframeRange getTimeframeRange(@NonNull final Timeframe timeframe) {
+        return TimeframeRangeMapper.from(timeframe.getCode()).scan().get(0);
     }
 }
