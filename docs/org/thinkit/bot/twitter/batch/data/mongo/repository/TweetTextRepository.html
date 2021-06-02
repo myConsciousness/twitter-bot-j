@@ -15,7 +15,7 @@
 <script type="text/javascript" src="../../../../../../../../script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="class-declaration-page">
-<script type="text/javascript">var data = {"i0":6,"i1":6};
+<script type="text/javascript">var data = {"i0":6,"i1":6,"i2":6};
 var tabs = {65535:["t0","\u3059\u3079\u3066\u306E\u30E1\u30BD\u30C3\u30C9"],2:["t2","\u30A4\u30F3\u30B9\u30BF\u30F3\u30B9\u30FB\u30E1\u30BD\u30C3\u30C9"],4:["t3","abstract\u30E1\u30BD\u30C3\u30C9"]};
 var altColor = "alt-color";
 var rowColor = "row-color";
@@ -124,6 +124,15 @@ int&nbsp;languageCode)</code></th>
  arguments.</div>
 </td>
 </tr>
+<tr class="alt-color" id="i2">
+<td class="col-first"><code><a href="../entity/TweetText.html" title="org.thinkit.bot.twitter.batch.data.mongo.entity内のクラス">TweetText</a></code></td>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#findByTypeCodeAndLanguageCode(int,int)">findByTypeCodeAndLanguageCode</a></span>&#8203;(int&nbsp;typeCode,
+int&nbsp;languageCode)</code></th>
+<td class="col-last">
+<div class="block">Returns the tweet text linked to the type code and langauge code passed as an
+ argument.</div>
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -174,6 +183,22 @@ int&nbsp;languageCode)</span></div>
 <dl class="notes">
 <dt>パラメータ:</dt>
 <dd><code>textCode</code> - The text code</dd>
+<dd><code>languageCode</code> - The language code</dd>
+<dt>戻り値:</dt>
+<dd>The tweet</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="findByTypeCodeAndLanguageCode(int,int)">
+<h3>findByTypeCodeAndLanguageCode</h3>
+<div class="member-signature"><span class="return-type"><a href="../entity/TweetText.html" title="org.thinkit.bot.twitter.batch.data.mongo.entity内のクラス">TweetText</a></span>&nbsp;<span class="member-name">findByTypeCodeAndLanguageCode</span>&#8203;(<span class="parameters">int&nbsp;typeCode,
+int&nbsp;languageCode)</span></div>
+<div class="block">Returns the tweet text linked to the type code and langauge code passed as an
+ argument.</div>
+<dl class="notes">
+<dt>パラメータ:</dt>
+<dd><code>typeCode</code> - The type code</dd>
 <dd><code>languageCode</code> - The language code</dd>
 <dt>戻り値:</dt>
 <dd>The tweet</dd>
