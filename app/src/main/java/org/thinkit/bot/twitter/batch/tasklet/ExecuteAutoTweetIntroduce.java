@@ -91,6 +91,7 @@ public final class ExecuteAutoTweetIntroduce extends AbstractTasklet {
 
             TweetResult tweetResult = new TweetResult();
             tweetResult.setTextCode(tweetText.getTextCode());
+            tweetResult.setTypeCode(TweetType.INTRODUCE.getCode());
             tweetResult.setLanguageCode(tweetText.getLanguageCode());
             tweetResult.setTweet(autoTweetResult.getTweet().getText());
             tweetResult.setStatus(autoTweetResult.getStatus());

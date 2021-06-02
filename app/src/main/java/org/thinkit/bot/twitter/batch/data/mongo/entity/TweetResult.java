@@ -48,6 +48,12 @@ public final class TweetResult implements Serializable {
     private int textCode;
 
     /**
+     * The type code
+     */
+    @Indexed
+    private int typeCode;
+
+    /**
      * The language code
      */
     @Indexed

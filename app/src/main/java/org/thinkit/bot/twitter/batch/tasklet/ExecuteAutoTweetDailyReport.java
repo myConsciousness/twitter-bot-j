@@ -25,6 +25,7 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.batch.catalog.Language;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
+import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
 import org.thinkit.bot.twitter.batch.catalog.TweetType;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
@@ -96,7 +97,8 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
                     .executeAutoTweet(Tweet.from(this.getDailyReport(language, userProfileDifference)));
 
             TweetResult tweetResult = new TweetResult();
-            tweetResult.setTextCode(TweetType.REPORT.getCode());
+            tweetResult.setTextCode(TweetTextPattern.DAILY_REPORT.getCode());
+            tweetResult.setTypeCode(TweetType.REPORT.getCode());
             tweetResult.setLanguageCode(language.getCode());
             tweetResult.setTweet(autoTweetResult.getTweet().getText());
             tweetResult.setStatus(autoTweetResult.getStatus());
