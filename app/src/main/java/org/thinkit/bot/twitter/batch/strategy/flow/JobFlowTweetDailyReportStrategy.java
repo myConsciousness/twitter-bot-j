@@ -43,6 +43,7 @@ public final class JobFlowTweetDailyReportStrategy implements Strategy<Job> {
 
     @Override
     public Job execute() {
-        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoTweetDailyReport()).end().build();
+        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoShowUserStep())
+                .next(this.batchStepCollections.getExecuteAutoTweetDailyReport()).end().build();
     }
 }

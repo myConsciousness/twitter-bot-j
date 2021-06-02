@@ -6,7 +6,7 @@
             "description": ""
         },
         {
-            "name": "spring.batch.schedule.cron.tweet.report.daily",
+            "name": "spring.batch.schedule.cron.tweet.report",
             "type": "java.lang.String",
             "description": ""
         },
