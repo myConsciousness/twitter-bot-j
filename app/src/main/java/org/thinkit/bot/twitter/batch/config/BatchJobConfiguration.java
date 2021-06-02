@@ -50,9 +50,9 @@ public class BatchJobConfiguration {
     private static final String SCHEDULE_CRON_TWEET_GREETING = "${spring.batch.schedule.cron.tweet.greeting}";
 
     /**
-     * The schedule cron for tweet daily report
+     * The schedule cron for tweet report
      */
-    private static final String SCHEDULE_CRON_TWEET_DAILY_REPORT = "${spring.batch.schedule.cron.tweet.report.daily}";
+    private static final String SCHEDULE_CRON_TWEET_REPORT = "${spring.batch.schedule.cron.tweet.report}";
 
     /**
      * The timezone
@@ -98,7 +98,7 @@ public class BatchJobConfiguration {
         this.runJobLauncher(ScheduleType.TWEET_GREETING);
     }
 
-    @Scheduled(cron = SCHEDULE_CRON_TWEET_DAILY_REPORT, zone = TIME_ZONE)
+    @Scheduled(cron = SCHEDULE_CRON_TWEET_REPORT, zone = TIME_ZONE)
     public void performScheduledTweetDailyReport() throws Exception {
         this.runJobLauncher(ScheduleType.TWEET_DAILY_REPORT);
     }
