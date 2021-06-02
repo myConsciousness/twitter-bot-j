@@ -59,6 +59,12 @@ public class BatchStepConfiguration {
     private Tasklet executeAutoShowUserTasklet;
 
     /**
+     * The execute auto tweet introduce tasklet
+     */
+    @Autowired
+    private Tasklet executeAutoTweetIntroduceTasklet;
+
+    /**
      * Registers the instance of {@link BatchStepCollections} as bean.
      *
      * @return The instance of {@link BatchStepCollections}
@@ -70,6 +76,7 @@ public class BatchStepConfiguration {
         batchStepCollectionsBuilder.executeAutoTweetGreetingStep(this.executeAutoTweetGreetingStep());
         batchStepCollectionsBuilder.executeAutoShowUserStep(this.executeAutoShowUserStep());
         batchStepCollectionsBuilder.executeAutoTweetDailyReport(this.executeAutoTweetDailyReportStep());
+        batchStepCollectionsBuilder.executeAutoTweetIntroduceStep(this.executeAutoTweetIntroduceStep());
 
         return batchStepCollectionsBuilder.build();
     }
@@ -102,5 +109,15 @@ public class BatchStepConfiguration {
     private Step executeAutoShowUserStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_SHOW_USER.getTag()).tasklet(this.executeAutoShowUserTasklet)
                 .build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoTweetIntroduceTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoTweetIntroduceTasklet}
+     */
+    private Step executeAutoTweetIntroduceStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_INTRODUCE.getTag())
+                .tasklet(this.executeAutoTweetIntroduceTasklet).build();
     }
 }

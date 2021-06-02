@@ -46,7 +46,12 @@ public enum TweetType implements Catalog<TweetType> {
     /**
      * The report
      */
-    REPORT(3);
+    REPORT(3),
+
+    /**
+     * The introduce
+     */
+    INTRODUCE(4);
 
     /**
      * The code

@@ -54,6 +54,8 @@ public final class JobFlowContext implements Context<Job> {
         return switch (this.scheduleType) {
             case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(jobBuilder, batchStepCollections).execute();
             case TWEET_DAILY_REPORT -> JobFlowTweetDailyReportStrategy.from(jobBuilder, batchStepCollections).execute();
+            case TWEET_INTRODUCE -> this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoTweetIntroduceStep())
+                    .end().build();
         };
     }
 }
