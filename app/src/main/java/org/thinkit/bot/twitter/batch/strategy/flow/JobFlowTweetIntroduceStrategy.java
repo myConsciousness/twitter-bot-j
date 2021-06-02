@@ -12,54 +12,37 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.dto;
+package org.thinkit.bot.twitter.batch.strategy.flow;
 
-import java.io.Serializable;
-
-import org.springframework.batch.core.Step;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.job.builder.JobBuilder;
+import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
+import org.thinkit.bot.twitter.batch.strategy.Strategy;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-/**
- * The class that manages collections of batch step.
- *
- * @author Kato Shinya
- * @since 1.0.0
- */
 @ToString
 @EqualsAndHashCode
-@Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class BatchStepCollections implements Serializable {
+@AllArgsConstructor(staticName = "from")
+public final class JobFlowTweetIntroduceStrategy implements Strategy<Job> {
 
     /**
-     * The execute auto tweet greeting step
+     * The job builder
      */
-    @Getter
-    private Step executeAutoTweetGreetingStep;
+    private JobBuilder jobBuilder;
 
     /**
-     * The execute auto tweet daily report step
+     * The batch step collections
      */
-    @Getter
-    private Step executeAutoTweetDailyReportStep;
+    private BatchStepCollections batchStepCollections;
 
-    /**
-     * The execute auto show user step
-     */
-    @Getter
-    private Step executeAutoShowUserStep;
-
-    /**
-     * The execute auto tweet introduce step
-     */
-    @Getter
-    private Step executeAutoTweetIntroduceStep;
+    @Override
+    public Job execute() {
+        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoTweetIntroduceStep()).end().build();
+    }
 }

@@ -17,35 +17,29 @@ package org.thinkit.bot.twitter.batch.tasklet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mongodb.lang.NonNull;
-
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.batch.catalog.Language;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
-import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
 import org.thinkit.bot.twitter.batch.catalog.TweetType;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
-import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
-import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
+import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetTextRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
-import org.thinkit.bot.twitter.batch.report.DailyReportBuilder;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
-import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
 import org.thinkit.bot.twitter.result.ActionError;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
-import org.thinkit.bot.twitter.util.UserProfileDifference;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * The class that manages the auto tweet daily report.
+ * The class that manages the auto tweet introduce.
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -54,52 +48,51 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @Component
-public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
+public final class ExecuteAutoTweetIntroduceTasklet extends AbstractTasklet {
 
     /**
      * The default constructor.
      */
-    private ExecuteAutoTweetDailyReport() {
-        super(TaskType.AUTO_TWEET_DAILY_REPORT);
+    private ExecuteAutoTweetIntroduceTasklet() {
+        super(TaskType.AUTO_TWEET_INTRODUCE);
     }
 
     /**
-     * Returns the new instance of {@link ExecuteAutoTweetDailyReport}
+     * Returns the new instance of {@link ExecuteAutoTweetIntroduceTasklet} .
      *
-     * @return The new instance of {@link ExecuteAutoTweetDailyReport}
+     * @return The new instance of {@link ExecuteAutoTweetIntroduceTasklet}
      */
     public static Tasklet newInstance() {
-        return new ExecuteAutoTweetDailyReport();
+        return new ExecuteAutoTweetIntroduceTasklet();
     }
 
     @Override
     protected BatchTaskResult executeTask(StepContribution contribution, ChunkContext chunkContext) {
-        log.debug("STRAT");
-
-        final UserProfileTransition userProfileTransition = this.getLatestUserProfileTransition();
-
-        if (userProfileTransition == null) {
-            // When there is no comparison.
-            return BatchTaskResult.builder().actionStatus(ActionStatus.SKIP).build();
-        }
+        log.debug("START");
 
         final MongoCollections mongoCollections = super.getMongoCollections();
-        final UserProfile userProfile = mongoCollections.getUserProfileRepository()
-                .findByName(super.getRunningUser().getName());
-        final UserProfileDifference userProfileDifference = this.getUserProfileDifference(userProfile,
-                userProfileTransition);
-
+        final TweetTextRepository tweetTextRepository = mongoCollections.getTweetTextRepository();
         final TweetResultRepository tweetResultRepository = mongoCollections.getTweetResultRepository();
         final List<ActionError> actionErrors = new ArrayList<>();
 
+        int actionCount = 0;
         for (final Language language : Language.values()) {
+            final TweetText tweetText = tweetTextRepository.findByTypeCodeAndLanguageCode(TweetType.INTRODUCE.getCode(),
+                    language.getCode());
+
+            if (tweetText == null) {
+                log.warn(String.format("Introduce tweet for language '%s' is not defined. Skip tweet in this language.",
+                        language.name()));
+                continue;
+            }
+
             final AutoTweetResult autoTweetResult = super.getTwitterBot()
-                    .executeAutoTweet(Tweet.from(this.getDailyReport(language, userProfileDifference)));
+                    .executeAutoTweet(Tweet.from(tweetText.getText()));
 
             TweetResult tweetResult = new TweetResult();
-            tweetResult.setTextCode(TweetTextPattern.DAILY_REPORT.getCode());
-            tweetResult.setTypeCode(TweetType.REPORT.getCode());
-            tweetResult.setLanguageCode(language.getCode());
+            tweetResult.setTextCode(tweetText.getTextCode());
+            tweetResult.setTypeCode(TweetType.INTRODUCE.getCode());
+            tweetResult.setLanguageCode(tweetText.getLanguageCode());
             tweetResult.setTweet(autoTweetResult.getTweet().getText());
             tweetResult.setStatus(autoTweetResult.getStatus());
 
@@ -111,39 +104,16 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
                     actionErrors.add(actionError);
                 }
             }
+
+            actionCount++;
         }
 
         final BatchTaskResult.BatchTaskResultBuilder batchTaskResultBuilder = BatchTaskResult.builder();
-        batchTaskResultBuilder.actionCount(1);
-        batchTaskResultBuilder.resultCount(1);
+        batchTaskResultBuilder.actionCount(actionCount);
+        batchTaskResultBuilder.resultCount(actionCount - actionErrors.size());
         batchTaskResultBuilder.actionErrors(actionErrors);
 
         log.debug("END");
         return batchTaskResultBuilder.build();
-    }
-
-    private UserProfileTransition getLatestUserProfileTransition() {
-        log.debug("START");
-
-        final List<UserProfileTransition> userProfileTransitions = super.getMongoCollections()
-                .getUserProfileTransitionRepository().findAll();
-
-        if (userProfileTransitions.isEmpty()) {
-            return null;
-        }
-
-        log.debug("END");
-        return userProfileTransitions.get(0);
-    }
-
-    private UserProfileDifference getUserProfileDifference(@NonNull final UserProfile userProfile,
-            @NonNull final UserProfileTransition userProfileTransition) {
-        return UserProfileDifference.newBuilder().userProfile(userProfile).userProfileTransition(userProfileTransition)
-                .build();
-    }
-
-    private String getDailyReport(@NonNull final Language language,
-            @NonNull final UserProfileDifference userProfileDifference) {
-        return DailyReportBuilder.from(language, userProfileDifference).build().getText();
     }
 }

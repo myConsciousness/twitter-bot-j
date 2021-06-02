@@ -23,6 +23,7 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
 import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
+import org.thinkit.bot.twitter.batch.catalog.TweetType;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetText;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
@@ -83,6 +84,7 @@ public final class ExecuteAutoTweetGreetingTasklet extends AbstractTasklet {
 
             TweetResult tweetResult = new TweetResult();
             tweetResult.setTextCode(tweetText.getTextCode());
+            tweetResult.setTypeCode(TweetType.GREETING.getCode());
             tweetResult.setLanguageCode(tweetText.getLanguageCode());
             tweetResult.setTweet(autoTweetResult.getTweet().getText());
             tweetResult.setStatus(autoTweetResult.getStatus());

@@ -21,6 +21,7 @@ import org.thinkit.bot.twitter.batch.context.Context;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetDailyReportStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetGreetingStrategy;
+import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetIntroduceStrategy;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -52,8 +53,12 @@ public final class JobFlowContext implements Context<Job> {
     @Override
     public Job evaluate() {
         return switch (this.scheduleType) {
-            case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(jobBuilder, batchStepCollections).execute();
-            case TWEET_DAILY_REPORT -> JobFlowTweetDailyReportStrategy.from(jobBuilder, batchStepCollections).execute();
+            case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(this.jobBuilder, this.batchStepCollections)
+                    .execute();
+            case TWEET_DAILY_REPORT -> JobFlowTweetDailyReportStrategy.from(this.jobBuilder, this.batchStepCollections)
+                    .execute();
+            case TWEET_INTRODUCE -> JobFlowTweetIntroduceStrategy.from(this.jobBuilder, this.batchStepCollections)
+                    .execute();
         };
     }
 }
