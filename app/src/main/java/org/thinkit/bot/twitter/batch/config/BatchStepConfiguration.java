@@ -75,7 +75,7 @@ public class BatchStepConfiguration {
                 .builder();
         batchStepCollectionsBuilder.executeAutoTweetGreetingStep(this.executeAutoTweetGreetingStep());
         batchStepCollectionsBuilder.executeAutoShowUserStep(this.executeAutoShowUserStep());
-        batchStepCollectionsBuilder.executeAutoTweetDailyReport(this.executeAutoTweetDailyReportStep());
+        batchStepCollectionsBuilder.executeAutoTweetDailyReportStep(this.executeAutoTweetDailyReportStep());
         batchStepCollectionsBuilder.executeAutoTweetIntroduceStep(this.executeAutoTweetIntroduceStep());
 
         return batchStepCollectionsBuilder.build();

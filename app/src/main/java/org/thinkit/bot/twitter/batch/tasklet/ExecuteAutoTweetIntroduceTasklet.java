@@ -48,22 +48,22 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @Component
-public final class ExecuteAutoTweetIntroduce extends AbstractTasklet {
+public final class ExecuteAutoTweetIntroduceTasklet extends AbstractTasklet {
 
     /**
      * The default constructor.
      */
-    private ExecuteAutoTweetIntroduce() {
+    private ExecuteAutoTweetIntroduceTasklet() {
         super(TaskType.AUTO_TWEET_INTRODUCE);
     }
 
     /**
-     * Returns the new instance of {@link ExecuteAutoTweetIntroduce} .
+     * Returns the new instance of {@link ExecuteAutoTweetIntroduceTasklet} .
      *
-     * @return The new instance of {@link ExecuteAutoTweetIntroduce}
+     * @return The new instance of {@link ExecuteAutoTweetIntroduceTasklet}
      */
     public static Tasklet newInstance() {
-        return new ExecuteAutoTweetIntroduce();
+        return new ExecuteAutoTweetIntroduceTasklet();
     }
 
     @Override
