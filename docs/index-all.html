@@ -161,6 +161,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The auto tweet introduce</div>
 </dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/BatchStep.html#AUTO_TWEET_PR">AUTO_TWEET_PR</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></dt>
+<dd>
+<div class="block">The auto tweet PR</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/TaskType.html#AUTO_TWEET_PR">AUTO_TWEET_PR</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/TaskType.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">TaskType</a></dt>
+<dd>
+<div class="block">The auto tweet PR</div>
+</dd>
 <dt><a href="org/thinkit/bot/twitter/command/AutoShowUserCommand.html" title="org.thinkit.bot.twitter.command内のクラス"><span class="type-name-link">AutoShowUserCommand</span></a> - <a href="org/thinkit/bot/twitter/command/package-summary.html">org.thinkit.bot.twitter.command</a>のクラス</dt>
 <dd>
 <div class="block">The class that manages auto show user command</div>
@@ -407,6 +415,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetIntroduceStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.flow.<a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetIntroduceStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.flow内のクラス">JobFlowTweetIntroduceStrategy</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetPrStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.flow.<a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetPrStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.flow内のクラス">JobFlowTweetPrStrategy</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportEnglishStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">DailyReportEnglishStrategy</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportJapaneseStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">DailyReportJapaneseStrategy</a></dt>
@@ -422,7 +432,9 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/AbstractTasklet.html#execute(org.springframework.batch.core.StepContribution,org.springframework.batch.core.scope.context.ChunkContext)">execute(StepContribution, ChunkContext)</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/AbstractTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">AbstractTasklet</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/TwitterBot.html#executeAutoShowUser(java.lang.String)">executeAutoShowUser(String)</a></span> - インタフェース のメソッドorg.thinkit.bot.twitter.<a href="org/thinkit/bot/twitter/TwitterBot.html" title="org.thinkit.bot.twitter内のインタフェース">TwitterBot</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Executes the auto show user and returns the command result.</div>
+</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/TwitterBotJ.html#executeAutoShowUser(java.lang.String)">executeAutoShowUser(String)</a></span> - クラス のメソッドorg.thinkit.bot.twitter.<a href="org/thinkit/bot/twitter/TwitterBotJ.html" title="org.thinkit.bot.twitter内のクラス">TwitterBotJ</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoShowUserTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoShowUserTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
@@ -443,9 +455,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The class that manages the auto tweet greeting.</div>
 </dd>
-<dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduce.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoTweetIntroduce</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
+<dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoTweetIntroduceTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
 <dd>
 <div class="block">The class that manages the auto tweet introduce.</div>
+</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoTweetPrTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
+<dd>
+<div class="block">The class that manages the auto tweet PR.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:F">F</h2>
@@ -588,6 +604,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetIntroduceStrategy.html#%3Cinit%3E()">JobFlowTweetIntroduceStrategy()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.strategy.flow.<a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetIntroduceStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.flow内のクラス">JobFlowTweetIntroduceStrategy</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetPrStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.flow内のクラス"><span class="type-name-link">JobFlowTweetPrStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/flow/package-summary.html">org.thinkit.bot.twitter.batch.strategy.flow</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetPrStrategy.html#%3Cinit%3E()">JobFlowTweetPrStrategy()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.strategy.flow.<a href="org/thinkit/bot/twitter/batch/strategy/flow/JobFlowTweetPrStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.flow内のクラス">JobFlowTweetPrStrategy</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
@@ -657,9 +677,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetGreetingTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><code>ExecuteAutoTweetGreetingTasklet</code></a> .</div>
 </dd>
-<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduce.html#newInstance()">newInstance()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduce.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">ExecuteAutoTweetIntroduce</a></dt>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html#newInstance()">newInstance()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">ExecuteAutoTweetIntroduceTasklet</a></dt>
 <dd>
-<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduce.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><code>ExecuteAutoTweetIntroduce</code></a> .</div>
+<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><code>ExecuteAutoTweetIntroduceTasklet</code></a> .</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html#newInstance()">newInstance()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">ExecuteAutoTweetPrTasklet</a></dt>
+<dd>
+<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><code>ExecuteAutoTweetPrTasklet</code></a> .</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/catalog/Timeframe.html#NIGHT">NIGHT</a></span> - org.thinkit.bot.twitter.catalog.<a href="org/thinkit/bot/twitter/catalog/Timeframe.html" title="org.thinkit.bot.twitter.catalog内の列挙型">Timeframe</a></dt>
 <dd>
@@ -752,6 +776,8 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/config/BatchJobConfiguration.html#performScheduledTweetGreeting()">performScheduledTweetGreeting()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.config.<a href="org/thinkit/bot/twitter/batch/config/BatchJobConfiguration.html" title="org.thinkit.bot.twitter.batch.config内のクラス">BatchJobConfiguration</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/config/BatchJobConfiguration.html#performScheduledTweetIntroduce()">performScheduledTweetIntroduce()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.config.<a href="org/thinkit/bot/twitter/batch/config/BatchJobConfiguration.html" title="org.thinkit.bot.twitter.batch.config内のクラス">BatchJobConfiguration</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/config/BatchJobConfiguration.html#performScheduledTweetPr()">performScheduledTweetPr()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.config.<a href="org/thinkit/bot/twitter/batch/config/BatchJobConfiguration.html" title="org.thinkit.bot.twitter.batch.config内のクラス">BatchJobConfiguration</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/TweetType.html#PR">PR</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/TweetType.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">TweetType</a></dt>
 <dd>
@@ -900,6 +926,10 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/ScheduleType.html#TWEET_INTRODUCE">TWEET_INTRODUCE</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/ScheduleType.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">ScheduleType</a></dt>
 <dd>
 <div class="block">The tweet introduce</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/ScheduleType.html#TWEET_PR">TWEET_PR</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/ScheduleType.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">ScheduleType</a></dt>
+<dd>
+<div class="block">The tweet PR</div>
 </dd>
 <dt><a href="org/thinkit/bot/twitter/batch/data/mongo/entity/TweetResult.html" title="org.thinkit.bot.twitter.batch.data.mongo.entity内のクラス"><span class="type-name-link">TweetResult</span></a> - <a href="org/thinkit/bot/twitter/batch/data/mongo/entity/package-summary.html">org.thinkit.bot.twitter.batch.data.mongo.entity</a>のクラス</dt>
 <dd>

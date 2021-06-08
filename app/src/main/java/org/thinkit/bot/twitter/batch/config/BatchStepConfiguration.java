@@ -24,6 +24,8 @@ import org.thinkit.bot.twitter.batch.catalog.BatchStep;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoShowUserTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGreetingTasklet;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetIntroduceTasklet;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetPrTasklet;
 
 /**
  * The class that manages the batch step configuration of Twitter bot command.
@@ -65,6 +67,12 @@ public class BatchStepConfiguration {
     private Tasklet executeAutoTweetIntroduceTasklet;
 
     /**
+     * The execute auto tweet PR tasklet
+     */
+    @Autowired
+    private Tasklet executeAutoTweetPrTasklet;
+
+    /**
      * Registers the instance of {@link BatchStepCollections} as bean.
      *
      * @return The instance of {@link BatchStepCollections}
@@ -77,6 +85,7 @@ public class BatchStepConfiguration {
         batchStepCollectionsBuilder.executeAutoShowUserStep(this.executeAutoShowUserStep());
         batchStepCollectionsBuilder.executeAutoTweetDailyReportStep(this.executeAutoTweetDailyReportStep());
         batchStepCollectionsBuilder.executeAutoTweetIntroduceStep(this.executeAutoTweetIntroduceStep());
+        batchStepCollectionsBuilder.executeAutoTweetPrStep(this.executeAutoTweetPrStep());
 
         return batchStepCollectionsBuilder.build();
     }
@@ -119,5 +128,15 @@ public class BatchStepConfiguration {
     private Step executeAutoTweetIntroduceStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_INTRODUCE.getTag())
                 .tasklet(this.executeAutoTweetIntroduceTasklet).build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoTweetPrTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoTweetPrTasklet}
+     */
+    private Step executeAutoTweetPrStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_PR.getTag()).tasklet(this.executeAutoTweetPrTasklet)
+                .build();
     }
 }
