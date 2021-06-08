@@ -49,6 +49,11 @@ public enum BatchStep implements BiCatalog<BatchStep, String> {
     AUTO_TWEET_INTRODUCE(2, "AutoTweetIntroduce"),
 
     /**
+     * The auto tweet PR
+     */
+    AUTO_TWEET_PR(3, "AutoTweetPr"),
+
+    /**
      * The auto show user step
      */
     AUTO_SHOW_USER(100, "AutoShowUser");

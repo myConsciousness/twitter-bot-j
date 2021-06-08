@@ -12,17 +12,12 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.context.flow;
+package org.thinkit.bot.twitter.batch.strategy.flow;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.job.builder.JobBuilder;
-import org.thinkit.bot.twitter.batch.catalog.ScheduleType;
-import org.thinkit.bot.twitter.batch.context.Context;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
-import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetDailyReportStrategy;
-import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetGreetingStrategy;
-import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetIntroduceStrategy;
-import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetPrStrategy;
+import org.thinkit.bot.twitter.batch.strategy.Strategy;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -38,12 +33,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class JobFlowContext implements Context<Job> {
-
-    /**
-     * The schedule type
-     */
-    private ScheduleType scheduleType;
+public final class JobFlowTweetPrStrategy implements Strategy<Job> {
 
     /**
      * The job builder
@@ -56,15 +46,8 @@ public final class JobFlowContext implements Context<Job> {
     private BatchStepCollections batchStepCollections;
 
     @Override
-    public Job evaluate() {
-        return switch (this.scheduleType) {
-            case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
-            case TWEET_DAILY_REPORT -> JobFlowTweetDailyReportStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
-            case TWEET_INTRODUCE -> JobFlowTweetIntroduceStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
-            case TWEET_PR -> JobFlowTweetPrStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
-        };
+    public Job execute() {
+        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoShowUserStep())
+                .next(this.batchStepCollections.getExecuteAutoTweetPrStep()).end().build();
     }
 }

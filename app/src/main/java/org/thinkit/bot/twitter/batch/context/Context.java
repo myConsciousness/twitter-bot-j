@@ -14,6 +14,10 @@
 
 package org.thinkit.bot.twitter.batch.context;
 
+/**
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 public interface Context<R> {
 
     public R evaluate();

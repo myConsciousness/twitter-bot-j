@@ -62,4 +62,10 @@ public final class BatchStepCollections implements Serializable {
      */
     @Getter
     private Step executeAutoTweetIntroduceStep;
+
+    /**
+     * The execute auto tweet PR step
+     */
+    @Getter
+    private Step executeAutoTweetPrStep;
 }

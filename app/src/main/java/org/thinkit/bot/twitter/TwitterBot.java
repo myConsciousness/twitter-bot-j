@@ -38,5 +38,13 @@ public interface TwitterBot {
      */
     public AutoTweetResult executeAutoTweet(@NonNull final Tweet tweet);
 
+    /**
+     * Executes the auto show user and returns the command result.
+     *
+     * @param userName The user name
+     * @return The command result
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
     public AutoShowUserResult executeAutoShowUser(@NonNull final String userName);
 }
