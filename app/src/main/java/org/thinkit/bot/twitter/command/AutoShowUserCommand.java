@@ -54,6 +54,7 @@ public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserRe
             autoShowUserResultBuilder.userName(user.getName());
             autoShowUserResultBuilder.followersCount(user.getFollowersCount());
             autoShowUserResultBuilder.followingsCount(user.getFriendsCount());
+            autoShowUserResultBuilder.actionStatus(ActionStatus.COMPLETED);
         } catch (Exception e) {
             autoShowUserResultBuilder.actionErrors(List.of(super.getActionError(e)));
             autoShowUserResultBuilder.actionStatus(ActionStatus.INTERRUPTED);
