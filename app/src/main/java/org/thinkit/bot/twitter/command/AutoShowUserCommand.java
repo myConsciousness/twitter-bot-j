@@ -46,18 +46,17 @@ public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserRe
     @Override
     protected AutoShowUserResult executeBotProcess() {
 
-        final AutoShowUserResult.AutoShowUserResultBuilder autoShowUserResultBuilder = AutoShowUserResult.builder();
+        final AutoShowUserResult.AutoShowUserResultBuilder autoShowUserResultBuilder = AutoShowUserResult.newBuilder();
 
         try {
             final User user = super.getTwitter().showUser(this.userName);
-            autoShowUserResultBuilder.userId(user.getId());
-            autoShowUserResultBuilder.userName(user.getName());
-            autoShowUserResultBuilder.followersCount(user.getFollowersCount());
-            autoShowUserResultBuilder.followingsCount(user.getFriendsCount());
-            autoShowUserResultBuilder.actionStatus(ActionStatus.COMPLETED);
+            autoShowUserResultBuilder.setUserId(user.getId());
+            autoShowUserResultBuilder.setUserName(user.getName());
+            autoShowUserResultBuilder.setFollowersCount(user.getFollowersCount());
+            autoShowUserResultBuilder.setFollowingsCount(user.getFriendsCount());
         } catch (Exception e) {
-            autoShowUserResultBuilder.actionErrors(List.of(super.getActionError(e)));
-            autoShowUserResultBuilder.actionStatus(ActionStatus.INTERRUPTED);
+            autoShowUserResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
+            autoShowUserResultBuilder.setActionErrors(List.of(super.getActionError(e)));
         }
 
         return autoShowUserResultBuilder.build();

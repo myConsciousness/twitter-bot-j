@@ -14,14 +14,7 @@
 
 package org.thinkit.bot.twitter.result;
 
-import java.io.Serializable;
-import java.util.List;
-
-import org.thinkit.bot.twitter.catalog.ActionStatus;
-
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -35,18 +28,9 @@ import lombok.ToString;
  * @since 1.0.0
  */
 @ToString
-@EqualsAndHashCode
-@Builder(toBuilder = true)
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class AutoShowUserResult implements Serializable {
-
-    /**
-     * The action status
-     */
-    @Getter
-    @NonNull
-    private ActionStatus actionStatus;
+public final class AutoShowUserResult extends AbstractCommandResult {
 
     /**
      * The user id
@@ -74,8 +58,104 @@ public final class AutoShowUserResult implements Serializable {
     private int followingsCount;
 
     /**
-     * The action errors
+     * Returns the new instance of {@link AutoShowUserResultBuilder} .
+     *
+     * @return The new instance of {@link AutoShowUserResultBuilder}
      */
-    @Getter
-    private List<ActionError> actionErrors;
+    public static AutoShowUserResultBuilder newBuilder() {
+        return new AutoShowUserResultBuilder();
+    }
+
+    /**
+     * @author Kato Shinya
+     * @since 1.0.0
+     */
+    public static final class AutoShowUserResultBuilder
+            extends AbstractCommandResultBuilder<AutoShowUserResultBuilder> {
+
+        /**
+         * The user id
+         */
+        private long userId;
+
+        /**
+         * The user name
+         */
+        private String userName;
+
+        /**
+         * The followers count
+         */
+        private int followersCount;
+
+        /**
+         * The followings count
+         */
+        private int followingsCount;
+
+        /**
+         * Sets the user id.
+         *
+         * @param userId The user id
+         * @return This builder
+         */
+        public AutoShowUserResultBuilder setUserId(final long userId) {
+            this.userId = userId;
+            return this;
+        }
+
+        /**
+         * Sets the user name.
+         *
+         * @param userName The user name
+         * @return This builder
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
+        public AutoShowUserResultBuilder setUserName(@NonNull final String userName) {
+            this.userName = userName;
+            return this;
+        }
+
+        /**
+         * Sets the followers count.
+         *
+         * @param followersCount The followers count
+         * @return This builder
+         */
+        public AutoShowUserResultBuilder setFollowersCount(final int followersCount) {
+            this.followingsCount = followersCount;
+            return this;
+        }
+
+        /**
+         * Sets the followings count.
+         *
+         * @param followingsCount The followings count
+         * @return This builder
+         */
+        public AutoShowUserResultBuilder setFollowingsCount(final int followingsCount) {
+            this.followingsCount = followingsCount;
+            return this;
+        }
+
+        /**
+         * Returns the new instance of {@link AutoShowUserResult} based on the
+         * parameters.
+         *
+         * @return The new instance of {@link AutoShowUserResult}
+         */
+        public AutoShowUserResult build() {
+
+            final AutoShowUserResult autoShowUserResult = new AutoShowUserResult();
+            autoShowUserResult.actionStatus = super.actionStatus;
+            autoShowUserResult.actionErrors = super.actionErrors;
+            autoShowUserResult.userId = this.userId;
+            autoShowUserResult.userName = this.userName;
+            autoShowUserResult.followersCount = this.followersCount;
+            autoShowUserResult.followingsCount = this.followingsCount;
+
+            return autoShowUserResult;
+        }
+    }
 }
