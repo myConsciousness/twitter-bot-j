@@ -14,17 +14,11 @@
 
 package org.thinkit.bot.twitter.result;
 
-import java.io.Serializable;
-import java.util.List;
-
 import com.mongodb.lang.NonNull;
 
-import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,17 +33,8 @@ import twitter4j.Status;
  */
 @ToString
 @EqualsAndHashCode
-@Builder(toBuilder = true)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
-public final class AutoTweetResult implements Serializable {
-
-    /**
-     * The action status
-     */
-    @Getter
-    @NonNull
-    private ActionStatus actionStatus;
+public final class AutoTweetResult extends AbstractCommandResult {
 
     /**
      * The tweet
@@ -65,8 +50,70 @@ public final class AutoTweetResult implements Serializable {
     private Status status;
 
     /**
-     * The action errors
+     * Returns the new instance of {@link AutoTweetResultBuilder} .
+     *
+     * @return The new instance of {@link AutoTweetResultBuilder}
      */
-    @Getter
-    private List<ActionError> actionErrors;
+    public static AutoTweetResultBuilder newBuilder() {
+        return new AutoTweetResultBuilder();
+    }
+
+    /**
+     * @author Kato Shinya
+     * @since 1.0.0
+     */
+    public static final class AutoTweetResultBuilder extends AbstractCommandResultBuilder<AutoTweetResultBuilder> {
+
+        /**
+         * The tweet
+         */
+        private Tweet tweet;
+
+        /**
+         * The status
+         */
+        private Status status;
+
+        /**
+         * Sets the tweet.
+         *
+         * @param tweet The tweet
+         * @return This builder
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
+        public AutoTweetResultBuilder setTweet(@NonNull final Tweet tweet) {
+            this.tweet = tweet;
+            return this;
+        }
+
+        /**
+         * Sets the status.
+         *
+         * @param status The status
+         * @return This builder
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
+        public AutoTweetResultBuilder setStatus(@NonNull final Status status) {
+            this.status = status;
+            return this;
+        }
+
+        /**
+         * Returns the new instance of {@link AutoTweetResult} based on the parameters.
+         *
+         * @return The new instance of {@link AutoTweetResult}
+         */
+        public AutoTweetResult build() {
+
+            final AutoTweetResult autoTweetResult = new AutoTweetResult();
+            autoTweetResult.actionStatus = super.actionStatus;
+            autoTweetResult.actionErrors = super.actionErrors;
+            autoTweetResult.tweet = this.tweet;
+            autoTweetResult.status = this.status;
+
+            return autoTweetResult;
+        }
+    }
 }
