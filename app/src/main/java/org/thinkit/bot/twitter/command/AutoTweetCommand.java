@@ -47,15 +47,14 @@ public final class AutoTweetCommand extends AbstractBotCommand<AutoTweetResult> 
     @Override
     protected AutoTweetResult executeBotProcess() {
 
-        final AutoTweetResult.AutoTweetResultBuilder autoTweetResultBuilder = AutoTweetResult.builder();
-        autoTweetResultBuilder.tweet(this.tweet);
+        final AutoTweetResult.AutoTweetResultBuilder autoTweetResultBuilder = AutoTweetResult.newBuilder();
+        autoTweetResultBuilder.setTweet(this.tweet);
 
         try {
-            autoTweetResultBuilder.status(super.getTwitter().updateStatus(tweet.getText()));
-            autoTweetResultBuilder.actionStatus(ActionStatus.COMPLETED);
+            autoTweetResultBuilder.setStatus(super.getTwitter().updateStatus(tweet.getText()));
         } catch (TwitterException e) {
-            autoTweetResultBuilder.actionErrors(List.of(super.getActionError(e)));
-            autoTweetResultBuilder.actionStatus(ActionStatus.INTERRUPTED);
+            autoTweetResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
+            autoTweetResultBuilder.setActionErrors(List.of(super.getActionError(e)));
         }
 
         return autoTweetResultBuilder.build();
