@@ -32,7 +32,7 @@ import twitter4j.Status;
  * @since 1.0.0
  */
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AutoTweetResult extends AbstractCommandResult {
 
