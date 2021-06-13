@@ -53,12 +53,12 @@ public final class DailyReportJapaneseStrategy extends AbstractDailyReportStrate
     @Override
     public Report execute() {
         return super.toDailyReport("""
-                【日報（%s）】
+                日報（%s）
 
-                フォロー推移（前日比）: %s (%s)
-                フォロワー推移（前日比）: %s (%s)
+                フォロー推移（前日比）: %s (%s%%)
+                フォロワー推移（前日比）: %s (%s%%)
 
-                #定期ツイート #日報 #プログラマ
+                #定期ツイート #日報 #推移 #プログラマ
                 """);
     }
 }

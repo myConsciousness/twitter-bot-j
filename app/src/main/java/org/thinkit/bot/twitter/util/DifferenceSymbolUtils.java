@@ -21,6 +21,10 @@ import org.thinkit.bot.twitter.batch.catalog.DifferenceSymbol;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class DifferenceSymbolUtils {
 
@@ -49,10 +53,10 @@ public final class DifferenceSymbolUtils {
     }
 
     public static String toString(final int number, @NonNull final DifferenceSymbol differenceSymbol) {
-        return new StringBuilder().append(differenceSymbol).append(number).toString();
+        return new StringBuilder().append(differenceSymbol.getTag()).append(number).toString();
     }
 
     public static String toString(final float number, @NonNull final DifferenceSymbol differenceSymbol) {
-        return new StringBuilder().append(differenceSymbol).append(number).toString();
+        return new StringBuilder().append(differenceSymbol.getTag()).append(number).toString();
     }
 }
