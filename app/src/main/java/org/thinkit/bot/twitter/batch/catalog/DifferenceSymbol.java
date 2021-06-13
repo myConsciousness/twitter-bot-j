@@ -31,7 +31,7 @@ public enum DifferenceSymbol implements BiCatalog<DifferenceSymbol, String> {
     /**
      * The none
      */
-    NONE(0, ""),
+    NONE(0, "+"),
 
     /**
      * The increase

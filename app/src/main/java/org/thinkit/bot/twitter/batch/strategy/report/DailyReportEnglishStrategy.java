@@ -53,10 +53,10 @@ public final class DailyReportEnglishStrategy extends AbstractDailyReportStrateg
     @Override
     public Report execute() {
         return super.toDailyReport("""
-                Daily Report（%s）
+                Daily Report (%s)
 
-                ・Followings: %s (%s)
-                ・Followers: %s (%s)
+                ・Followings: %s (%s%%)
+                ・Followers: %s (%s%%)
 
                 #dailytweet #programmer #engineer #developer
                 """);
