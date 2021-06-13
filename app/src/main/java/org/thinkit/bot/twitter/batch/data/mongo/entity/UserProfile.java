@@ -47,6 +47,12 @@ public final class UserProfile implements Serializable {
     private long userId;
 
     /**
+     * The screen name
+     */
+    @Indexed(unique = true)
+    private String screenName;
+
+    /**
      * The name
      */
     @Indexed(unique = true)

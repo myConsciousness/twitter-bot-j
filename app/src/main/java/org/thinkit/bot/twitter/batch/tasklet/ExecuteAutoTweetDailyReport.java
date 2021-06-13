@@ -17,8 +17,6 @@ package org.thinkit.bot.twitter.batch.tasklet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mongodb.lang.NonNull;
-
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
@@ -41,6 +39,7 @@ import org.thinkit.bot.twitter.result.AutoTweetResult;
 import org.thinkit.bot.twitter.util.UserProfileDifference;
 
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
@@ -85,7 +84,7 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
 
         final MongoCollections mongoCollections = super.getMongoCollections();
         final UserProfile userProfile = mongoCollections.getUserProfileRepository()
-                .findByName(super.getRunningUser().getName());
+                .findByScreenName(super.getRunningUser().getName());
         final UserProfileDifference userProfileDifference = this.getUserProfileDifference(userProfile,
                 userProfileTransition);
 
