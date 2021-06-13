@@ -39,6 +39,12 @@ public final class AutoShowUserResult extends AbstractCommandResult {
     private long userId;
 
     /**
+     * The screen name
+     */
+    @Getter
+    private String screenName;
+
+    /**
      * The user name
      */
     @Getter
@@ -79,6 +85,11 @@ public final class AutoShowUserResult extends AbstractCommandResult {
         private long userId;
 
         /**
+         * The screen name
+         */
+        private String screenName;
+
+        /**
          * The user name
          */
         private String userName;
@@ -101,6 +112,19 @@ public final class AutoShowUserResult extends AbstractCommandResult {
          */
         public AutoShowUserResultBuilder setUserId(final long userId) {
             this.userId = userId;
+            return this;
+        }
+
+        /**
+         * Sets the screen name.
+         *
+         * @param screenName The screen name
+         * @return This builder
+         *
+         * @exception NullPointerException If {@code null} is passed as an argument
+         */
+        public AutoShowUserResultBuilder setScreenName(@NonNull final String screenName) {
+            this.screenName = screenName;
             return this;
         }
 
@@ -151,6 +175,7 @@ public final class AutoShowUserResult extends AbstractCommandResult {
             autoShowUserResult.actionStatus = super.actionStatus;
             autoShowUserResult.actionErrors = super.actionErrors;
             autoShowUserResult.userId = this.userId;
+            autoShowUserResult.screenName = this.screenName;
             autoShowUserResult.userName = this.userName;
             autoShowUserResult.followersCount = this.followersCount;
             autoShowUserResult.followingsCount = this.followingsCount;

@@ -51,6 +51,7 @@ public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserRe
         try {
             final User user = super.getTwitter().showUser(this.userName);
             autoShowUserResultBuilder.setUserId(user.getId());
+            autoShowUserResultBuilder.setScreenName(user.getScreenName());
             autoShowUserResultBuilder.setUserName(user.getName());
             autoShowUserResultBuilder.setFollowersCount(user.getFollowersCount());
             autoShowUserResultBuilder.setFollowingsCount(user.getFriendsCount());

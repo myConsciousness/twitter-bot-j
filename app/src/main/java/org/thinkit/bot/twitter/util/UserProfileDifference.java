@@ -16,8 +16,6 @@ package org.thinkit.bot.twitter.util;
 
 import java.io.Serializable;
 
-import com.mongodb.lang.NonNull;
-
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
 import org.thinkit.common.base.precondition.Preconditions;
@@ -26,6 +24,7 @@ import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
 
 @ToString

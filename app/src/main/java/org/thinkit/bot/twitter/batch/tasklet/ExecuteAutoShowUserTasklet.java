@@ -15,6 +15,7 @@
 package org.thinkit.bot.twitter.batch.tasklet;
 
 import java.util.Date;
+import java.util.Objects;
 
 import com.mongodb.lang.NonNull;
 
@@ -113,8 +114,13 @@ public final class ExecuteAutoShowUserTasklet extends AbstractTasklet {
             @NonNull final UserProfile userProfile) {
         log.debug("START");
 
-        if (!userProfile.getName().equals(autoShowUserResult.getUserName())) {
+        if (!Objects.equals(userProfile.getScreenName(), autoShowUserResult.getScreenName())) {
             // When the screen name has changed.
+            userProfile.setScreenName(autoShowUserResult.getScreenName());
+        }
+
+        if (!Objects.equals(userProfile.getName(), autoShowUserResult.getUserName())) {
+            // When the name has changed.
             userProfile.setName(autoShowUserResult.getUserName());
         }
 
@@ -133,6 +139,7 @@ public final class ExecuteAutoShowUserTasklet extends AbstractTasklet {
 
         UserProfile userProfile = new UserProfile();
         userProfile.setUserId(autoShowUserResult.getUserId());
+        userProfile.setScreenName(autoShowUserResult.getScreenName());
         userProfile.setName(autoShowUserResult.getUserName());
         userProfile.setFollowersCount(autoShowUserResult.getFollowersCount());
         userProfile.setFollowingsCount(autoShowUserResult.getFollowingsCount());

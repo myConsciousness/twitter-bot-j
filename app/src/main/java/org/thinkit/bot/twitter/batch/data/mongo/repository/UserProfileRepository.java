@@ -41,5 +41,5 @@ public interface UserProfileRepository extends MongoRepository<UserProfile, Stri
      * @param name The name
      * @return The user profile
      */
-    public UserProfile findByName(String name);
+    public UserProfile findByScreenName(String screenName);
 }
