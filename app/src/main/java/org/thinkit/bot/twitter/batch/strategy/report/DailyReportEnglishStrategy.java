@@ -55,8 +55,8 @@ public final class DailyReportEnglishStrategy extends AbstractDailyReportStrateg
         return super.toDailyReport("""
                 Daily Report（%s）
 
-                ・Followings: %s (%s%)
-                ・Followers: %s (%s%)
+                ・Followings: %s (%s)
+                ・Followers: %s (%s)
 
                 #dailytweet #programmer #engineer #developer
                 """);
