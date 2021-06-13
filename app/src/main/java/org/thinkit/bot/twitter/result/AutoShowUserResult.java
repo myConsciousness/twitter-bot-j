@@ -124,7 +124,7 @@ public final class AutoShowUserResult extends AbstractCommandResult {
          * @return This builder
          */
         public AutoShowUserResultBuilder setFollowersCount(final int followersCount) {
-            this.followingsCount = followersCount;
+            this.followersCount = followersCount;
             return this;
         }
 
