@@ -24,6 +24,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 @ToString
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -51,6 +55,10 @@ public final class Difference implements Serializable {
         return new DifferenceBuilder();
     }
 
+    /**
+     * @author Kato Shinya
+     * @since 1.0.0
+     */
     public static class DifferenceBuilder {
 
         /**
@@ -63,16 +71,33 @@ public final class Difference implements Serializable {
          */
         private int comparison;
 
+        /**
+         * Sets the base.
+         *
+         * @param base The base
+         * @return This builder
+         */
         public DifferenceBuilder base(final int base) {
             this.base = base;
             return this;
         }
 
+        /**
+         * Sets the comparison.
+         *
+         * @param comparison The comparison
+         * @return This builder
+         */
         public DifferenceBuilder comparison(final int comparison) {
             this.comparison = comparison;
             return this;
         }
 
+        /**
+         * Returns the new instance of {@link Difference} based on the parameters.
+         *
+         * @return The new instance of {@link Difference}
+         */
         public Difference build() {
 
             final int differenceValue = this.base - this.comparison;
@@ -80,11 +105,17 @@ public final class Difference implements Serializable {
             final Difference difference = new Difference();
             difference.differenceType = this.getDifferenceType(differenceValue);
             difference.value = differenceValue;
-            difference.growthRate = differenceValue / this.base;
+            difference.growthRate = (differenceValue / this.base) * 100;
 
             return difference;
         }
 
+        /**
+         * Returns the difference type based on the int value passed as an argument.
+         *
+         * @param value The value
+         * @return The difference type
+         */
         private DifferenceType getDifferenceType(final int value) {
 
             if (value == 0) {
