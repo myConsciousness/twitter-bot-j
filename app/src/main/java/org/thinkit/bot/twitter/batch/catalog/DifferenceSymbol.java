@@ -41,7 +41,7 @@ public enum DifferenceSymbol implements BiCatalog<DifferenceSymbol, String> {
     /**
      * The decrease
      */
-    DECREASE(2, "");
+    DECREASE(2, "-");
 
     /**
      * The code
