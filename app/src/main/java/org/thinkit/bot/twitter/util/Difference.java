@@ -105,7 +105,7 @@ public final class Difference implements Serializable {
             final Difference difference = new Difference();
             difference.differenceType = this.getDifferenceType(differenceValue);
             difference.value = differenceValue;
-            difference.growthRate = ((float) differenceValue / (float) this.base) * 100.0f;
+            difference.growthRate = this.getGrowthRate(base, differenceValue);
 
             return difference;
         }
@@ -125,6 +125,10 @@ public final class Difference implements Serializable {
             }
 
             return DifferenceType.DECREASE;
+        }
+
+        private float getGrowthRate(final int base, final int differenceValue) {
+            return (float) Math.round((((float) differenceValue / (float) this.base) * 100.0f) * 10.0f) / 10.0f;
         }
     }
 }
