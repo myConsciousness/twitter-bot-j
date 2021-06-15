@@ -105,7 +105,7 @@ public final class Difference implements Serializable {
             final Difference difference = new Difference();
             difference.differenceType = this.getDifferenceType(differenceValue);
             difference.value = differenceValue;
-            difference.growthRate = (differenceValue / this.base) * 100;
+            difference.growthRate = ((float) differenceValue / (float) this.base) * 100.0f;
 
             return difference;
         }
