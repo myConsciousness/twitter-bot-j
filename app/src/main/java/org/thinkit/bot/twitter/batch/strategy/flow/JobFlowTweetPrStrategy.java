@@ -47,7 +47,6 @@ public final class JobFlowTweetPrStrategy implements Strategy<Job> {
 
     @Override
     public Job execute() {
-        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoShowUserStep())
-                .next(this.batchStepCollections.getExecuteAutoTweetPrStep()).end().build();
+        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoTweetPrStep()).end().build();
     }
 }
