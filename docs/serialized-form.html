@@ -574,6 +574,11 @@ loadScripts(document, 'script');</script>
 <div class="block">The name</div>
 </li>
 <li class="block-list">
+<h5>screenName</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a> screenName</pre>
+<div class="block">The screen name</div>
+</li>
+<li class="block-list">
 <h5>updatedAt</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/Date.html" title="java.util内のクラスまたはインタフェース" class="external-link">Date</a> updatedAt</pre>
 <div class="block">The updated datetime</div>
@@ -616,6 +621,11 @@ loadScripts(document, 'script');</script>
 <h5>id</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a> id</pre>
 <div class="block">The id</div>
+</li>
+<li class="block-list">
+<h5>latest</h5>
+<pre>boolean latest</pre>
+<div class="block">The latest</div>
 </li>
 <li class="block-list">
 <h5>name</h5>
@@ -1061,6 +1071,54 @@ loadScripts(document, 'script');</script>
 <h2 title="パッケージ">パッケージ&nbsp;org.thinkit.bot.twitter.result</h2>
 <ul class="block-list">
 <li>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AbstractCommandResult">
+<h3>Class <a href="org/thinkit/bot/twitter/result/AbstractCommandResult.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AbstractCommandResult</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>直列化されたフィールド</h4>
+<ul class="block-list">
+<li class="block-list">
+<h5>actionErrors</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="org/thinkit/bot/twitter/result/ActionError.html" title="org.thinkit.bot.twitter.result内のクラス">ActionError</a>&gt; actionErrors</pre>
+<div class="block">The action errors</div>
+</li>
+<li class="block-list">
+<h5>actionStatus</h5>
+<pre><a href="org/thinkit/bot/twitter/catalog/ActionStatus.html" title="org.thinkit.bot.twitter.catalog内の列挙型">ActionStatus</a> actionStatus</pre>
+<div class="block">The action status</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<li>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AbstractCommandResultBuilder">
+<h3>Class <a href="org/thinkit/bot/twitter/result/AbstractCommandResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AbstractCommandResultBuilder</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>直列化されたフィールド</h4>
+<ul class="block-list">
+<li class="block-list">
+<h5>actionErrors</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="org/thinkit/bot/twitter/result/ActionError.html" title="org.thinkit.bot.twitter.result内のクラス">ActionError</a>&gt; actionErrors</pre>
+<div class="block">The action errors</div>
+</li>
+<li class="block-list">
+<h5>actionStatus</h5>
+<pre><a href="org/thinkit/bot/twitter/catalog/ActionStatus.html" title="org.thinkit.bot.twitter.catalog内の列挙型">ActionStatus</a> actionStatus</pre>
+<div class="block">The action status</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<li>
 <section class="serialized-class-details" id="org.thinkit.bot.twitter.result.ActionError">
 <h3>Class <a href="org/thinkit/bot/twitter/result/ActionError.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.ActionError</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
 <ul class="block-list">
@@ -1091,22 +1149,12 @@ loadScripts(document, 'script');</script>
 </li>
 <li>
 <section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AutoShowUserResult">
-<h3>Class <a href="org/thinkit/bot/twitter/result/AutoShowUserResult.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AutoShowUserResult</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
+<h3>Class <a href="org/thinkit/bot/twitter/result/AutoShowUserResult.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AutoShowUserResult</a> extends <a href="org/thinkit/bot/twitter/result/AbstractCommandResult.html" title="org.thinkit.bot.twitter.result内のクラス">AbstractCommandResult</a> implements Serializable</h3>
 <ul class="block-list">
 <li>
 <section class="detail">
 <h4>直列化されたフィールド</h4>
 <ul class="block-list">
-<li class="block-list">
-<h5>actionErrors</h5>
-<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="org/thinkit/bot/twitter/result/ActionError.html" title="org.thinkit.bot.twitter.result内のクラス">ActionError</a>&gt; actionErrors</pre>
-<div class="block">The action errors</div>
-</li>
-<li class="block-list">
-<h5>actionStatus</h5>
-<pre>@NonNull <a href="org/thinkit/bot/twitter/catalog/ActionStatus.html" title="org.thinkit.bot.twitter.catalog内の列挙型">ActionStatus</a> actionStatus</pre>
-<div class="block">The action status</div>
-</li>
 <li class="block-list">
 <h5>followersCount</h5>
 <pre>int followersCount</pre>
@@ -1116,6 +1164,11 @@ loadScripts(document, 'script');</script>
 <h5>followingsCount</h5>
 <pre>int followingsCount</pre>
 <div class="block">The followings count</div>
+</li>
+<li class="block-list">
+<h5>screenName</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a> screenName</pre>
+<div class="block">The screen name</div>
 </li>
 <li class="block-list">
 <h5>userId</h5>
@@ -1134,23 +1187,76 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AutoTweetResult">
-<h3>Class <a href="org/thinkit/bot/twitter/result/AutoTweetResult.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AutoTweetResult</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AutoShowUserResult.AutoShowUserResultBuilder">
+<h3>Class <a href="org/thinkit/bot/twitter/result/AutoShowUserResult.AutoShowUserResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AutoShowUserResult.AutoShowUserResultBuilder</a> extends <a href="org/thinkit/bot/twitter/result/AbstractCommandResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">AbstractCommandResultBuilder</a>&lt;<a href="org/thinkit/bot/twitter/result/AutoShowUserResult.AutoShowUserResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">AutoShowUserResult.AutoShowUserResultBuilder</a>&gt; implements Serializable</h3>
 <ul class="block-list">
 <li>
 <section class="detail">
 <h4>直列化されたフィールド</h4>
 <ul class="block-list">
 <li class="block-list">
-<h5>actionErrors</h5>
-<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/util/List.html" title="java.util内のクラスまたはインタフェース" class="external-link">List</a>&lt;<a href="org/thinkit/bot/twitter/result/ActionError.html" title="org.thinkit.bot.twitter.result内のクラス">ActionError</a>&gt; actionErrors</pre>
-<div class="block">The action errors</div>
+<h5>followersCount</h5>
+<pre>int followersCount</pre>
+<div class="block">The followers count</div>
 </li>
 <li class="block-list">
-<h5>actionStatus</h5>
-<pre><a href="org/thinkit/bot/twitter/catalog/ActionStatus.html" title="org.thinkit.bot.twitter.catalog内の列挙型">ActionStatus</a> actionStatus</pre>
-<div class="block">The action status</div>
+<h5>followingsCount</h5>
+<pre>int followingsCount</pre>
+<div class="block">The followings count</div>
 </li>
+<li class="block-list">
+<h5>screenName</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a> screenName</pre>
+<div class="block">The screen name</div>
+</li>
+<li class="block-list">
+<h5>userId</h5>
+<pre>long userId</pre>
+<div class="block">The user id</div>
+</li>
+<li class="block-list">
+<h5>userName</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a> userName</pre>
+<div class="block">The user name</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<li>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AutoTweetResult">
+<h3>Class <a href="org/thinkit/bot/twitter/result/AutoTweetResult.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AutoTweetResult</a> extends <a href="org/thinkit/bot/twitter/result/AbstractCommandResult.html" title="org.thinkit.bot.twitter.result内のクラス">AbstractCommandResult</a> implements Serializable</h3>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>直列化されたフィールド</h4>
+<ul class="block-list">
+<li class="block-list">
+<h5>status</h5>
+<pre>twitter4j.Status status</pre>
+<div class="block">The status</div>
+</li>
+<li class="block-list">
+<h5>tweet</h5>
+<pre><a href="org/thinkit/bot/twitter/param/Tweet.html" title="org.thinkit.bot.twitter.param内のクラス">Tweet</a> tweet</pre>
+<div class="block">The tweet</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<li>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.result.AutoTweetResult.AutoTweetResultBuilder">
+<h3>Class <a href="org/thinkit/bot/twitter/result/AutoTweetResult.AutoTweetResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">org.thinkit.bot.twitter.result.AutoTweetResult.AutoTweetResultBuilder</a> extends <a href="org/thinkit/bot/twitter/result/AbstractCommandResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">AbstractCommandResultBuilder</a>&lt;<a href="org/thinkit/bot/twitter/result/AutoTweetResult.AutoTweetResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">AutoTweetResult.AutoTweetResultBuilder</a>&gt; implements Serializable</h3>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>直列化されたフィールド</h4>
+<ul class="block-list">
 <li class="block-list">
 <h5>status</h5>
 <pre>twitter4j.Status status</pre>
