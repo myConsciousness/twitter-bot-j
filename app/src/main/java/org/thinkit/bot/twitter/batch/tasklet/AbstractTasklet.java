@@ -24,6 +24,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.TwitterBot;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
@@ -83,6 +84,12 @@ public abstract class AbstractTasklet implements Tasklet {
     @Autowired
     @Getter(AccessLevel.PROTECTED)
     private TwitterBot twitterBot;
+
+    /**
+     * The configurable application context
+     */
+    @Autowired
+    private ConfigurableApplicationContext context;
 
     /**
      * The mongo collections
@@ -203,6 +210,10 @@ public abstract class AbstractTasklet implements Tasklet {
 
         this.updateEndAction();
 
+        if (this.batchTask.isClosable()) {
+            this.closeSession();
+        }
+
         log.debug("END");
         return batchTaskResult.getRepeatStatus();
     }
@@ -281,6 +292,13 @@ public abstract class AbstractTasklet implements Tasklet {
         log.debug("Inserted action record: {}", actionRecord);
 
         log.debug("END");
+    }
+
+    /**
+     * Close the session.
+     */
+    private void closeSession() {
+        this.context.close();
     }
 
     private void saveActionError(@NonNull final List<ActionError> actionErrors) {

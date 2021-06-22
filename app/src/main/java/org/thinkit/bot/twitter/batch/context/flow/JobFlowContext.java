@@ -19,6 +19,7 @@ import org.springframework.batch.core.job.builder.JobBuilder;
 import org.thinkit.bot.twitter.batch.catalog.ScheduleType;
 import org.thinkit.bot.twitter.batch.context.Context;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
+import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowSessionCloseStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetDailyReportStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetGreetingStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetIntroduceStrategy;
@@ -65,6 +66,8 @@ public final class JobFlowContext implements Context<Job> {
             case TWEET_INTRODUCE -> JobFlowTweetIntroduceStrategy.from(this.jobBuilder, this.batchStepCollections)
                     .execute();
             case TWEET_PR -> JobFlowTweetPrStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
+            case CLOSE_SESSION -> JobFlowSessionCloseStrategy.from(this.jobBuilder, this.batchStepCollections)
+                    .execute();
         };
     }
 }

@@ -22,6 +22,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.thinkit.bot.twitter.batch.catalog.BatchStep;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
+import org.thinkit.bot.twitter.batch.tasklet.CloseSessionTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoShowUserTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGreetingTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetIntroduceTasklet;
@@ -73,6 +74,12 @@ public class BatchStepConfiguration {
     private Tasklet executeAutoTweetPrTasklet;
 
     /**
+     * The close session tasklet
+     */
+    @Autowired
+    private Tasklet closeSessionTasklet;
+
+    /**
      * Registers the instance of {@link BatchStepCollections} as bean.
      *
      * @return The instance of {@link BatchStepCollections}
@@ -86,6 +93,7 @@ public class BatchStepConfiguration {
         batchStepCollectionsBuilder.executeAutoTweetDailyReportStep(this.executeAutoTweetDailyReportStep());
         batchStepCollectionsBuilder.executeAutoTweetIntroduceStep(this.executeAutoTweetIntroduceStep());
         batchStepCollectionsBuilder.executeAutoTweetPrStep(this.executeAutoTweetPrStep());
+        batchStepCollectionsBuilder.closeSessionStep(this.closeSessionStep());
 
         return batchStepCollectionsBuilder.build();
     }
@@ -138,5 +146,14 @@ public class BatchStepConfiguration {
     private Step executeAutoTweetPrStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_PR.getTag()).tasklet(this.executeAutoTweetPrTasklet)
                 .build();
+    }
+
+    /**
+     * Returns the step of {@link CloseSessionTasklet} .
+     *
+     * @return The step of {@link CloseSessionTasklet}
+     */
+    private Step closeSessionStep() {
+        return this.stepBuilderFactory.get(BatchStep.CLOSE_SESSION.getTag()).tasklet(this.closeSessionTasklet).build();
     }
 }

@@ -59,4 +59,13 @@ public final class BatchTask implements Serializable {
     public boolean isStartSession() {
         return this.taskType == TaskType.START_SESSION;
     }
+
+    /**
+     * Checks if the task is closable.
+     *
+     * @return {@code true} if the task is closable, otherwise {@code false}
+     */
+    public boolean isClosable() {
+        return this.taskType == TaskType.CLOSE_SESSION;
+    }
 }
