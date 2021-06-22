@@ -56,7 +56,12 @@ public enum TaskType implements Catalog<TaskType> {
     /**
      * The auto show user
      */
-    AUTO_SHOW_USER(100);
+    AUTO_SHOW_USER(100),
+
+    /**
+     * The close session
+     */
+    CLOSE_SESSION(999);
 
     /**
      * The code
