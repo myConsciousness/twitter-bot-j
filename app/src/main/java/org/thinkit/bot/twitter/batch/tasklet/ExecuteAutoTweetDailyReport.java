@@ -15,6 +15,7 @@
 package org.thinkit.bot.twitter.batch.tasklet;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.batch.core.StepContribution;
@@ -29,6 +30,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.report.DailyReportBuilder;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
@@ -75,16 +77,16 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
     protected BatchTaskResult executeTask(StepContribution contribution, ChunkContext chunkContext) {
         log.debug("STRAT");
 
-        final UserProfileTransition userProfileTransition = this.getLatestUserProfileTransition();
+        final MongoCollections mongoCollections = super.getMongoCollections();
+        final UserProfile userProfile = mongoCollections.getUserProfileRepository()
+                .findByScreenName(super.getRunningUser().getName());
+        final UserProfileTransition userProfileTransition = this.getLatestUserProfileTransition(userProfile);
 
         if (userProfileTransition == null) {
             // When there is no comparison.
             return BatchTaskResult.builder().actionStatus(ActionStatus.SKIP).build();
         }
 
-        final MongoCollections mongoCollections = super.getMongoCollections();
-        final UserProfile userProfile = mongoCollections.getUserProfileRepository()
-                .findByScreenName(super.getRunningUser().getName());
         final UserProfileDifference userProfileDifference = this.getUserProfileDifference(userProfile,
                 userProfileTransition);
 
@@ -121,18 +123,24 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
         return batchTaskResultBuilder.build();
     }
 
-    private UserProfileTransition getLatestUserProfileTransition() {
+    private UserProfileTransition getLatestUserProfileTransition(final UserProfile userProfile) {
         log.debug("START");
 
-        final List<UserProfileTransition> userProfileTransitions = super.getMongoCollections()
-                .getUserProfileTransitionRepository().findAll();
+        final UserProfileTransitionRepository userProfileTransitionRepository = super.getMongoCollections()
+                .getUserProfileTransitionRepository();
+        final UserProfileTransition userProfileTransition = userProfileTransitionRepository
+                .findByUserIdAndLatestTrue(userProfile.getUserId());
 
-        if (userProfileTransitions.isEmpty()) {
-            return null;
+        if (userProfileTransition != null) {
+            userProfileTransition.setLatest(false);
+            userProfileTransition.setUpdatedAt(new Date());
+
+            userProfileTransitionRepository.save(userProfileTransition);
+            log.debug("Updated user profile transition: {}", userProfileTransition);
         }
 
         log.debug("END");
-        return userProfileTransitions.get(0);
+        return userProfileTransition;
     }
 
     private UserProfileDifference getUserProfileDifference(@NonNull final UserProfile userProfile,

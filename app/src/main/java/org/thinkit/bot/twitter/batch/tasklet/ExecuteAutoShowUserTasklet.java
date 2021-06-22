@@ -102,6 +102,7 @@ public final class ExecuteAutoShowUserTasklet extends AbstractTasklet {
         userProfileTransition.setFollowersCount(userProfile.getFollowersCount());
         userProfileTransition.setFollowingsCount(userProfile.getFollowingsCount());
         userProfileTransition.setRecordedAt(userProfile.getUpdatedAt());
+        userProfileTransition.setLatest(true);
 
         userProfileTransition = super.getMongoCollections().getUserProfileTransitionRepository()
                 .insert(userProfileTransition);
