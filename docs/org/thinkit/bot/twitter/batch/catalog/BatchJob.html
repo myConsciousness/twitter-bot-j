@@ -83,7 +83,7 @@ loadScripts(document, 'script');</script>
 <section class="description">
 <dl class="notes">
 <dt>すべての実装されたインタフェース:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/Serializable.html" title="java.io内のクラスまたはインタフェース" class="external-link">Serializable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Comparable.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Comparable</a>&lt;<a href="BatchJob.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchJob</a>&gt;</code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/constant/Constable.html" title="java.lang.constant内のクラスまたはインタフェース" class="external-link">Constable</a></code>, <code>org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchJob.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchJob</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;</code></dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/io/Serializable.html" title="java.io内のクラスまたはインタフェース" class="external-link">Serializable</a></code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Comparable.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Comparable</a>&lt;<a href="BatchJob.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchJob</a>&gt;</code>, <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/constant/Constable.html" title="java.lang.constant内のクラスまたはインタフェース" class="external-link">Constable</a></code>, <code>org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchJob.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchJob</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;</code>, <code>org.thinkit.api.catalog.BiCatalogSupport&lt;<a href="BatchJob.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchJob</a>,&#8203;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;</code>, <code>org.thinkit.api.catalog.CodeSupport</code>, <code>org.thinkit.api.catalog.TagSupport&lt;<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a>&gt;</code></dd>
 </dl>
 <hr>
 <pre>public enum <span class="type-name-label">BatchJob</span>
@@ -173,8 +173,14 @@ implements org.thinkit.api.catalog.BiCatalog&lt;<a href="BatchJob.html" title="o
 <h3 id="methods.inherited.from.class.java.lang.Object">クラスから継承されたメソッド&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#getClass()" title="java.lang内のクラスまたはインタフェース" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#notify()" title="java.lang内のクラスまたはインタフェース" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#notifyAll()" title="java.lang内のクラスまたはインタフェース" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#wait()" title="java.lang内のクラスまたはインタフェース" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#wait(long)" title="java.lang内のクラスまたはインタフェース" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="java.lang内のクラスまたはインタフェース" class="external-link">wait</a></code></div>
 <div class="inherited-list">
-<h3 id="methods.inherited.from.class.org.thinkit.api.catalog.BiCatalog">インタフェースから継承されたメソッド&nbsp;org.thinkit.api.catalog.BiCatalog</h3>
-<code>equalsByCode, equalsByTag, getCode, getTag, toEnum</code></div>
+<h3 id="methods.inherited.from.class.org.thinkit.api.catalog.BiCatalogSupport">インタフェースから継承されたメソッド&nbsp;org.thinkit.api.catalog.BiCatalogSupport</h3>
+<code>equalsByCode, equalsByTag, toEnum</code></div>
+<div class="inherited-list">
+<h3 id="methods.inherited.from.class.org.thinkit.api.catalog.CodeSupport">インタフェースから継承されたメソッド&nbsp;org.thinkit.api.catalog.CodeSupport</h3>
+<code>getCode</code></div>
+<div class="inherited-list">
+<h3 id="methods.inherited.from.class.org.thinkit.api.catalog.TagSupport">インタフェースから継承されたメソッド&nbsp;org.thinkit.api.catalog.TagSupport</h3>
+<code>getTag</code></div>
 </section>
 </li>
 </ul>

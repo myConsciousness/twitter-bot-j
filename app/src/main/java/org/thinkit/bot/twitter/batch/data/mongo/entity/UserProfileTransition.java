@@ -68,6 +68,11 @@ public final class UserProfileTransition implements Serializable {
     private Date recordedAt = new Date();
 
     /**
+     * The latest
+     */
+    private boolean latest;
+
+    /**
      * The created datetime
      */
     private Date createdAt = new Date();
