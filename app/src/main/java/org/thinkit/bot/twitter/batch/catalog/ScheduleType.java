@@ -46,7 +46,12 @@ public enum ScheduleType implements Catalog<ScheduleType> {
     /**
      * The tweet PR
      */
-    TWEET_PR(3);
+    TWEET_PR(3),
+
+    /**
+     * The close session
+     */
+    CLOSE_SESSION(999);
 
     /**
      * The code

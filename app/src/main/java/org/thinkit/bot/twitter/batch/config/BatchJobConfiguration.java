@@ -65,6 +65,11 @@ public class BatchJobConfiguration {
     private static final String SCHEDULE_CRON_TWEET_PR = "${spring.batch.schedule.cron.tweet.pr}";
 
     /**
+     * The schedule cron for close session
+     */
+    private static final String SCHEDULE_CRON_CLOSE_SESSION = "${spring.batch.schedule.cron.session.close}";
+
+    /**
      * The timezone
      */
     private static final String TIME_ZONE = "${spring.batch.schedule.timezone}";
@@ -121,6 +126,11 @@ public class BatchJobConfiguration {
     @Scheduled(cron = SCHEDULE_CRON_TWEET_PR, zone = TIME_ZONE)
     public void performScheduledTweetPr() throws Exception {
         this.runJobLauncher(ScheduleType.TWEET_PR);
+    }
+
+    @Scheduled(cron = SCHEDULE_CRON_CLOSE_SESSION, zone = TIME_ZONE)
+    public void performScheduledSessionClose() throws Exception {
+        this.runJobLauncher(ScheduleType.CLOSE_SESSION);
     }
 
     private void runJobLauncher(@NonNull final ScheduleType scheduleType) throws Exception {
