@@ -14,6 +14,8 @@
 
 package org.thinkit.bot.twitter.batch.data.mongo.repository;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
@@ -26,4 +28,20 @@ import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
  */
 @Repository
 public interface UserProfileTransitionRepository extends MongoRepository<UserProfileTransition, String> {
+
+    /**
+     * Returns the all latest user profile transitions.
+     *
+     * @return The all latest user profile transitions
+     */
+    public List<UserProfileTransition> findByLatestTrue();
+
+    /**
+     * Returns the latest user profile transition linked to the user id passed as an
+     * argument.
+     *
+     * @param userId The user id
+     * @return The latest user profile transition
+     */
+    public UserProfileTransition findByUserIdAndLatestTrue(long userId);
 }
