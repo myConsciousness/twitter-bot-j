@@ -12,12 +12,13 @@
  * the License.
  */
 
-package org.thinkit.bot.twitter.batch.strategy.flow;
+package org.thinkit.bot.twitter.batch.report;
 
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.job.builder.JobBuilder;
-import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
-import org.thinkit.bot.twitter.batch.strategy.Strategy;
+import java.io.Serializable;
+
+import org.thinkit.bot.twitter.batch.catalog.Language;
+import org.thinkit.bot.twitter.batch.context.report.WeeklyReportContext;
+import org.thinkit.bot.twitter.util.UserProfileDifference;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -29,21 +30,20 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class JobFlowTweetDailyReportStrategy implements Strategy<Job> {
+public final class WeeklyReportBuilder implements ReportBuilder, Serializable {
 
     /**
-     * The job builder
+     * The language
      */
-    private JobBuilder jobBuilder;
+    private Language language;
 
     /**
-     * The batch step collections
+     * The user profile difference
      */
-    private BatchStepCollections batchStepCollections;
+    private UserProfileDifference userProfileDifference;
 
     @Override
-    public Job execute() {
-        return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoShowUserStep())
-                .next(this.batchStepCollections.getExecuteAutoTweetDailyReportStep()).end().build();
+    public Report build() {
+        return WeeklyReportContext.from(language, userProfileDifference).evaluate();
     }
 }

@@ -115,7 +115,7 @@ public class BatchJobConfiguration {
 
     @Scheduled(cron = SCHEDULE_CRON_TWEET_REPORT, zone = TIME_ZONE)
     public void performScheduledTweetDailyReport() throws Exception {
-        this.runJobLauncher(ScheduleType.TWEET_DAILY_REPORT);
+        this.runJobLauncher(ScheduleType.TWEET_REPORT);
     }
 
     @Scheduled(cron = SCHEDULE_CRON_TWEET_INTRODUCE, zone = TIME_ZONE)

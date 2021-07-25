@@ -34,9 +34,9 @@ public enum ScheduleType implements Catalog<ScheduleType> {
     TWEET_GREETING(0),
 
     /**
-     * The tweet daily report
+     * The tweet report
      */
-    TWEET_DAILY_REPORT(1),
+    TWEET_REPORT(1),
 
     /**
      * The tweet introduce

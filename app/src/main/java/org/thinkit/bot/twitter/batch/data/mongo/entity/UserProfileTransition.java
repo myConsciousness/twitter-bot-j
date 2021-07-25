@@ -53,6 +53,12 @@ public final class UserProfileTransition implements Serializable {
     private String name;
 
     /**
+     * The user profile transition type code
+     */
+    @Indexed
+    private int userProfileTransitionTypeCode;
+
+    /**
      * The followers count
      */
     private int followersCount;

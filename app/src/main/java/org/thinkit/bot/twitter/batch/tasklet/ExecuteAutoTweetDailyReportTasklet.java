@@ -26,6 +26,7 @@ import org.thinkit.bot.twitter.batch.catalog.Language;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
 import org.thinkit.bot.twitter.batch.catalog.TweetTextPattern;
 import org.thinkit.bot.twitter.batch.catalog.TweetType;
+import org.thinkit.bot.twitter.batch.catalog.UserProfileTransitionType;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.TweetResult;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
@@ -55,22 +56,22 @@ import lombok.extern.slf4j.Slf4j;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @Component
-public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
+public final class ExecuteAutoTweetDailyReportTasklet extends AbstractTasklet {
 
     /**
      * The default constructor.
      */
-    private ExecuteAutoTweetDailyReport() {
+    private ExecuteAutoTweetDailyReportTasklet() {
         super(TaskType.AUTO_TWEET_DAILY_REPORT);
     }
 
     /**
-     * Returns the new instance of {@link ExecuteAutoTweetDailyReport}
+     * Returns the new instance of {@link ExecuteAutoTweetDailyReportTasklet}
      *
-     * @return The new instance of {@link ExecuteAutoTweetDailyReport}
+     * @return The new instance of {@link ExecuteAutoTweetDailyReportTasklet}
      */
     public static Tasklet newInstance() {
-        return new ExecuteAutoTweetDailyReport();
+        return new ExecuteAutoTweetDailyReportTasklet();
     }
 
     @Override
@@ -129,7 +130,8 @@ public final class ExecuteAutoTweetDailyReport extends AbstractTasklet {
         final UserProfileTransitionRepository userProfileTransitionRepository = super.getMongoCollections()
                 .getUserProfileTransitionRepository();
         final UserProfileTransition userProfileTransition = userProfileTransitionRepository
-                .findByUserIdAndLatestTrue(userProfile.getUserId());
+                .findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue(userProfile.getUserId(),
+                        UserProfileTransitionType.DAILY.getCode());
 
         if (userProfileTransition != null) {
             userProfileTransition.setLatest(false);
