@@ -29,7 +29,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class JobFlowTweetDailyReportStrategy implements Strategy<Job> {
+public final class JobFlowTweetReportStrategy implements Strategy<Job> {
 
     /**
      * The job builder
@@ -44,6 +44,7 @@ public final class JobFlowTweetDailyReportStrategy implements Strategy<Job> {
     @Override
     public Job execute() {
         return this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoShowUserStep())
-                .next(this.batchStepCollections.getExecuteAutoTweetDailyReportStep()).end().build();
+                .next(this.batchStepCollections.getExecuteAutoTweetDailyReportStep())
+                .next(this.batchStepCollections.getExecuteAutoTweetWeeklyReportStep()).end().build();
     }
 }

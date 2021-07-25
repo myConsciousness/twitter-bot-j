@@ -20,10 +20,10 @@ import org.thinkit.bot.twitter.batch.catalog.ScheduleType;
 import org.thinkit.bot.twitter.batch.context.Context;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowSessionCloseStrategy;
-import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetDailyReportStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetGreetingStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetIntroduceStrategy;
 import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetPrStrategy;
+import org.thinkit.bot.twitter.batch.strategy.flow.JobFlowTweetReportStrategy;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -61,8 +61,7 @@ public final class JobFlowContext implements Context<Job> {
         return switch (this.scheduleType) {
             case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(this.jobBuilder, this.batchStepCollections)
                     .execute();
-            case TWEET_DAILY_REPORT -> JobFlowTweetDailyReportStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
+            case TWEET_REPORT -> JobFlowTweetReportStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
             case TWEET_INTRODUCE -> JobFlowTweetIntroduceStrategy.from(this.jobBuilder, this.batchStepCollections)
                     .execute();
             case TWEET_PR -> JobFlowTweetPrStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
