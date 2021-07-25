@@ -52,6 +52,12 @@ public final class BatchStepCollections implements Serializable {
     private Step executeAutoTweetDailyReportStep;
 
     /**
+     * The auto tweet weekly report step
+     */
+    @Getter
+    private Step executeAutoTweetWeeklyReportStep;
+
+    /**
      * The execute auto show user step
      */
     @Getter

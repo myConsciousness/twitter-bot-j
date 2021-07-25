@@ -117,7 +117,8 @@ extends org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="
 </tr>
 <tr class="row-color" id="i1">
 <td class="col-first"><code><a href="../entity/UserProfileTransition.html" title="org.thinkit.bot.twitter.batch.data.mongo.entity内のクラス">UserProfileTransition</a></code></td>
-<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#findByUserIdAndLatestTrue(long)">findByUserIdAndLatestTrue</a></span>&#8203;(long&nbsp;userId)</code></th>
+<th class="col-second" scope="row"><code><span class="member-name-link"><a href="#findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue(long,int)">findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue</a></span>&#8203;(long&nbsp;userId,
+int&nbsp;userProfileTransitionTypeCode)</code></th>
 <td class="col-last">
 <div class="block">Returns the latest user profile transition linked to the user id passed as an
  argument.</div>
@@ -162,14 +163,16 @@ extends org.springframework.data.mongodb.repository.MongoRepository&lt;<a href="
 </section>
 </li>
 <li>
-<section class="detail" id="findByUserIdAndLatestTrue(long)">
-<h3>findByUserIdAndLatestTrue</h3>
-<div class="member-signature"><span class="return-type"><a href="../entity/UserProfileTransition.html" title="org.thinkit.bot.twitter.batch.data.mongo.entity内のクラス">UserProfileTransition</a></span>&nbsp;<span class="member-name">findByUserIdAndLatestTrue</span>&#8203;(<span class="parameters">long&nbsp;userId)</span></div>
+<section class="detail" id="findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue(long,int)">
+<h3>findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue</h3>
+<div class="member-signature"><span class="return-type"><a href="../entity/UserProfileTransition.html" title="org.thinkit.bot.twitter.batch.data.mongo.entity内のクラス">UserProfileTransition</a></span>&nbsp;<span class="member-name">findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue</span>&#8203;(<span class="parameters">long&nbsp;userId,
+int&nbsp;userProfileTransitionTypeCode)</span></div>
 <div class="block">Returns the latest user profile transition linked to the user id passed as an
  argument.</div>
 <dl class="notes">
 <dt>パラメータ:</dt>
 <dd><code>userId</code> - The user id</dd>
+<dd><code>userProfileTransitionTypeCode</code> - The user peofile transition type code</dd>
 <dt>戻り値:</dt>
 <dd>The latest user profile transition</dd>
 </dl>

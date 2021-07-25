@@ -40,8 +40,10 @@ public interface UserProfileTransitionRepository extends MongoRepository<UserPro
      * Returns the latest user profile transition linked to the user id passed as an
      * argument.
      *
-     * @param userId The user id
+     * @param userId                        The user id
+     * @param userProfileTransitionTypeCode The user peofile transition type code
      * @return The latest user profile transition
      */
-    public UserProfileTransition findByUserIdAndLatestTrue(long userId);
+    public UserProfileTransition findByUserIdAndUserProfileTransitionTypeCodeAndLatestTrue(long userId,
+            int userProfileTransitionTypeCode);
 }
