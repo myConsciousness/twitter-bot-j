@@ -33,7 +33,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.TweetResultRepository;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
-import org.thinkit.bot.twitter.batch.report.DailyReportBuilder;
+import org.thinkit.bot.twitter.batch.report.WeeklyReportBuilder;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
 import org.thinkit.bot.twitter.catalog.ActionStatus;
 import org.thinkit.bot.twitter.param.Tweet;
@@ -153,6 +153,6 @@ public final class ExecuteAutoTweetWeeklyReportTasklet extends AbstractTasklet {
 
     private String getWeeklyReport(@NonNull final Language language,
             @NonNull final UserProfileDifference userProfileDifference) {
-        return DailyReportBuilder.from(language, userProfileDifference).build().getText();
+        return WeeklyReportBuilder.from(language, userProfileDifference).build().getText();
     }
 }

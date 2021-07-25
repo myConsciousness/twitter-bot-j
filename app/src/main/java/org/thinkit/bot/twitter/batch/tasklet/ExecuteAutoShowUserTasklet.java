@@ -25,13 +25,13 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
 import org.thinkit.bot.twitter.batch.catalog.UserProfileTransitionType;
+import org.thinkit.bot.twitter.batch.context.transition.profile.RecordProfileTransitionContext;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
-import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileRepository;
+import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
 import org.thinkit.bot.twitter.batch.dto.MongoCollections;
 import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
 import org.thinkit.bot.twitter.result.AutoShowUserResult;
-import org.thinkit.bot.twitter.util.DateUtils;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -98,43 +98,12 @@ public final class ExecuteAutoShowUserTasklet extends AbstractTasklet {
     private void recordUserProfileAsTransition(@NonNull final UserProfile userProfile) {
         log.debug("START");
 
+        final UserProfileTransitionRepository userProfileTransitionRepository = super.getMongoCollections()
+                .getUserProfileTransitionRepository();
+
         for (final UserProfileTransitionType userProfileTransitionType : UserProfileTransitionType.values()) {
-            switch (userProfileTransitionType) {
-                case DAILY -> {
-                    UserProfileTransition userProfileTransition = new UserProfileTransition();
-                    userProfileTransition.setUserId(userProfile.getUserId());
-                    userProfileTransition.setName(userProfile.getName());
-                    userProfileTransition.setUserProfileTransitionTypeCode(UserProfileTransitionType.DAILY.getCode());
-                    userProfileTransition.setFollowersCount(userProfile.getFollowersCount());
-                    userProfileTransition.setFollowingsCount(userProfile.getFollowingsCount());
-                    userProfileTransition.setRecordedAt(userProfile.getUpdatedAt());
-                    userProfileTransition.setLatest(true);
-
-                    userProfileTransition = super.getMongoCollections().getUserProfileTransitionRepository()
-                            .insert(userProfileTransition);
-                    log.debug("Inserted user profile transition: {}", userProfileTransition);
-                }
-                case WEEKLY -> {
-                    if (DateUtils.isWeekend()) {
-                        UserProfileTransition userProfileTransition = new UserProfileTransition();
-                        userProfileTransition.setUserId(userProfile.getUserId());
-                        userProfileTransition.setName(userProfile.getName());
-                        userProfileTransition
-                                .setUserProfileTransitionTypeCode(UserProfileTransitionType.WEEKLY.getCode());
-                        userProfileTransition.setFollowersCount(userProfile.getFollowersCount());
-                        userProfileTransition.setFollowingsCount(userProfile.getFollowingsCount());
-                        userProfileTransition.setRecordedAt(userProfile.getUpdatedAt());
-                        userProfileTransition.setLatest(true);
-
-                        userProfileTransition = super.getMongoCollections().getUserProfileTransitionRepository()
-                                .insert(userProfileTransition);
-                        log.debug("Inserted user profile transition weekly: {}", userProfileTransition);
-                    }
-                }
-                case MONTHLY -> {
-                    throw new UnsupportedOperationException();
-                }
-            }
+            RecordProfileTransitionContext.from(userProfileTransitionRepository, userProfile, userProfileTransitionType)
+                    .evaluate();
         }
 
         log.debug("END");
