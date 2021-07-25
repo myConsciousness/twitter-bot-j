@@ -67,6 +67,10 @@ public final class DateUtils {
         return eveningTimeframe.getEnd() >= hour && hour >= eveningTimeframe.getStart();
     }
 
+    public static boolean isWeekend() {
+        return Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
+    }
+
     private static int getCurrentHour() {
         final Calendar calendar = Calendar.getInstance();
         return switch (calendar.get(Calendar.AM_PM)) {
