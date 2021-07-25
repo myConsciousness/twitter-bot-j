@@ -112,6 +112,30 @@ loadScripts(document, 'script');</script>
 </ul>
 </section>
 </li>
+<li>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.batch.context.report.WeeklyReportContext">
+<h3>Class <a href="org/thinkit/bot/twitter/batch/context/report/WeeklyReportContext.html" title="org.thinkit.bot.twitter.batch.context.report内のクラス">org.thinkit.bot.twitter.batch.context.report.WeeklyReportContext</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>直列化されたフィールド</h4>
+<ul class="block-list">
+<li class="block-list">
+<h5>language</h5>
+<pre><a href="org/thinkit/bot/twitter/batch/catalog/Language.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">Language</a> language</pre>
+<div class="block">The language</div>
+</li>
+<li class="block-list">
+<h5>userProfileDifference</h5>
+<pre><a href="org/thinkit/bot/twitter/util/UserProfileDifference.html" title="org.thinkit.bot.twitter.util内のクラス">UserProfileDifference</a> userProfileDifference</pre>
+<div class="block">The user profile difference</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
 </ul>
 </section>
 </li>
@@ -647,6 +671,11 @@ loadScripts(document, 'script');</script>
 <pre>long userId</pre>
 <div class="block">The user id</div>
 </li>
+<li class="block-list">
+<h5>userProfileTransitionTypeCode</h5>
+<pre>int userProfileTransitionTypeCode</pre>
+<div class="block">The user profile transition type code</div>
+</li>
 </ul>
 </section>
 </li>
@@ -736,6 +765,11 @@ loadScripts(document, 'script');</script>
 <h5>executeAutoTweetPrStep</h5>
 <pre>org.springframework.batch.core.Step executeAutoTweetPrStep</pre>
 <div class="block">The execute auto tweet PR step</div>
+</li>
+<li class="block-list">
+<h5>executeAutoTweetWeeklyReportStep</h5>
+<pre>org.springframework.batch.core.Step executeAutoTweetWeeklyReportStep</pre>
+<div class="block">The auto tweet weekly report step</div>
 </li>
 </ul>
 </section>
@@ -925,6 +959,30 @@ loadScripts(document, 'script');</script>
 <h5>text</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/String.html" title="java.lang内のクラスまたはインタフェース" class="external-link">String</a> text</pre>
 <div class="block">The text</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<li>
+<section class="serialized-class-details" id="org.thinkit.bot.twitter.batch.report.WeeklyReportBuilder">
+<h3>Class <a href="org/thinkit/bot/twitter/batch/report/WeeklyReportBuilder.html" title="org.thinkit.bot.twitter.batch.report内のクラス">org.thinkit.bot.twitter.batch.report.WeeklyReportBuilder</a> extends <a href="https://docs.oracle.com/en/java/javase/13/docs/api/java.base/java/lang/Object.html" title="java.lang内のクラスまたはインタフェース" class="external-link">Object</a> implements Serializable</h3>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>直列化されたフィールド</h4>
+<ul class="block-list">
+<li class="block-list">
+<h5>language</h5>
+<pre><a href="org/thinkit/bot/twitter/batch/catalog/Language.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">Language</a> language</pre>
+<div class="block">The language</div>
+</li>
+<li class="block-list">
+<h5>userProfileDifference</h5>
+<pre><a href="org/thinkit/bot/twitter/util/UserProfileDifference.html" title="org.thinkit.bot.twitter.util内のクラス">UserProfileDifference</a> userProfileDifference</pre>
+<div class="block">The user profile difference</div>
 </li>
 </ul>
 </section>
