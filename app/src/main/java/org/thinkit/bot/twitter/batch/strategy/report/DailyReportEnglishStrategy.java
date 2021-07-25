@@ -24,7 +24,7 @@ import lombok.ToString;
 
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public final class DailyReportEnglishStrategy extends AbstractDailyReportStrategy {
+public final class DailyReportEnglishStrategy extends AbstractReportStrategy {
 
     /**
      * The constructor.
@@ -52,7 +52,7 @@ public final class DailyReportEnglishStrategy extends AbstractDailyReportStrateg
 
     @Override
     public Report execute() {
-        return super.toDailyReport("""
+        return super.toReport("""
                 Daily Report (%s)
 
                 ・Followings: %s (%s%%)
