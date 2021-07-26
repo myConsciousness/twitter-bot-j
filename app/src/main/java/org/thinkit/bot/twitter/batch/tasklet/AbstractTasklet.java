@@ -299,7 +299,7 @@ public abstract class AbstractTasklet implements Tasklet {
      * Close the session.
      */
     private void closeSession() {
-        final int exitCode = SpringApplication.exit(context, () -> 0);
+        final int exitCode = SpringApplication.exit(this.context, () -> 0);
         System.exit(exitCode);
     }
 
