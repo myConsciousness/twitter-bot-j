@@ -24,9 +24,12 @@ import org.thinkit.bot.twitter.batch.catalog.BatchStep;
 import org.thinkit.bot.twitter.batch.dto.BatchStepCollections;
 import org.thinkit.bot.twitter.batch.tasklet.CloseSessionTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoShowUserTasklet;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetDailyReportTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetGreetingTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetIntroduceTasklet;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetMonthlyReportTasklet;
 import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetPrTasklet;
+import org.thinkit.bot.twitter.batch.tasklet.ExecuteAutoTweetWeeklyReportTasklet;
 
 /**
  * The class that manages the batch step configuration of Twitter bot command.
@@ -60,6 +63,12 @@ public class BatchStepConfiguration {
      */
     @Autowired
     private Tasklet executeAutoTweetWeeklyReportTasklet;
+
+    /**
+     * The auto tweet monthly report
+     */
+    @Autowired
+    private Tasklet executeAutoTweetMonthlyReportTasklet;
 
     /**
      * The execute auto show user tasklet
@@ -98,6 +107,7 @@ public class BatchStepConfiguration {
         batchStepCollectionsBuilder.executeAutoShowUserStep(this.executeAutoShowUserStep());
         batchStepCollectionsBuilder.executeAutoTweetDailyReportStep(this.executeAutoTweetDailyReportStep());
         batchStepCollectionsBuilder.executeAutoTweetWeeklyReportStep(this.executeAutoTweetWeeklyReportStep());
+        batchStepCollectionsBuilder.executeAutoTweetMonthlyReportStep(this.executeAutoTweetMonthlyReportStep());
         batchStepCollectionsBuilder.executeAutoTweetIntroduceStep(this.executeAutoTweetIntroduceStep());
         batchStepCollectionsBuilder.executeAutoTweetPrStep(this.executeAutoTweetPrStep());
         batchStepCollectionsBuilder.closeSessionStep(this.closeSessionStep());
@@ -133,6 +143,16 @@ public class BatchStepConfiguration {
     private Step executeAutoTweetWeeklyReportStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_WEEKLY_REPORT.getTag())
                 .tasklet(this.executeAutoTweetWeeklyReportTasklet).build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoTweetMonthlyReportTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoTweetMonthlyReportTasklet}
+     */
+    private Step executeAutoTweetMonthlyReportStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_MONTHLY_REPORT.getTag())
+                .tasklet(this.executeAutoTweetMonthlyReportTasklet).build();
     }
 
     /**

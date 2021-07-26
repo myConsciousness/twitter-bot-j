@@ -69,11 +69,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/result/AbstractCommandResultBuilder.html#%3Cinit%3E()">AbstractCommandResultBuilder()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.result.<a href="org/thinkit/bot/twitter/result/AbstractCommandResultBuilder.html" title="org.thinkit.bot.twitter.result内のクラス">AbstractCommandResultBuilder</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractDailyReportStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><span class="type-name-link">AbstractDailyReportStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/report/package-summary.html">org.thinkit.bot.twitter.batch.strategy.report</a>のクラス</dt>
-<dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractDailyReportStrategy.html#%3Cinit%3E()">AbstractDailyReportStrategy()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractDailyReportStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">AbstractDailyReportStrategy</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/AbstractRecordProfileTransitionStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス"><span class="type-name-link">AbstractRecordProfileTransitionStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/package-summary.html">org.thinkit.bot.twitter.batch.strategy.transition.profile</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractReportStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><span class="type-name-link">AbstractReportStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/report/package-summary.html">org.thinkit.bot.twitter.batch.strategy.report</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractReportStrategy.html#%3Cinit%3E()">AbstractReportStrategy()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractReportStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">AbstractReportStrategy</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/thinkit/bot/twitter/batch/tasklet/AbstractTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">AbstractTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
 <dd>&nbsp;</dd>
@@ -81,10 +81,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The class that abstracts the process of Twitter bot.</div>
 </dd>
-<dt><a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractWeeklyReportStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><span class="type-name-link">AbstractWeeklyReportStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/report/package-summary.html">org.thinkit.bot.twitter.batch.strategy.report</a>のクラス</dt>
-<dd>&nbsp;</dd>
-<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractWeeklyReportStrategy.html#%3Cinit%3E()">AbstractWeeklyReportStrategy()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/AbstractWeeklyReportStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">AbstractWeeklyReportStrategy</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="org/thinkit/bot/twitter/result/ActionError.html" title="org.thinkit.bot.twitter.result内のクラス"><span class="type-name-link">ActionError</span></a> - <a href="org/thinkit/bot/twitter/result/package-summary.html">org.thinkit.bot.twitter.result</a>のクラス</dt>
 <dd>
 <div class="block">The class that manages action error.</div>
@@ -174,6 +170,14 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/TaskType.html#AUTO_TWEET_INTRODUCE">AUTO_TWEET_INTRODUCE</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/TaskType.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">TaskType</a></dt>
 <dd>
 <div class="block">The auto tweet introduce</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/BatchStep.html#AUTO_TWEET_MONTHLY_REPORT">AUTO_TWEET_MONTHLY_REPORT</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></dt>
+<dd>
+<div class="block">The auto tweet monthly report step</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/TaskType.html#AUTO_TWEET_MONTHLY_REPORT">AUTO_TWEET_MONTHLY_REPORT</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/TaskType.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">TaskType</a></dt>
+<dd>
+<div class="block">The auto tweet monthly report</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/catalog/BatchStep.html#AUTO_TWEET_PR">AUTO_TWEET_PR</a></span> - org.thinkit.bot.twitter.batch.catalog.<a href="org/thinkit/bot/twitter/batch/catalog/BatchStep.html" title="org.thinkit.bot.twitter.batch.catalog内の列挙型">BatchStep</a></dt>
 <dd>
@@ -306,6 +310,8 @@ loadScripts(document, 'script');</script>
 <div class="block">The interface that represents the process of bot command.</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/report/DailyReportBuilder.html#build()">build()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.report.<a href="org/thinkit/bot/twitter/batch/report/DailyReportBuilder.html" title="org.thinkit.bot.twitter.batch.report内のクラス">DailyReportBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/report/MonthlyReportBuilder.html#build()">build()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.report.<a href="org/thinkit/bot/twitter/batch/report/MonthlyReportBuilder.html" title="org.thinkit.bot.twitter.batch.report内のクラス">MonthlyReportBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/report/ReportBuilder.html#build()">build()</a></span> - インタフェース のメソッドorg.thinkit.bot.twitter.batch.report.<a href="org/thinkit/bot/twitter/batch/report/ReportBuilder.html" title="org.thinkit.bot.twitter.batch.report内のインタフェース">ReportBuilder</a></dt>
 <dd>&nbsp;</dd>
@@ -476,6 +482,8 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/context/report/DailyReportContext.html#evaluate()">evaluate()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.context.report.<a href="org/thinkit/bot/twitter/batch/context/report/DailyReportContext.html" title="org.thinkit.bot.twitter.batch.context.report内のクラス">DailyReportContext</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/context/report/MonthlyReportContext.html#evaluate()">evaluate()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.context.report.<a href="org/thinkit/bot/twitter/batch/context/report/MonthlyReportContext.html" title="org.thinkit.bot.twitter.batch.context.report内のクラス">MonthlyReportContext</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/context/report/WeeklyReportContext.html#evaluate()">evaluate()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.context.report.<a href="org/thinkit/bot/twitter/batch/context/report/WeeklyReportContext.html" title="org.thinkit.bot.twitter.batch.context.report内のクラス">WeeklyReportContext</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/context/transition/profile/RecordProfileTransitionContext.html#evaluate()">evaluate()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.context.transition.profile.<a href="org/thinkit/bot/twitter/batch/context/transition/profile/RecordProfileTransitionContext.html" title="org.thinkit.bot.twitter.batch.context.transition.profile内のクラス">RecordProfileTransitionContext</a></dt>
@@ -498,6 +506,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportJapaneseStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">DailyReportJapaneseStrategy</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportEnglishStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">MonthlyReportEnglishStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportJapaneseStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">MonthlyReportJapaneseStrategy</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportEnglishStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">WeeklyReportEnglishStrategy</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportJapaneseStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">WeeklyReportJapaneseStrategy</a></dt>
@@ -505,6 +517,8 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/Strategy.html#execute()">execute()</a></span> - インタフェース のメソッドorg.thinkit.bot.twitter.batch.strategy.<a href="org/thinkit/bot/twitter/batch/strategy/Strategy.html" title="org.thinkit.bot.twitter.batch.strategy内のインタフェース">Strategy</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionDailyStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.transition.profile.<a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionDailyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス">RecordProfileTransitionDailyStrategy</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionMonthlyStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.transition.profile.<a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionMonthlyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス">RecordProfileTransitionMonthlyStrategy</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionWeeklyStrategy.html#execute()">execute()</a></span> - クラス のメソッドorg.thinkit.bot.twitter.batch.strategy.transition.profile.<a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionWeeklyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス">RecordProfileTransitionWeeklyStrategy</a></dt>
 <dd>&nbsp;</dd>
@@ -543,6 +557,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoTweetIntroduceTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
 <dd>
 <div class="block">The class that manages the auto tweet introduce.</div>
+</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetMonthlyReportTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoTweetMonthlyReportTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
+<dd>
+<div class="block">The class that manages the auto tweet monthly report.</div>
 </dd>
 <dt><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><span class="type-name-link">ExecuteAutoTweetPrTasklet</span></a> - <a href="org/thinkit/bot/twitter/batch/tasklet/package-summary.html">org.thinkit.bot.twitter.batch.tasklet</a>のクラス</dt>
 <dd>
@@ -614,6 +632,16 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/strategy/report/DailyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><code>DailyReportJapaneseStrategy</code></a> based on the
  object passed as an argument.</div>
 </dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportEnglishStrategy.html#from(org.thinkit.bot.twitter.util.UserProfileDifference)">from(UserProfileDifference)</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">MonthlyReportEnglishStrategy</a></dt>
+<dd>
+<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><code>MonthlyReportEnglishStrategy</code></a> based on the
+ object passed as an argument.</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportJapaneseStrategy.html#from(org.thinkit.bot.twitter.util.UserProfileDifference)">from(UserProfileDifference)</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">MonthlyReportJapaneseStrategy</a></dt>
+<dd>
+<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><code>MonthlyReportJapaneseStrategy</code></a> based on
+ the object passed as an argument.</div>
+</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportEnglishStrategy.html#from(org.thinkit.bot.twitter.util.UserProfileDifference)">from(UserProfileDifference)</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.strategy.report.<a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス">WeeklyReportEnglishStrategy</a></dt>
 <dd>
 <div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/strategy/report/WeeklyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><code>WeeklyReportEnglishStrategy</code></a> based on the
@@ -627,6 +655,11 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionDailyStrategy.html#from(org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository,org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile)">from(UserProfileTransitionRepository, UserProfile)</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.strategy.transition.profile.<a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionDailyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス">RecordProfileTransitionDailyStrategy</a></dt>
 <dd>
 <div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionDailyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス"><code>RecordProfileTransitionDailyStrategy</code></a>
+ based on the parameters passed as anh arguments.</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionMonthlyStrategy.html#from(org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository,org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile)">from(UserProfileTransitionRepository, UserProfile)</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.strategy.transition.profile.<a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionMonthlyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス">RecordProfileTransitionMonthlyStrategy</a></dt>
+<dd>
+<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionMonthlyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス"><code>RecordProfileTransitionMonthlyStrategy</code></a>
  based on the parameters passed as anh arguments.</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionWeeklyStrategy.html#from(org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository,org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile)">from(UserProfileTransitionRepository, UserProfile)</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.strategy.transition.profile.<a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionWeeklyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス">RecordProfileTransitionWeeklyStrategy</a></dt>
@@ -708,6 +741,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Checks if the task is closable.</div>
 </dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/util/DateUtils.html#isEnfOfMonth()">isEnfOfMonth()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.util.<a href="org/thinkit/bot/twitter/util/DateUtils.html" title="org.thinkit.bot.twitter.util内のクラス">DateUtils</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/util/DateUtils.html#isEvening()">isEvening()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.util.<a href="org/thinkit/bot/twitter/util/DateUtils.html" title="org.thinkit.bot.twitter.util内のクラス">DateUtils</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/util/DateUtils.html#isMorning()">isMorning()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.util.<a href="org/thinkit/bot/twitter/util/DateUtils.html" title="org.thinkit.bot.twitter.util内のクラス">DateUtils</a></dt>
@@ -797,6 +832,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The monthly</div>
 </dd>
+<dt><a href="org/thinkit/bot/twitter/batch/report/MonthlyReportBuilder.html" title="org.thinkit.bot.twitter.batch.report内のクラス"><span class="type-name-link">MonthlyReportBuilder</span></a> - <a href="org/thinkit/bot/twitter/batch/report/package-summary.html">org.thinkit.bot.twitter.batch.report</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/report/MonthlyReportBuilder.html#%3Cinit%3E()">MonthlyReportBuilder()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.report.<a href="org/thinkit/bot/twitter/batch/report/MonthlyReportBuilder.html" title="org.thinkit.bot.twitter.batch.report内のクラス">MonthlyReportBuilder</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/context/report/MonthlyReportContext.html" title="org.thinkit.bot.twitter.batch.context.report内のクラス"><span class="type-name-link">MonthlyReportContext</span></a> - <a href="org/thinkit/bot/twitter/batch/context/report/package-summary.html">org.thinkit.bot.twitter.batch.context.report</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/context/report/MonthlyReportContext.html#%3Cinit%3E()">MonthlyReportContext()</a></span> - クラス のコンストラクタorg.thinkit.bot.twitter.batch.context.report.<a href="org/thinkit/bot/twitter/batch/context/report/MonthlyReportContext.html" title="org.thinkit.bot.twitter.batch.context.report内のクラス">MonthlyReportContext</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportEnglishStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><span class="type-name-link">MonthlyReportEnglishStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/report/package-summary.html">org.thinkit.bot.twitter.batch.strategy.report</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/strategy/report/MonthlyReportJapaneseStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.report内のクラス"><span class="type-name-link">MonthlyReportJapaneseStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/report/package-summary.html">org.thinkit.bot.twitter.batch.strategy.report</a>のクラス</dt>
+<dd>&nbsp;</dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/catalog/Timeframe.html#MORNING">MORNING</a></span> - org.thinkit.bot.twitter.catalog.<a href="org/thinkit/bot/twitter/catalog/Timeframe.html" title="org.thinkit.bot.twitter.catalog内の列挙型">Timeframe</a></dt>
 <dd>
 <div class="block">The morning</div>
@@ -837,6 +884,10 @@ loadScripts(document, 'script');</script>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html#newInstance()">newInstance()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">ExecuteAutoTweetIntroduceTasklet</a></dt>
 <dd>
 <div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetIntroduceTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><code>ExecuteAutoTweetIntroduceTasklet</code></a> .</div>
+</dd>
+<dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetMonthlyReportTasklet.html#newInstance()">newInstance()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetMonthlyReportTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">ExecuteAutoTweetMonthlyReportTasklet</a></dt>
+<dd>
+<div class="block">Returns the new instance of <a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetMonthlyReportTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス"><code>ExecuteAutoTweetMonthlyReportTasklet</code></a> .</div>
 </dd>
 <dt><span class="member-name-link"><a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html#newInstance()">newInstance()</a></span> - クラス のstaticメソッドorg.thinkit.bot.twitter.batch.tasklet.<a href="org/thinkit/bot/twitter/batch/tasklet/ExecuteAutoTweetPrTasklet.html" title="org.thinkit.bot.twitter.batch.tasklet内のクラス">ExecuteAutoTweetPrTasklet</a></dt>
 <dd>
@@ -960,6 +1011,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/thinkit/bot/twitter/batch/context/transition/profile/RecordProfileTransitionContext.html" title="org.thinkit.bot.twitter.batch.context.transition.profile内のクラス"><span class="type-name-link">RecordProfileTransitionContext</span></a> - <a href="org/thinkit/bot/twitter/batch/context/transition/profile/package-summary.html">org.thinkit.bot.twitter.batch.context.transition.profile</a>のクラス</dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionDailyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス"><span class="type-name-link">RecordProfileTransitionDailyStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/package-summary.html">org.thinkit.bot.twitter.batch.strategy.transition.profile</a>のクラス</dt>
+<dd>&nbsp;</dd>
+<dt><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionMonthlyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス"><span class="type-name-link">RecordProfileTransitionMonthlyStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/package-summary.html">org.thinkit.bot.twitter.batch.strategy.transition.profile</a>のクラス</dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/RecordProfileTransitionWeeklyStrategy.html" title="org.thinkit.bot.twitter.batch.strategy.transition.profile内のクラス"><span class="type-name-link">RecordProfileTransitionWeeklyStrategy</span></a> - <a href="org/thinkit/bot/twitter/batch/strategy/transition/profile/package-summary.html">org.thinkit.bot.twitter.batch.strategy.transition.profile</a>のクラス</dt>
 <dd>&nbsp;</dd>

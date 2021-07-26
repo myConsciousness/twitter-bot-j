@@ -71,6 +71,11 @@ public final class DateUtils {
         return Calendar.getInstance().get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
     }
 
+    public static boolean isEnfOfMonth() {
+        final Calendar today = Calendar.getInstance();
+        return today.get(Calendar.DATE) == today.getActualMaximum(Calendar.DATE);
+    }
+
     private static int getCurrentHour() {
         final Calendar calendar = Calendar.getInstance();
         return switch (calendar.get(Calendar.AM_PM)) {

@@ -24,7 +24,7 @@ import lombok.ToString;
 
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public final class WeeklyReportEnglishStrategy extends AbstractWeeklyReportStrategy {
+public final class WeeklyReportEnglishStrategy extends AbstractReportStrategy {
 
     /**
      * The constructor.
@@ -52,7 +52,7 @@ public final class WeeklyReportEnglishStrategy extends AbstractWeeklyReportStrat
 
     @Override
     public Report execute() {
-        return super.toWeeklyReport("""
+        return super.toReport("""
                 Weekly Report (%s)
 
                 ・Followings: %s (%s%%)
