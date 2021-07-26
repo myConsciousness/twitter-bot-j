@@ -22,6 +22,7 @@ import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfile;
 import org.thinkit.bot.twitter.batch.data.mongo.entity.UserProfileTransition;
 import org.thinkit.bot.twitter.batch.data.mongo.repository.UserProfileTransitionRepository;
 import org.thinkit.bot.twitter.batch.strategy.transition.profile.RecordProfileTransitionDailyStrategy;
+import org.thinkit.bot.twitter.batch.strategy.transition.profile.RecordProfileTransitionMonthlyStrategy;
 import org.thinkit.bot.twitter.batch.strategy.transition.profile.RecordProfileTransitionWeeklyStrategy;
 
 import lombok.AccessLevel;
@@ -96,10 +97,10 @@ public final class RecordProfileTransitionContext implements Context<UserProfile
         return switch (this.userProfileTransitionType) {
             case DAILY -> RecordProfileTransitionDailyStrategy
                     .from(this.userProfileTransitionRepository, this.userProfile).execute();
-            case MONTHLY -> RecordProfileTransitionWeeklyStrategy
+            case WEEKLY -> RecordProfileTransitionWeeklyStrategy
                     .from(this.userProfileTransitionRepository, this.userProfile).execute();
-            case WEEKLY -> throw new UnsupportedOperationException(
-                    "Unimplemented case: " + this.userProfileTransitionType);
+            case MONTHLY -> RecordProfileTransitionMonthlyStrategy
+                    .from(this.userProfileTransitionRepository, this.userProfile).execute();
         };
     }
 }

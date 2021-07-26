@@ -22,9 +22,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public final class WeeklyReportJapaneseStrategy extends AbstractReportStrategy {
+public final class MonthlyReportJapaneseStrategy extends AbstractReportStrategy {
 
     /**
      * The constructor.
@@ -33,32 +37,32 @@ public final class WeeklyReportJapaneseStrategy extends AbstractReportStrategy {
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
-    private WeeklyReportJapaneseStrategy(@NonNull final UserProfileDifference userProfileDifference) {
+    private MonthlyReportJapaneseStrategy(@NonNull final UserProfileDifference userProfileDifference) {
         super(userProfileDifference);
     }
 
     /**
-     * Returns the new instance of {@link WeeklyReportJapaneseStrategy} based on the
-     * object passed as an argument.
+     * Returns the new instance of {@link MonthlyReportJapaneseStrategy} based on
+     * the object passed as an argument.
      *
      * @param userProfileDifference The user profile difference
-     * @return The new instance of {@link WeeklyReportJapaneseStrategy}
+     * @return The new instance of {@link MonthlyReportJapaneseStrategy}
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
     public static Strategy<Report> from(@NonNull final UserProfileDifference userProfileDifference) {
-        return new WeeklyReportJapaneseStrategy(userProfileDifference);
+        return new MonthlyReportJapaneseStrategy(userProfileDifference);
     }
 
     @Override
     public Report execute() {
         return super.toReport("""
-                週末レポート（%s）
+                月末レポート（%s）
 
-                フォロー推移（先週比）: %s (%s%%)
-                フォロワー推移（先週比）: %s (%s%%)
+                フォロー推移（先月比）: %s (%s%%)
+                フォロワー推移（先月比）: %s (%s%%)
 
-                #定期ツイート #週末 #推移 #プログラマ
+                #定期ツイート #月末 #推移 #プログラマ
                 """);
     }
 }

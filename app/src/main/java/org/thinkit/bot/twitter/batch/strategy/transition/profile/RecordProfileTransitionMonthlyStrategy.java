@@ -66,7 +66,7 @@ public final class RecordProfileTransitionMonthlyStrategy extends AbstractRecord
 
     @Override
     public UserProfileTransition execute() {
-        return DateUtils.isWeekend() ? super.recordTransition(UserProfileTransitionType.MONTHLY)
+        return DateUtils.isEnfOfMonth() ? super.recordTransition(UserProfileTransitionType.MONTHLY)
                 : new UserProfileTransition();
     }
 }

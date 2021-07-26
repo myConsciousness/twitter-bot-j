@@ -59,6 +59,11 @@ public enum BatchStep implements BiCatalog<BatchStep, String> {
     AUTO_TWEET_WEEKLY_REPORT(4, "AutoTweetWeeklyReport"),
 
     /**
+     * The auto tweet monthly report step
+     */
+    AUTO_TWEET_MONTHLY_REPORT(4, "AutoTweetMonthlyReport"),
+
+    /**
      * The auto show user step
      */
     AUTO_SHOW_USER(100, "AutoShowUser"),

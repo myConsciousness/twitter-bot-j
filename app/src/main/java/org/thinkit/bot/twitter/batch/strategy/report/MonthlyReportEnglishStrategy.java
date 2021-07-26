@@ -22,9 +22,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import lombok.ToString;
 
+/**
+ * @author Kato Shinya
+ * @since 1.0.0
+ */
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public final class WeeklyReportJapaneseStrategy extends AbstractReportStrategy {
+public final class MonthlyReportEnglishStrategy extends AbstractReportStrategy {
 
     /**
      * The constructor.
@@ -33,32 +37,32 @@ public final class WeeklyReportJapaneseStrategy extends AbstractReportStrategy {
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
-    private WeeklyReportJapaneseStrategy(@NonNull final UserProfileDifference userProfileDifference) {
+    private MonthlyReportEnglishStrategy(@NonNull final UserProfileDifference userProfileDifference) {
         super(userProfileDifference);
     }
 
     /**
-     * Returns the new instance of {@link WeeklyReportJapaneseStrategy} based on the
+     * Returns the new instance of {@link MonthlyReportEnglishStrategy} based on the
      * object passed as an argument.
      *
      * @param userProfileDifference The user profile difference
-     * @return The new instance of {@link WeeklyReportJapaneseStrategy}
+     * @return The new instance of {@link MonthlyReportEnglishStrategy}
      *
      * @exception NullPointerException If {@code null} is passed as an argument
      */
     public static Strategy<Report> from(@NonNull final UserProfileDifference userProfileDifference) {
-        return new WeeklyReportJapaneseStrategy(userProfileDifference);
+        return new MonthlyReportEnglishStrategy(userProfileDifference);
     }
 
     @Override
     public Report execute() {
         return super.toReport("""
-                週末レポート（%s）
+                Monthly Report (%s)
 
-                フォロー推移（先週比）: %s (%s%%)
-                フォロワー推移（先週比）: %s (%s%%)
+                ・Followings: %s (%s%%)
+                ・Followers: %s (%s%%)
 
-                #定期ツイート #週末 #推移 #プログラマ
+                #montlytweet #programmer #engineer #developer
                 """);
     }
 }
