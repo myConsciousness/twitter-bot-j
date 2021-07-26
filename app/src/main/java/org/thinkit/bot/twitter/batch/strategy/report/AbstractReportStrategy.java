@@ -33,14 +33,14 @@ import lombok.ToString;
 @EqualsAndHashCode
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor
-public abstract class AbstractWeeklyReportStrategy implements Strategy<Report> {
+public abstract class AbstractReportStrategy implements Strategy<Report> {
 
     /**
      * The user profile difference
      */
     private UserProfileDifference userProfileDifference;
 
-    protected final Report toWeeklyReport(@NonNull final String template) {
+    protected final Report toReport(@NonNull final String template) {
         return Report.from(String.format(template, DateUtils.toString(DateFormat.YYYY_MM_DD_WITH_SLASH),
                 this.getFollowingsDifferenceCount(), this.getFollowingsGrowthRate(), this.getFollowersDifferenceCount(),
                 this.getFollowersGrowthRate()));
