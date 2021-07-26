@@ -24,6 +24,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.stereotype.Component;
 import org.thinkit.bot.twitter.TwitterBot;
@@ -298,7 +299,8 @@ public abstract class AbstractTasklet implements Tasklet {
      * Close the session.
      */
     private void closeSession() {
-        this.context.close();
+        final int exitCode = SpringApplication.exit(context, () -> 0);
+        System.exit(exitCode);
     }
 
     private void saveActionError(@NonNull final List<ActionError> actionErrors) {
