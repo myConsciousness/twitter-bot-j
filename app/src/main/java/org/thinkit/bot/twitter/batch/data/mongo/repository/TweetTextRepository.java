@@ -48,12 +48,12 @@ public interface TweetTextRepository extends MongoRepository<TweetText, String> 
     public TweetText findByTextCodeAndLanguageCode(int textCode, int languageCode);
 
     /**
-     * Returns the tweet text linked to the type code and langauge code passed as an
-     * argument.
+     * Returns the tweet texts linked to the type code and langauge code passed as
+     * an argument.
      *
      * @param typeCode     The type code
      * @param languageCode The language code
-     * @return The tweet
+     * @return The tweets
      */
-    public TweetText findByTypeCodeAndLanguageCode(int typeCode, int languageCode);
+    public List<TweetText> findByTypeCodeAndLanguageCode(int typeCode, int languageCode);
 }

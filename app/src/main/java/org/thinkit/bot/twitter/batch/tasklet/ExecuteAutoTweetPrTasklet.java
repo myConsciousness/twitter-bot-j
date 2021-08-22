@@ -77,35 +77,37 @@ public final class ExecuteAutoTweetPrTasklet extends AbstractTasklet {
 
         int actionCount = 0;
         for (final Language language : Language.values()) {
-            final TweetText tweetText = tweetTextRepository.findByTypeCodeAndLanguageCode(TweetType.PR.getCode(),
+            final List<TweetText> tweetTexts = tweetTextRepository.findByTypeCodeAndLanguageCode(TweetType.PR.getCode(),
                     language.getCode());
 
-            if (tweetText == null) {
+            if (tweetTexts.isEmpty()) {
                 log.warn(String.format("PR tweet for language '%s' is not defined. Skip tweet in this language.",
                         language.name()));
                 continue;
             }
 
-            final AutoTweetResult autoTweetResult = super.getTwitterBot()
-                    .executeAutoTweet(Tweet.from(tweetText.getText()));
+            for (final TweetText tweetText : tweetTexts) {
+                final AutoTweetResult autoTweetResult = super.getTwitterBot()
+                        .executeAutoTweet(Tweet.from(tweetText.getText()));
 
-            TweetResult tweetResult = new TweetResult();
-            tweetResult.setTextCode(tweetText.getTextCode());
-            tweetResult.setTypeCode(TweetType.PR.getCode());
-            tweetResult.setLanguageCode(tweetText.getLanguageCode());
-            tweetResult.setTweet(autoTweetResult.getTweet().getText());
-            tweetResult.setStatus(autoTweetResult.getStatus());
+                TweetResult tweetResult = new TweetResult();
+                tweetResult.setTextCode(tweetText.getTextCode());
+                tweetResult.setTypeCode(TweetType.PR.getCode());
+                tweetResult.setLanguageCode(tweetText.getLanguageCode());
+                tweetResult.setTweet(autoTweetResult.getTweet().getText());
+                tweetResult.setStatus(autoTweetResult.getStatus());
 
-            tweetResult = tweetResultRepository.insert(tweetResult);
-            log.debug("Inserted tweet result: {}", tweetResult);
+                tweetResult = tweetResultRepository.insert(tweetResult);
+                log.debug("Inserted tweet result: {}", tweetResult);
 
-            if (autoTweetResult.getActionErrors() != null) {
-                for (final ActionError actionError : autoTweetResult.getActionErrors()) {
-                    actionErrors.add(actionError);
+                if (autoTweetResult.getActionErrors() != null) {
+                    for (final ActionError actionError : autoTweetResult.getActionErrors()) {
+                        actionErrors.add(actionError);
+                    }
                 }
-            }
 
-            actionCount++;
+                actionCount++;
+            }
         }
 
         final BatchTaskResult.BatchTaskResultBuilder batchTaskResultBuilder = BatchTaskResult.builder();
