@@ -21,6 +21,7 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.stereotype.Component;
+import org.thinkit.bot.twitter.batch.catalog.DateFormat;
 import org.thinkit.bot.twitter.batch.catalog.Language;
 import org.thinkit.bot.twitter.batch.catalog.TaskType;
 import org.thinkit.bot.twitter.batch.catalog.TweetType;
@@ -33,6 +34,7 @@ import org.thinkit.bot.twitter.batch.result.BatchTaskResult;
 import org.thinkit.bot.twitter.param.Tweet;
 import org.thinkit.bot.twitter.result.ActionError;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
+import org.thinkit.bot.twitter.util.DateUtils;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -87,8 +89,8 @@ public final class ExecuteAutoTweetIntroduceTasklet extends AbstractTasklet {
             }
 
             for (final TweetText tweetText : tweetTexts) {
-                final AutoTweetResult autoTweetResult = super.getTwitterBot()
-                        .executeAutoTweet(Tweet.from(tweetText.getText()));
+                final AutoTweetResult autoTweetResult = super.getTwitterBot().executeAutoTweet(
+                        Tweet.from(String.format(tweetText.getText(), DateUtils.toString(DateFormat.YYYY_MM_DD_H_MM))));
 
                 TweetResult tweetResult = new TweetResult();
                 tweetResult.setTextCode(tweetText.getTextCode());
