@@ -31,7 +31,12 @@ public enum DateFormat implements BiCatalog<DateFormat, String> {
     /**
      * {@code "yyyy/MM/dd"}
      */
-    YYYY_MM_DD_WITH_SLASH(0, "yyyy/MM/dd");
+    YYYY_MM_DD_WITH_SLASH(0, "yyyy/MM/dd"),
+
+    /**
+     * {@code yyyy/MM/dd H:mm}
+     */
+    YYYY_MM_DD_H_MM(1, "yyyy/MM/dd H:mm");
 
     /**
      * The code
