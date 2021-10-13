@@ -1,0 +1,164 @@
+{
+    "meta": {
+        "author": "Kato Shinya",
+        "encoding": "UTF-8",
+        "description": "The content that manages the default task execution rule.",
+        "resultType": "org.thinkit.bot.twitter.batch.data.content.entity.DefaultTaskExecutionRule"
+    },
+    "selectionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "1",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "2",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "3",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "4",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "5",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "100",
+                "active": true
+            }
+        },
+        {
+            "node": {
+                "conditionId": "999",
+                "active": true
+            }
+        }
+    ],
+    "conditionNodes": [
+        {
+            "node": {
+                "conditionId": "0",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "0"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "1",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "1"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "2",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "2"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "3",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "3"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "4",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "4"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "5",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "5"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "100",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "100"
+                    }
+                ]
+            }
+        },
+        {
+            "node": {
+                "conditionId": "999",
+                "exclude": false,
+                "conditions": [
+                    {
+                        "keyName": "taskTypeCode",
+                        "operator": "=",
+                        "operand": "999"
+                    }
+                ]
+            }
+        }
+    ]
+}
