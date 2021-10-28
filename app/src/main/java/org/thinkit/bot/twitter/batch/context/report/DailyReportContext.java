@@ -48,8 +48,8 @@ public final class DailyReportContext implements Context<Report>, Serializable {
     @Override
     public Report evaluate() {
         return switch (this.language) {
-            case JAPANESE -> DailyReportJapaneseStrategy.from(this.userProfileDifference).execute();
-            case ENGLISH -> DailyReportEnglishStrategy.from(this.userProfileDifference).execute();
+        case JAPANESE -> DailyReportJapaneseStrategy.from(this.userProfileDifference).execute();
+        case ENGLISH -> DailyReportEnglishStrategy.from(this.userProfileDifference).execute();
         };
     }
 }

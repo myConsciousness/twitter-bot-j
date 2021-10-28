@@ -14,11 +14,15 @@
 
 package org.thinkit.bot.twitter;
 
+import java.util.List;
+
 import com.mongodb.lang.NonNull;
 
+import org.thinkit.bot.twitter.command.AutoFavoriteCommand;
 import org.thinkit.bot.twitter.command.AutoShowUserCommand;
 import org.thinkit.bot.twitter.command.AutoTweetCommand;
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.AutoFavoriteResult;
 import org.thinkit.bot.twitter.result.AutoShowUserResult;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
 
@@ -66,7 +70,12 @@ public final class TwitterBotJ extends AbstractTwitterBot {
     }
 
     @Override
-    public AutoShowUserResult executeAutoShowUser(String userName) {
+    public AutoShowUserResult executeAutoShowUser(@NonNull final String userName) {
         return AutoShowUserCommand.from(userName).execute(super.getTwitter());
+    }
+
+    @Override
+    public AutoFavoriteResult executeAutoFavorite(@NonNull final List<Long> tweetIds) {
+        return AutoFavoriteCommand.from(tweetIds).execute(super.getTwitter());
     }
 }
