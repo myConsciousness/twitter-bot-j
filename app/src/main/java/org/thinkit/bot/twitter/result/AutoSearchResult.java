@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 /**
- * The class that manages the result of auto favorite command.
+ * The class that manages the result of auto search command.
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -28,37 +28,35 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class AutoFavoriteResult extends AbstractCommandResult {
+public final class AutoSearchResult extends AbstractCommandResult {
 
     /**
-     * Returns the new instance of {@link AutoFavoriteResultBuilder} .
+     * Returns the new instance of {@link AutoSearchResultBuilder} .
      *
-     * @return The new instance of {@link AutoFavoriteResultBuilder}
+     * @return The new instance of {@link AutoSearchResultBuilder}
      */
-    public static AutoFavoriteResultBuilder newBuilder() {
-        return new AutoFavoriteResultBuilder();
+    public static AutoSearchResultBuilder newBuilder() {
+        return new AutoSearchResultBuilder();
     }
 
     /**
      * @author Kato Shinya
      * @since 1.0.0
      */
-    public static final class AutoFavoriteResultBuilder
-            extends AbstractCommandResultBuilder<AutoFavoriteResultBuilder> {
+    public static final class AutoSearchResultBuilder extends AbstractCommandResultBuilder<AutoSearchResultBuilder> {
 
         /**
-         * Returns the new instance of {@link AutoFavoriteResult} based on the
-         * parameters.
+         * Returns the new instance of {@link AutoSearchResult} based on the parameters.
          *
-         * @return The new instance of {@link AutoFavoriteResult}
+         * @return The new instance of {@link AutoSearchResult}
          */
-        public AutoFavoriteResult build() {
+        public AutoSearchResult build() {
 
-            final AutoFavoriteResult autoFavoriteResult = new AutoFavoriteResult();
-            autoFavoriteResult.actionStatus = super.actionStatus;
-            autoFavoriteResult.actionErrors = super.actionErrors;
+            final AutoSearchResult AutoSearchResult = new AutoSearchResult();
+            AutoSearchResult.actionStatus = super.actionStatus;
+            AutoSearchResult.actionErrors = super.actionErrors;
 
-            return autoFavoriteResult;
+            return AutoSearchResult;
         }
     }
 }
