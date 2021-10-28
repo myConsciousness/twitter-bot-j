@@ -17,17 +17,17 @@ package org.thinkit.bot.twitter.command;
 import java.util.List;
 
 import org.thinkit.bot.twitter.catalog.ActionStatus;
-import org.thinkit.bot.twitter.result.AutoShowUserResult;
+import org.thinkit.bot.twitter.result.AutoSearchResult;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import twitter4j.User;
+import twitter4j.Query;
 
 /**
- * The class that manages auto show user command.
+ * The class that manages auto favorite user command.
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -36,30 +36,25 @@ import twitter4j.User;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserResult> {
+public class AutoSearchCommand extends AbstractBotCommand<AutoSearchResult> {
 
     /**
-     * The user name
+     * The keyword
      */
-    private String userName;
+    private String keyword;
 
     @Override
-    protected AutoShowUserResult executeBotProcess() {
+    protected AutoSearchResult executeBotProcess() {
 
-        final AutoShowUserResult.AutoShowUserResultBuilder autoShowUserResultBuilder = AutoShowUserResult.newBuilder();
+        final AutoSearchResult.AutoSearchResultBuilder autoSearchResultBuilder = AutoSearchResult.newBuilder();
 
         try {
-            final User user = super.getTwitter().showUser(this.userName);
-            autoShowUserResultBuilder.setUserId(user.getId());
-            autoShowUserResultBuilder.setScreenName(user.getScreenName());
-            autoShowUserResultBuilder.setUserName(user.getName());
-            autoShowUserResultBuilder.setFollowersCount(user.getFollowersCount());
-            autoShowUserResultBuilder.setFollowingsCount(user.getFriendsCount());
+            super.getTwitter().search(new Query(this.keyword));
         } catch (Exception e) {
-            autoShowUserResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
-            autoShowUserResultBuilder.setActionErrors(List.of(super.getActionError(e)));
+            autoSearchResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
+            autoSearchResultBuilder.setActionErrors(List.of(super.getActionError(e)));
         }
 
-        return autoShowUserResultBuilder.build();
+        return autoSearchResultBuilder.build();
     }
 }

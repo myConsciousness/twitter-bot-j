@@ -17,17 +17,16 @@ package org.thinkit.bot.twitter.command;
 import java.util.List;
 
 import org.thinkit.bot.twitter.catalog.ActionStatus;
-import org.thinkit.bot.twitter.result.AutoShowUserResult;
+import org.thinkit.bot.twitter.result.AutoFavoriteResult;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import twitter4j.User;
 
 /**
- * The class that manages auto show user command.
+ * The class that manages auto favorite user command.
  *
  * @author Kato Shinya
  * @since 1.0.0
@@ -36,28 +35,25 @@ import twitter4j.User;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @AllArgsConstructor(staticName = "from")
-public final class AutoShowUserCommand extends AbstractBotCommand<AutoShowUserResult> {
+public class AutoFavoriteCommand extends AbstractBotCommand<AutoFavoriteResult> {
 
     /**
-     * The user name
+     * The tweet ids
      */
-    private String userName;
+    private List<Long> tweetIds;
 
     @Override
-    protected AutoShowUserResult executeBotProcess() {
+    protected AutoFavoriteResult executeBotProcess() {
 
-        final AutoShowUserResult.AutoShowUserResultBuilder autoShowUserResultBuilder = AutoShowUserResult.newBuilder();
+        final AutoFavoriteResult.AutoFavoriteResultBuilder autoShowUserResultBuilder = AutoFavoriteResult.newBuilder();
 
-        try {
-            final User user = super.getTwitter().showUser(this.userName);
-            autoShowUserResultBuilder.setUserId(user.getId());
-            autoShowUserResultBuilder.setScreenName(user.getScreenName());
-            autoShowUserResultBuilder.setUserName(user.getName());
-            autoShowUserResultBuilder.setFollowersCount(user.getFollowersCount());
-            autoShowUserResultBuilder.setFollowingsCount(user.getFriendsCount());
-        } catch (Exception e) {
-            autoShowUserResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
-            autoShowUserResultBuilder.setActionErrors(List.of(super.getActionError(e)));
+        for (final Long tweetId : this.tweetIds) {
+            try {
+                super.getTwitter().createFavorite(tweetId);
+            } catch (Exception e) {
+                autoShowUserResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
+                autoShowUserResultBuilder.setActionErrors(List.of(super.getActionError(e)));
+            }
         }
 
         return autoShowUserResultBuilder.build();

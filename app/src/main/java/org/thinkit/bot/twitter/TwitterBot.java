@@ -14,9 +14,13 @@
 
 package org.thinkit.bot.twitter;
 
+import java.util.List;
+
 import com.mongodb.lang.NonNull;
 
 import org.thinkit.bot.twitter.param.Tweet;
+import org.thinkit.bot.twitter.result.AutoFavoriteResult;
+import org.thinkit.bot.twitter.result.AutoSearchResult;
 import org.thinkit.bot.twitter.result.AutoShowUserResult;
 import org.thinkit.bot.twitter.result.AutoTweetResult;
 
@@ -47,4 +51,24 @@ public interface TwitterBot {
      * @exception NullPointerException If {@code null} is passed as an argument
      */
     public AutoShowUserResult executeAutoShowUser(@NonNull final String userName);
+
+    /**
+     * Executes the auto favorite.
+     *
+     * @param tweetIds The tweet ids
+     * @return The command result
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public AutoFavoriteResult executeAutoFavorite(@NonNull final List<Long> tweetIds);
+
+    /**
+     * Executes the auto search and returns the command result.
+     *
+     * @param keyword The keyword
+     * @return The command result
+     *
+     * @exception NullPointerException If {@code null} is passed as an argument
+     */
+    public AutoSearchResult executeAutoSearch(@NonNull final String keyword);
 }
