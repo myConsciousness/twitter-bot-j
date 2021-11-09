@@ -14,10 +14,15 @@
 
 package org.thinkit.bot.twitter.result;
 
+import java.util.List;
+
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
+import twitter4j.Status;
 
 /**
  * The class that manages the result of auto search command.
@@ -29,6 +34,12 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class AutoSearchResult extends AbstractCommandResult {
+
+    /**
+     * The tweets
+     */
+    @Getter
+    private List<Status> tweets;
 
     /**
      * Returns the new instance of {@link AutoSearchResultBuilder} .
@@ -46,6 +57,22 @@ public final class AutoSearchResult extends AbstractCommandResult {
     public static final class AutoSearchResultBuilder extends AbstractCommandResultBuilder<AutoSearchResultBuilder> {
 
         /**
+         * The tweets
+         */
+        private List<Status> tweets;
+
+        /**
+         * Sets the tweets.
+         *
+         * @param tweets The tweets
+         * @return This builder
+         */
+        public AutoSearchResultBuilder tweets(@NonNull final List<Status> tweets) {
+            this.tweets = tweets;
+            return this;
+        }
+
+        /**
          * Returns the new instance of {@link AutoSearchResult} based on the parameters.
          *
          * @return The new instance of {@link AutoSearchResult}
@@ -53,6 +80,7 @@ public final class AutoSearchResult extends AbstractCommandResult {
         public AutoSearchResult build() {
 
             final AutoSearchResult AutoSearchResult = new AutoSearchResult();
+            AutoSearchResult.tweets = this.tweets;
             AutoSearchResult.actionStatus = super.actionStatus;
             AutoSearchResult.actionErrors = super.actionErrors;
 

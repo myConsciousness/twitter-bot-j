@@ -82,6 +82,12 @@ public final class BatchStepCollections implements Serializable {
     private Step executeAutoTweetPrStep;
 
     /**
+     * The execute auto search step
+     */
+    @Getter
+    private Step executeAutoSearchStep;
+
+    /**
      * The close session step
      */
     @Getter

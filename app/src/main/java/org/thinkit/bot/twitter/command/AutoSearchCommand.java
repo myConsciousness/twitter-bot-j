@@ -25,6 +25,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import twitter4j.Query;
+import twitter4j.Status;
 
 /**
  * The class that manages auto favorite user command.
@@ -49,7 +50,11 @@ public class AutoSearchCommand extends AbstractBotCommand<AutoSearchResult> {
         final AutoSearchResult.AutoSearchResultBuilder autoSearchResultBuilder = AutoSearchResult.newBuilder();
 
         try {
-            super.getTwitter().search(new Query(this.keyword));
+            final Query query = new Query(this.keyword);
+            query.setCount(40);
+
+            final List<Status> tweets = super.getTwitter().search(query).getTweets();
+            autoSearchResultBuilder.tweets(tweets);
         } catch (Exception e) {
             autoSearchResultBuilder.setActionStatus(ActionStatus.INTERRUPTED);
             autoSearchResultBuilder.setActionErrors(List.of(super.getActionError(e)));
