@@ -69,6 +69,11 @@ public enum BatchStep implements BiCatalog<BatchStep, String> {
     AUTO_SHOW_USER(100, "AutoShowUser"),
 
     /**
+     * The auto search step
+     */
+    AUTO_SEARCH(200, "AutoSearch"),
+
+    /**
      * The close session
      */
     CLOSE_SESSION(999, "CloseSession");

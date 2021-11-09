@@ -89,6 +89,12 @@ public class BatchStepConfiguration {
     private Tasklet executeAutoTweetPrTasklet;
 
     /**
+     * The execute auto search tasklet
+     */
+    @Autowired
+    private Tasklet executeAutoSearchTasklet;
+
+    /**
      * The close session tasklet
      */
     @Autowired
@@ -110,6 +116,7 @@ public class BatchStepConfiguration {
         batchStepCollectionsBuilder.executeAutoTweetMonthlyReportStep(this.executeAutoTweetMonthlyReportStep());
         batchStepCollectionsBuilder.executeAutoTweetIntroduceStep(this.executeAutoTweetIntroduceStep());
         batchStepCollectionsBuilder.executeAutoTweetPrStep(this.executeAutoTweetPrStep());
+        batchStepCollectionsBuilder.executeAutoSearchStep(this.executeAutoSearchStep());
         batchStepCollectionsBuilder.closeSessionStep(this.closeSessionStep());
 
         return batchStepCollectionsBuilder.build();
@@ -182,6 +189,16 @@ public class BatchStepConfiguration {
      */
     private Step executeAutoTweetPrStep() {
         return this.stepBuilderFactory.get(BatchStep.AUTO_TWEET_PR.getTag()).tasklet(this.executeAutoTweetPrTasklet)
+                .build();
+    }
+
+    /**
+     * Returns the step of {@link ExecuteAutoSearchTasklet} .
+     *
+     * @return The step of {@link ExecuteAutoSearchTasklet}
+     */
+    private Step executeAutoSearchStep() {
+        return this.stepBuilderFactory.get(BatchStep.AUTO_SEARCH.getTag()).tasklet(this.executeAutoSearchTasklet)
                 .build();
     }
 

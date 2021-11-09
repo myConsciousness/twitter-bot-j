@@ -59,14 +59,13 @@ public final class JobFlowContext implements Context<Job> {
     @Override
     public Job evaluate() {
         return switch (this.scheduleType) {
-            case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
-            case TWEET_REPORT -> JobFlowTweetReportStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
-            case TWEET_INTRODUCE -> JobFlowTweetIntroduceStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
-            case TWEET_PR -> JobFlowTweetPrStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
-            case CLOSE_SESSION -> JobFlowSessionCloseStrategy.from(this.jobBuilder, this.batchStepCollections)
-                    .execute();
+        case TWEET_GREETING -> JobFlowTweetGreetingStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
+        case TWEET_REPORT -> JobFlowTweetReportStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
+        case TWEET_INTRODUCE -> JobFlowTweetIntroduceStrategy.from(this.jobBuilder, this.batchStepCollections)
+                .execute();
+        case TWEET_PR -> JobFlowTweetPrStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
+        case SEARCH -> this.jobBuilder.flow(this.batchStepCollections.getExecuteAutoSearchStep()).end().build();
+        case CLOSE_SESSION -> JobFlowSessionCloseStrategy.from(this.jobBuilder, this.batchStepCollections).execute();
         };
     }
 }
